@@ -13,7 +13,7 @@ const features: NavBarProps[] = [
   },
   {
     feature:
-      'Users log in to your application through a beautiful responsive page hosted by StaticShield',
+      'Users log in to your application through a beautiful responsive page hosted on StaticShield',
     children: <Shield />,
   },
   {
@@ -54,6 +54,7 @@ export default function Home() {
           <span className='z-10 mx-1 heading-underline'>
             password protect
           </span>{' '}
+          <br />
           your static and dyanmic sites.
         </Text>
 
