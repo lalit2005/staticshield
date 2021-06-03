@@ -3,12 +3,14 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <Page>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Text h1>StaticShield</Text>
-    </Page>
+    <div className="bg-gray-50">
+      <Page>
+        <Head>
+          <title>Create Next App</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Text h1>StaticShield</Text>
+      </Page>
+    </div>
   );
 }
