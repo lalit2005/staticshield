@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "@geist-ui/react": "^2.1.5",
+    "autoprefixer": "^10.2.6",
     "next": "10.x",
+    "postcss": "^8.3.0",
     "react": "17.x",
-    "react-dom": "17.x"
+    "react-dom": "17.x",
+    "tailwindcss": "^2.1.4"
   },
   "devDependencies": {
     "@types/react": "^17.0.9",
