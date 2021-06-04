@@ -5,10 +5,6 @@ import NextLink from 'next/link';
 export default function Navbar() {
   const { user, error, isLoading } = useUser();
 
-  console.log(user);
-  console.log(error);
-  console.log(isLoading);
-
   return (
     <Row className=' border-b border-gray-200 !fixed !bg-gray-50 z-10'>
       <div className='text-gray-700 flex justify-around items-center !min-w-[100vw]'>
