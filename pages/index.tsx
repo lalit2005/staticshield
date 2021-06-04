@@ -62,7 +62,7 @@ export default function Home() {
         </Text>
 
         <div className='mt-12'>
-          <Link href='/api/auth/login'>
+          <Link href='/signup'>
             <Button
               size='large'
               type='success'
