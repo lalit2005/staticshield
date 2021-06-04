@@ -43,29 +43,25 @@ export default function Home() {
         <Text
           className='!font-extrabold mt-12 text-5xl sm:text-7xl bg-gradient-to-r from-black via-gray-600 to-gray-500 !text-transparent bg-clip-text'
           h1>
-          Static{''}
+          Static
           <span className='px-2 bg-gray-900 rounded-xl text-gray-50'>
             Shield
           </span>
         </Text>
         <Text className='text-2xl'>
           StaticShield is the easiest way to{' '}
-          <span className='z-10 mx-1 heading-underline'>password protect</span>{' '}
+          <span className='z-10 mx-1 heading-underline isolate'>
+            password protect
+          </span>{' '}
           <br />
           your static and dyanmic sites.
         </Text>
 
         <div className='mt-12'>
-          <Input
-            size='large'
-            width='240px'
-            status='success'
-            placeholder='Enter your email…'
-          />
           <Button
-            auto
+            size='large'
             type='success'
-            className='!inline-block ml-2 !shadow-md mt-5'>
+            className='!inline-block ml-2 !shadow-md'>
             Get started →
           </Button>
         </div>
