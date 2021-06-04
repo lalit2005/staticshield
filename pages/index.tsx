@@ -1,4 +1,4 @@
-import { Button, Divider, Input, Page, Text } from '@geist-ui/react';
+import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import FeatureCard, { NavBarProps } from '../components/FeatureCard';
@@ -37,9 +37,13 @@ export default function Home() {
       <Page>
         <Head>
           <title>StaticShield</title>
-          <link rel='icon' href='/logo.svg' />
+          <link rel='icon' href='/staticshield.png' />
         </Head>
-        <img src='/logo.svg' alt='' className='w-40 h-40 mx-auto mt-16' />
+        <img
+          src='/staticshield.png'
+          alt=''
+          className='w-40 h-40 mx-auto mt-16'
+        />
         <Text
           className='!font-extrabold mt-12 text-5xl sm:text-7xl bg-gradient-to-r from-black via-gray-600 to-gray-500 !text-transparent bg-clip-text'
           h1>
@@ -58,12 +62,14 @@ export default function Home() {
         </Text>
 
         <div className='mt-12'>
-          <Button
-            size='large'
-            type='success'
-            className='!inline-block ml-2 !shadow-md'>
-            Get started →
-          </Button>
+          <Link href='/api/auth/login'>
+            <Button
+              size='large'
+              type='success'
+              className='!inline-block ml-2 !shadow-md'>
+              Get started →
+            </Button>
+          </Link>
         </div>
 
         <Divider className='!mt-20 !mb-12'>
