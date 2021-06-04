@@ -1,4 +1,4 @@
-import { Button, Divider, Grid, Input, Page, Text } from '@geist-ui/react';
+import { Button, Divider, Input, Page, Text } from '@geist-ui/react';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import FeatureCard, { NavBarProps } from '../components/FeatureCard';
@@ -23,7 +23,7 @@ const features: NavBarProps[] = [
   },
   {
     feature:
-      'StaticShield hashes and encrypts data multiple times so that your data stays highly secure',
+      'StaticShield hashes and encrypts data at multiple levels so that your data stays highly secure',
     children: <Lock />,
   },
 ];
@@ -49,11 +49,8 @@ export default function Home() {
           </span>
         </Text>
         <Text className='text-2xl'>
-          {/* Password protect your websites with a single line of code */}
           StaticShield is the easiest way to{' '}
-          <span className='z-10 mx-1 heading-underline'>
-            password protect
-          </span>{' '}
+          <span className='z-10 mx-1 heading-underline'>password protect</span>{' '}
           <br />
           your static and dyanmic sites.
         </Text>
@@ -77,7 +74,6 @@ export default function Home() {
           <span className='-mx-6 text-gray-500 bg-gray-50'>FEATURES</span>
         </Divider>
 
-        {/* <div className='grid gap-4 sm:grid-cols-2 place-items-stretch'> */}
         <div className='flex flex-wrap'>
           {features.map((feature) => {
             return (
