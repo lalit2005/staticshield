@@ -1,7 +1,7 @@
 import { Grid } from '@geist-ui/react';
 import React from 'react';
 
-export interface NavBarProps {
+interface NavBarProps {
   feature: string;
   children: JSX.Element;
 }

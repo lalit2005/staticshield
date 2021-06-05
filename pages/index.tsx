@@ -1,9 +1,10 @@
 import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
-import FeatureCard, { NavBarProps } from '../components/FeatureCard';
+import FeatureCard from '../components/FeatureCard';
 import { Code, Lock, Zap } from '@geist-ui/react-icons';
 import Shield from '../components/Shield';
+import { NavBarProps } from '../lib/interfaces';
 
 const features: NavBarProps[] = [
   {
@@ -62,7 +63,7 @@ export default function Home() {
         </Text>
 
         <div className='mt-12'>
-          <Link href='/api/auth/login'>
+          <Link href='/signup'>
             <Button
               size='large'
               type='success'

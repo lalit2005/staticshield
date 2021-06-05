@@ -19,10 +19,8 @@ export default function Navbar() {
         </div>
         {user ? (
           <div className='flex items-center justify-between gap-x-3'>
-            <NextLink href='/api/auth/logout'>
-              <Link block href='/api/auth/logout'>
-                Sign out
-              </Link>
+            <NextLink href='/dashboard'>
+              <Link block>Go To Dashboard</Link>
             </NextLink>
             <div>
               <img
@@ -35,15 +33,15 @@ export default function Navbar() {
         ) : (
           <div>
             <div className='inline-block'>
-              <NextLink href='/api/auth/login'>
-                <Link block href='/api/auth/login'>
+              <NextLink href='/login'>
+                <Link block href='/login'>
                   Sign Up
                 </Link>
               </NextLink>
             </div>
             <div className='inline-block'>
-              <NextLink href='/api/auth/login'>
-                <Link block href='/api/auth/login'>
+              <NextLink href='/login'>
+                <Link block href='/login'>
                   Sign In
                 </Link>
               </NextLink>
