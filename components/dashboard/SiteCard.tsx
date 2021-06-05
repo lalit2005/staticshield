@@ -16,7 +16,7 @@ export default function SiteCard(props: SiteCardProps) {
   return (
     <div>
       <NextLink href={site_url}>
-        <Card width='80%' hoverable className='h-40 cursor-pointer'>
+        <Card hoverable className='min-h-[40px] max-w-3xl cursor-pointer'>
           <Text h2 className='inline-block'>
             {site_name}
           </Text>
