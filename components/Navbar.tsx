@@ -19,10 +19,8 @@ export default function Navbar() {
         </div>
         {user ? (
           <div className='flex items-center justify-between gap-x-3'>
-            <NextLink href='/logout'>
-              <Link block href='/logout'>
-                Sign out
-              </Link>
+            <NextLink href='/dashboard'>
+              <Link block>Go To Dashboard</Link>
             </NextLink>
             <div>
               <img
