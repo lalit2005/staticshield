@@ -53,7 +53,7 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
           <strong>DASHBOARD</strong>
         </Badge>
       </div>
-      <div>
+      <div className='absolute right-48'>
         <Popover content={avatarPopoverContent} placement='leftStart'>
           <Avatar src={user?.picture} size='small' className='cursor-pointer' />
         </Popover>
