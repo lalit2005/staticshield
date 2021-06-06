@@ -71,7 +71,7 @@ export default function Home() {
               size='large'
               type='success'
               className='!inline-block ml-2 !shadow-md'>
-              {user ? 'Get started →' : 'Go to Dashboard'}
+              {user ? 'Go to Dashboard →' : 'Get started →'}
             </Button>
           </Link>
         </div>
