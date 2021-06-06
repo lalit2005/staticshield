@@ -66,7 +66,7 @@ export default function Home() {
         </Text>
 
         <div className='mt-12'>
-          <Link href={user ? '/signup' : '/dashboard'}>
+          <Link href={user ? '/dashboard' : '/signup'}>
             <Button
               size='large'
               type='success'
