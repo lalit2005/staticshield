@@ -31,13 +31,19 @@ export default function Dashboard() {
       site_name: 'Test 3',
       site_url: 'https://example.com',
     },
+    {
+      id: '4',
+      site_desc: 'Lorem ipsum dolor sit amet consectetur',
+      site_name: 'Test 4',
+      site_url: 'https://example.com',
+    },
   ];
 
   return (
     <div className='w-screen min-h-screen'>
       <DashboardNavbar user={user} />
       <div className='px-16'>
-        <div>
+        <div className='pt-24'>
           <Breadcrumbs>
             <Breadcrumbs.Item>StaticShield</Breadcrumbs.Item>
             <Breadcrumbs.Item>Dashboard</Breadcrumbs.Item>
@@ -46,7 +52,7 @@ export default function Dashboard() {
             </NextLink>
           </Breadcrumbs>
         </div>
-        <Text h1 className='mt-3 font-extrabold'>
+        <Text h1 className='mt-5 font-extrabold'>
           Your Sites
         </Text>
         <div className='grid grid-flow-row mt-6 gap-y-8'>
@@ -55,7 +61,7 @@ export default function Dashboard() {
               <SiteCard
                 site_desc={site.site_desc}
                 site_name={site.site_name}
-                id={site.id} // to avoid typescript errors
+                id={site.id}
                 key={site.id}
                 site_url={site.site_url}
               />
