@@ -5,6 +5,7 @@ import FeatureCard from '../components/FeatureCard';
 import { Code, Lock, Zap } from '@geist-ui/react-icons';
 import Shield from '../components/Shield';
 import { NavBarProps } from '../lib/interfaces';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const features: NavBarProps[] = [
   {
@@ -30,6 +31,8 @@ const features: NavBarProps[] = [
 ];
 
 export default function Home() {
+  const { user, error, isLoading } = useUser();
+
   return (
     <div className='text-center text-gray-900 bg-gray-50'>
       <div className='block'>
@@ -63,12 +66,12 @@ export default function Home() {
         </Text>
 
         <div className='mt-12'>
-          <Link href='/signup'>
+          <Link href={user ? '/signup' : '/dashboard'}>
             <Button
               size='large'
               type='success'
               className='!inline-block ml-2 !shadow-md'>
-              Get started →
+              {user ? 'Get started →' : 'Go to Dashboard'}
             </Button>
           </Link>
         </div>
