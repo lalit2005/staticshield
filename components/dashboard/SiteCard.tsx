@@ -4,7 +4,7 @@ import { SiteCardProps } from '../../lib/interfaces';
 import NextLink from 'next/link';
 
 export default function SiteCard(props: SiteCardProps) {
-  const { site_desc, site_url, site_name } = props;
+  const { site_desc, site_url, site_name, id: siteId } = props;
 
   let shortenedSiteDesc: string;
   if (site_desc.length > 100) {
@@ -15,7 +15,7 @@ export default function SiteCard(props: SiteCardProps) {
 
   return (
     <div>
-      <NextLink href={site_url}>
+      <NextLink href={'/site/' + siteId}>
         <Card hoverable className='min-h-[40px] max-w-3xl cursor-pointer'>
           <Text h2 className='inline-block'>
             {site_name}

@@ -40,7 +40,7 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
   };
 
   return (
-    <div className='fixed flex items-center justify-between w-full px-16 mb-12 border-b border-gray-200 bg-gray-50'>
+    <div className='fixed z-30 flex items-center justify-between w-full px-16 mb-12 border-b border-gray-200 bg-gray-50'>
       <div className='flex items-center justify-between'>
         <img src='/staticshield.png' alt='StaticShield' width='25px' />
         <Text b p className='ml-2 text-2xl'>
@@ -49,7 +49,10 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
             Shield
           </span>
         </Text>
-        <Badge type='success' size='small' className='ml-2'>
+        <Badge
+          type='success'
+          size='small'
+          className='invisible ml-2 sm:visible'>
           <strong>DASHBOARD</strong>
         </Badge>
       </div>
