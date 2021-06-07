@@ -10,7 +10,9 @@ import {
   Text,
   Link,
   Snippet,
+  Breadcrumbs,
 } from '@geist-ui/react';
+import NextLink from 'next/link';
 import { Code, Settings } from '@geist-ui/react-icons';
 import GeneralSettingsTab from '../../components/site/GeneralSettingsTab';
 import AdvancedSettingsTab from '../../components/site/AdvancedSettingsTab';
@@ -25,6 +27,20 @@ export default function Site() {
       <DashboardNavbar user={user} />
       <div className='pt-20'>
         <Page size='large'>
+          <Breadcrumbs className='!mb-10'>
+            <Breadcrumbs.Item>StaticShield</Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <NextLink href='/dashboard'>
+                <Link color>Dashboard</Link>
+              </NextLink>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <NextLink href='/dashboard'>
+                <Link color>Sites</Link>
+              </NextLink>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>{siteId}</Breadcrumbs.Item>
+          </Breadcrumbs>
           <h1 className='text-3xl font-extrabold sm:text-4xl md:text-5xl'>
             Acme's employee register
           </h1>
