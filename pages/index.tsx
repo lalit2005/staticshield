@@ -1,8 +1,8 @@
 import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
+import { Code, Lock, Zap, Server } from '@geist-ui/react-icons';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import FeatureCard from '../components/FeatureCard';
-import { Code, Lock, Zap } from '@geist-ui/react-icons';
 import Shield from '../components/Shield';
 import { NavBarProps } from '../lib/interfaces';
 import { useUser } from '@auth0/nextjs-auth0';
@@ -12,6 +12,11 @@ const features: NavBarProps[] = [
     feature:
       'Password protect website with only a single line of code which StaticShield provides',
     children: <Code />,
+  },
+  {
+    feature:
+      'No database or backend is required. Everything is taken care by StaticShield',
+    children: <Server />,
   },
   {
     feature:
@@ -25,7 +30,7 @@ const features: NavBarProps[] = [
   },
   {
     feature:
-      'StaticShield hashes and encrypts data at multiple levels so that your data stays highly secure',
+      'StaticShield hashes and encrypts data multiple times so that your data stays highly secure',
     children: <Lock />,
   },
 ];
@@ -58,7 +63,7 @@ export default function Home() {
         </Text>
         <Text className='text-2xl'>
           StaticShield is the easiest way to{' '}
-          <span className='z-10 mx-1 heading-underline isolate'>
+          <span className='z-10 mx-1 heading-underline isolate whitespace-nowrap'>
             password protect
           </span>{' '}
           <br />
