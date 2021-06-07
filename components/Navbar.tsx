@@ -8,15 +8,18 @@ export default function Navbar() {
   return (
     <Row className=' border-b border-gray-200 !fixed !bg-gray-50 z-10'>
       <div className='text-gray-700 flex justify-around items-center !min-w-[100vw]'>
-        <div className='flex items-center justify-between'>
-          <img src='/staticshield.png' alt='StaticShield' width='25px' />
-          <Text b p className='ml-2 text-2xl'>
-            Static
-            <span className='px-1 bg-gray-900 rounded-md text-gray-50'>
-              Shield
-            </span>
-          </Text>
-        </div>
+        <NextLink href='/'>
+          <div className='flex items-center justify-between cursor-pointer select-none'>
+            <img src='/staticshield.png' alt='StaticShield' width='25px' />
+            <Text b p className='ml-2 text-2xl'>
+              Static
+              <span className='px-1 bg-gray-900 rounded-md text-gray-50'>
+                Shield
+              </span>
+            </Text>
+            <sup className='ml-1 text-gray-500'>BETA</sup>
+          </div>
+        </NextLink>
         {user ? (
           <div className='flex items-center justify-between gap-x-3'>
             <NextLink href='/dashboard'>
