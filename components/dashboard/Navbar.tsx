@@ -1,4 +1,12 @@
-import { Avatar, Badge, Link, Popover, Text, Tooltip } from '@geist-ui/react';
+import {
+  Avatar,
+  Badge,
+  Button,
+  Link,
+  Popover,
+  Text,
+  Tooltip,
+} from '@geist-ui/react';
 import { DashboardNavbarProps } from '../../lib/interfaces';
 import NextLink from 'next/link';
 
@@ -63,9 +71,18 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
         </div>
       </NextLink>
       <div className='absolute right-48'>
-        <Popover content={avatarPopoverContent} placement='leftStart'>
-          <Avatar src={user?.picture} size='small' className='cursor-pointer' />
-        </Popover>
+        <div className='flex items-center justify-between'>
+          <Button size='small' auto type='success' className='mr-2'>
+            Add new site
+          </Button>
+          <Popover content={avatarPopoverContent} placement='leftStart'>
+            <Avatar
+              src={user?.picture}
+              size='small'
+              className='cursor-pointer'
+            />
+          </Popover>
+        </div>
       </div>
     </div>
   );

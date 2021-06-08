@@ -25,7 +25,3 @@ export interface SiteProps {
   site_info: SiteCardProps;
   site_login_details: SiteLoginDetails;
 }
-
-export interface SettingCardProps {
-	
-}

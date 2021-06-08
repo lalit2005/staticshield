@@ -20,7 +20,7 @@ const features: NavBarProps[] = [
   },
   {
     feature:
-      'Users log in to your application through a beautiful responsive page hosted on StaticShield',
+      'Users log in to your application through a beautiful and minimal responsive page hosted on StaticShield',
     children: <Shield />,
   },
   {

@@ -13,7 +13,7 @@ import {
   Breadcrumbs,
 } from '@geist-ui/react';
 import NextLink from 'next/link';
-import { Code, Settings } from '@geist-ui/react-icons';
+import { Code, ExternalLink, Settings } from '@geist-ui/react-icons';
 import GeneralSettingsTab from '../../components/site/GeneralSettingsTab';
 import AdvancedSettingsTab from '../../components/site/AdvancedSettingsTab';
 
@@ -42,7 +42,10 @@ export default function Site() {
             <Breadcrumbs.Item>{siteId}</Breadcrumbs.Item>
           </Breadcrumbs>
           <h1 className='text-3xl font-extrabold sm:text-4xl md:text-5xl'>
-            Acme's employee register
+            {"Acme's employee register"}
+            <Link href={'https://acme.com'} target='__blank'>
+              <ExternalLink className='inline-block ml-5 !text-blue-400 hover:!text-blue-600' />
+            </Link>
           </h1>
           <Text size='large' type='secondary'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
@@ -54,7 +57,7 @@ export default function Site() {
           <Text h2 className='my-10'>
             Some stats
           </Text>
-          <Row className='flex-wrap !-ml-5 justify-evenly -mt-5'>
+          <Row className='flex-wrap !-ml-5 justify-evenly -mt-5 select-none'>
             <Card width='300p' className='!mx-5 !my-5' type='success' shadow>
               <Text h5>Successful Logins</Text>
               <Text h2>59</Text>
