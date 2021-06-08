@@ -2,9 +2,9 @@ import { Card, Text, Input, Button, Textarea } from '@geist-ui/react';
 import checkIsGoodPassword from '../../lib/validatePassword';
 
 export default function GeneralSettingsTab() {
-  const changePassword = () => {
-    checkIsGoodPassword();
-  };
+  // const changePassword = () => {
+  //   checkIsGoodPassword();
+  // };
 
   return (
     <div>
@@ -118,7 +118,7 @@ export default function GeneralSettingsTab() {
               <Text>Passwords should be at least 10 characters long</Text>
             </div>
             <div>
-              <Button type='error' auto size='small' onChange={changePassword}>
+              <Button type='error' auto size='small'>
                 Change password
               </Button>
             </div>
