@@ -75,7 +75,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className='fixed top-0 right-0 hidden w-1/3 h-screen px-16 border-l lg:block border-warmgray-200 bg-warmgray-50'>
-          <Row className='flex-wrap !-ml-5 justify-evenly -mt-5 pt-60'>
+          <Row className='flex-wrap !-ml-5 justify-evenly -mt-5 pt-60 select-none'>
             <Card width='300p' className='!mx-5 !my-5' type='success' shadow>
               <Text h5>Successful Logins</Text>
               <Text h2>59</Text>
