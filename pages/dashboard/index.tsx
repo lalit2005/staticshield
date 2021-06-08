@@ -42,7 +42,7 @@ export default function Dashboard() {
   return (
     <div className='w-screen h-screen'>
       <DashboardNavbar user={user} />
-      <div className='flex'>
+      <div className='flex md:ml-[3vw] lg:ml-[5vw]'>
         <div className='w-2/3 px-16 !mx-auto lg:!mx-0'>
           <div className='pt-24'>
             <Breadcrumbs>
