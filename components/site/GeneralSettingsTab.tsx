@@ -68,27 +68,9 @@ export default function GeneralSettingsTab() {
           The maximum duration for which a user has access to the website after
           a successful login
         </Text>
-        <Input
-          width='70%'
-          className='mt-4'
-          dir='rtl'
-          type='pass'
-          labelRight='hours'
-        />
-        <Input
-          width='70%'
-          className='mt-4'
-          dir='rtl'
-          type='pass'
-          labelRight='days'
-        />
-        <Input
-          width='70%'
-          className='mt-4'
-          dir='rtl'
-          type='pass'
-          labelRight='months'
-        />
+        <Input width='70%' className='mt-4' type='pass' labelRight='hours' />
+        <Input width='70%' className='mt-4' type='pass' labelRight='days' />
+        <Input width='70%' className='mt-4' type='pass' labelRight='months' />
         <Card.Footer className='!bg-warmgray-50'>
           <div className='flex items-center justify-between w-full'>
             <div>
@@ -115,7 +97,7 @@ export default function GeneralSettingsTab() {
         <Card.Footer className='!bg-warmgray-50'>
           <div className='flex items-center justify-between w-full'>
             <div>
-              <Text>Passwords should be at least 10 characters long</Text>
+              <Text>Passwords should be at least 8 characters long</Text>
             </div>
             <div>
               <Button type='error' auto size='small'>

@@ -24,7 +24,11 @@ export default function Site() {
 
   return (
     <div>
-      <DashboardNavbar user={user} />
+      <DashboardNavbar
+        user={user}
+        isDashboardBadgeVisible={true}
+        isNewSiteButtonVisible={true}
+      />
       <div className='pt-20'>
         <Page size='large'>
           <Breadcrumbs className='!mb-10'>

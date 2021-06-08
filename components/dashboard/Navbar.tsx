@@ -9,9 +9,10 @@ import {
 } from '@geist-ui/react';
 import { DashboardNavbarProps } from '../../lib/interfaces';
 import NextLink from 'next/link';
+import { PlusSquare } from '@geist-ui/react-icons';
 
 export default function DashboardNavbar(props: DashboardNavbarProps) {
-  const { user } = props;
+  const { user, isNewSiteButtonVisible } = props;
 
   const avatarPopoverContent = () => {
     return (
@@ -72,9 +73,12 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
       </NextLink>
       <div className='absolute right-48'>
         <div className='flex items-center justify-between'>
-          <Button size='small' auto type='success' className='mr-2'>
-            Add new site
-          </Button>
+          {isNewSiteButtonVisible && (
+            <Button size='small' auto type='success' className='mr-3'>
+              Add new site
+              <PlusSquare className='inline-block w-5 h-5 ml-1' />
+            </Button>
+          )}
           <Popover content={avatarPopoverContent} placement='leftStart'>
             <Avatar
               src={user?.picture}
