@@ -60,7 +60,7 @@ export default function Dashboard() {
           <Text h1 className='mt-5 font-extrabold'>
             Your Sites
           </Text>
-          <div className='grid grid-flow-row mt-6 overflow-y-scroll gap-y-8'>
+          <div className='grid grid-flow-row mt-6 mb-20 overflow-y-scroll gap-y-8'>
             {data.map((site) => {
               return (
                 <SiteCard
