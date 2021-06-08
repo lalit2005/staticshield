@@ -1,5 +1,5 @@
 import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
-import { Code, Lock, Zap, Server } from '@geist-ui/react-icons';
+import { Code, Lock, Zap, Server, Clock } from '@geist-ui/react-icons';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import FeatureCard from '../components/FeatureCard';
@@ -10,7 +10,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 const features: NavBarProps[] = [
   {
     feature:
-      'Password protect website with only a single line of code which StaticShield provides',
+      "Password protect any website only with a single line of code. That's it, really!!",
     children: <Code />,
   },
   {
@@ -20,7 +20,12 @@ const features: NavBarProps[] = [
   },
   {
     feature:
-      'Users log in to your application through a beautiful and minimal responsive page hosted on StaticShield',
+      'From signup to password protecting your site, it takes only 3 minutes!',
+    children: <Clock />,
+  },
+  {
+    feature:
+      'The quickest way to set up password login page, hosted on StaticShield',
     children: <Shield />,
   },
   {
