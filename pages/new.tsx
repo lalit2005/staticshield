@@ -44,7 +44,7 @@ export default function New() {
         <Text type='secondary'>
           Please fill out the details of the site you want to password protect
         </Text>
-        <Note className='my-10' type='error'>
+        <Note className='my-10' type='secondary'>
           All the data can be changed later in the dashboard except URL of the
           website you want to password protect
         </Note>
