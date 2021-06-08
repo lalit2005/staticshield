@@ -76,7 +76,7 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
           {isNewSiteButtonVisible && (
             <Button size='small' auto type='success' className='mr-3'>
               Add new site
-              <PlusSquare className='inline-block w-5 h-5 ml-1' />
+              <PlusSquare className='inline-block w-5 h-5 ml-2' />
             </Button>
           )}
           <Popover content={avatarPopoverContent} placement='leftStart'>
