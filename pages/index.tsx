@@ -15,7 +15,7 @@ const features: NavBarProps[] = [
   },
   {
     feature:
-      'No database or backend is required. Everything is taken care by StaticShield',
+      'No database, backend or server side code is required. Everything is taken care by StaticShield',
     children: <Server />,
   },
   {
