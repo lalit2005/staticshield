@@ -1,12 +1,15 @@
 import NextLink from 'next/link';
-import { Breadcrumbs, Row, Text, Card } from '@geist-ui/react';
+import { Breadcrumbs, Row, Text, Card, Loading } from '@geist-ui/react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import DashboardNavbar from '@/components/dashboard/Navbar';
 import SiteCard from '@/components/dashboard/SiteCard';
 import { SiteCardProps } from '@/lib/interfaces';
+import useSWR from 'swr';
+import fetcher from '@/lib/fetcher';
+import Skeleton from 'react-loading-skeleton';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
-  const data: SiteCardProps[] = [
+  const siteCardData: SiteCardProps[] = [
     {
       id: '1',
       site_desc:
@@ -36,6 +39,9 @@ export default withPageAuthRequired(function Dashboard({ user }) {
     },
   ];
 
+  const { data, error } = useSWR('/api/fetch-sites', fetcher);
+  console.log(data);
+
   return (
     <div className='w-screen h-screen'>
       <DashboardNavbar
@@ -57,16 +63,26 @@ export default withPageAuthRequired(function Dashboard({ user }) {
           <Text h1 className='mt-5 font-extrabold'>
             Your Sites
           </Text>
-          <div className='grid grid-flow-row mt-6 mb-20 overflow-y-scroll gap-y-8'>
-            {data.map((site) => {
+          {!data && (
+            <Skeleton
+              width={500}
+              height={150}
+              count={3}
+              style={{ marginTop: '20px' }}
+            />
+          )}
+          <div>
+            {data?.map((site) => {
               return (
-                <SiteCard
-                  site_desc={site.site_desc}
-                  site_name={site.site_name}
-                  id={site.id}
-                  key={site.id}
-                  site_url={site.site_url}
-                />
+                <div className='my-10'>
+                  <SiteCard
+                    site_desc={site.site_desc}
+                    site_name={site.site_name}
+                    id={site.id}
+                    key={site.id}
+                    site_url={site.site_url}
+                  />
+                </div>
               );
             })}
           </div>
