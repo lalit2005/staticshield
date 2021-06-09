@@ -9,12 +9,11 @@ import {
   Button,
 } from '@geist-ui/react';
 import DashboardNavbar from '@/components/dashboard/Navbar';
-import { useUser } from '@auth0/nextjs-auth0';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useForm } from 'react-hook-form';
 import { NewSiteFormValues } from '@/lib/interfaces';
 
-export default function New() {
-  const { user, error, isLoading } = useUser();
+export default withPageAuthRequired(function New({ user }) {
   const showToast = (message: string) => {
     return (
       <p className='px-3 py-1 text-base text-red-500 border border-red-600 rounded max-w-[384px] bg-red-50'>
@@ -153,4 +152,4 @@ export default function New() {
       </Page>
     </div>
   );
-}
+});
