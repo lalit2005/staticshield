@@ -1,5 +1,5 @@
 import { Card, Text, Input, Button, Textarea } from '@geist-ui/react';
-import checkIsGoodPassword from '../../lib/validatePassword';
+import checkIsGoodPassword from '@/lib/validatePassword';
 
 export default function GeneralSettingsTab() {
   // const changePassword = () => {
