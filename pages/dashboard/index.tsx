@@ -1,14 +1,11 @@
-import { GetServerSideProps } from 'next';
 import NextLink from 'next/link';
 import { Breadcrumbs, Row, Text, Card } from '@geist-ui/react';
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import DashboardNavbar from '@/components/dashboard/Navbar';
 import SiteCard from '@/components/dashboard/SiteCard';
 import { SiteCardProps } from '@/lib/interfaces';
 
-export default function Dashboard() {
-  const { user, error, isLoading } = useUser();
-
+export default withPageAuthRequired(function Dashboard({ user }) {
   const data: SiteCardProps[] = [
     {
       id: '1',
@@ -93,6 +90,6 @@ export default function Dashboard() {
       </div>
     </div>
   );
-}
+});
 
-export const getServerSideProps: GetServerSideProps = withPageAuthRequired();
+// export const getServerSideProps: GetServerSideProps = withPageAuthRequired();
