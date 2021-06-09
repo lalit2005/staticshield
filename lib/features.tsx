@@ -1,6 +1,6 @@
 import { Code, Lock, Zap, Server, Clock } from '@geist-ui/react-icons';
-import Shield from '../components/Shield';
-import { NavBarProps } from '../lib/interfaces';
+import Shield from '@/components/Shield';
+import { NavBarProps } from '@/lib/interfaces';
 
 const features: NavBarProps[] = [
   {

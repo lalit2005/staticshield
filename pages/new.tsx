@@ -8,10 +8,10 @@ import {
   Note,
   Button,
 } from '@geist-ui/react';
-import DashboardNavbar from '../components/dashboard/Navbar';
+import DashboardNavbar from '@/components/dashboard/Navbar';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useForm } from 'react-hook-form';
-import { NewSiteFormValues } from '../lib/interfaces';
+import { NewSiteFormValues } from '@/lib/interfaces';
 
 export default function New() {
   const { user, error, isLoading } = useUser();

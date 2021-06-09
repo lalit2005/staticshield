@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import DashboardNavbar from '../../components/dashboard/Navbar';
+import DashboardNavbar from '@/components/dashboard/Navbar';
 import { useUser } from '@auth0/nextjs-auth0';
 import {
   Card,
@@ -14,8 +14,8 @@ import {
 } from '@geist-ui/react';
 import NextLink from 'next/link';
 import { Code, ExternalLink, Settings } from '@geist-ui/react-icons';
-import GeneralSettingsTab from '../../components/site/GeneralSettingsTab';
-import AdvancedSettingsTab from '../../components/site/AdvancedSettingsTab';
+import GeneralSettingsTab from '@/components/site/GeneralSettingsTab';
+import AdvancedSettingsTab from '@/components/site/AdvancedSettingsTab';
 
 export default function Site() {
   const { user, error, isLoading } = useUser();

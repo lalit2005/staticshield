@@ -7,7 +7,7 @@ import {
   Text,
   Tooltip,
 } from '@geist-ui/react';
-import { DashboardNavbarProps } from '../../lib/interfaces';
+import { DashboardNavbarProps } from '@/lib/interfaces';
 import NextLink from 'next/link';
 import { PlusSquare } from '@geist-ui/react-icons';
 
