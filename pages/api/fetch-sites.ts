@@ -10,7 +10,6 @@ async function fetchSitesApi(req: NextApiRequest, res: NextApiResponse) {
   const { user }: { user: UserProfile } = getSession(req, res);
   const data = await fetchSites(user.sub);
   console.log(data);
-  console.log(data.sites);
 
   res.json(data);
 }

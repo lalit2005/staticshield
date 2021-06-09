@@ -13,7 +13,6 @@ async function fetchSitesApi(req: NextApiRequest, res: NextApiResponse) {
     req.query.siteId.toString()
   );
   console.log(data);
-  console.log(data.sites);
 
   res.json(data[0]);
 }
