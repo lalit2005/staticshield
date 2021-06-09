@@ -74,14 +74,16 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
       <div className='absolute right-48'>
         <div className='flex items-center justify-between'>
           {isNewSiteButtonVisible && (
-            <Button
-              size='small'
-              auto
-              type='success'
-              className='invisible mr-3 sm:visible'>
-              Add new site
-              <PlusSquare className='inline-block w-5 h-5 ml-2' />
-            </Button>
+            <NextLink href='/new'>
+              <Button
+                size='small'
+                auto
+                type='success'
+                className='invisible mr-3 sm:visible'>
+                Add new site
+                <PlusSquare className='inline-block w-5 h-5 ml-2' />
+              </Button>
+            </NextLink>
           )}
           <Popover content={avatarPopoverContent} placement='leftStart'>
             <Avatar
