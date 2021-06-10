@@ -85,10 +85,16 @@ export default withPageAuthRequired(function Site({ user }) {
               <Text h5>Unsuccessful Logins</Text>
               <Text h2>{data?.no_of_failed_logins || 'Loading...'}</Text>
             </Card>
-            <Card width='300p' className='!mx-5 !my-5' type='secondary' shadow>
-              <Text h5>Last Login At</Text>
-              <Text h2>{prettifiedTime}</Text>
-            </Card>
+            <Tooltip text={date.toLocaleString()} type='dark'>
+              <Card
+                width='300p'
+                className='!mx-5 !my-5'
+                type='secondary'
+                shadow>
+                <Text h5>Last Login At</Text>
+                <Text h2>{prettifiedTime}</Text>
+              </Card>
+            </Tooltip>
           </Row>
           <Divider volume={2} />
           <div>
