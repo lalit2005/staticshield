@@ -68,7 +68,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
               width={500}
               height={150}
               count={3}
-              style={{ marginTop: '20px' }}
+              style={{ marginTop: '30px' }}
             />
           )}
           <div>
