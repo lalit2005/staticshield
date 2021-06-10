@@ -11,15 +11,15 @@ import {
   Link,
   Snippet,
   Breadcrumbs,
-  Loading,
+  Tooltip,
 } from '@geist-ui/react';
 import NextLink from 'next/link';
-import { Code, ExternalLink, Settings } from '@geist-ui/react-icons';
+import { Code, ExternalLink, Settings, Tool } from '@geist-ui/react-icons';
 import GeneralSettingsTab from '@/components/site/GeneralSettingsTab';
 import AdvancedSettingsTab from '@/components/site/AdvancedSettingsTab';
 import fetcher from '@/lib/fetcher';
 import useSWR from 'swr';
-import Skeleton from 'react-loading-skeleton';
+import { fromUnixTime, formatDistanceToNow } from 'date-fns';
 
 export default withPageAuthRequired(function Site({ user }) {
   const router = useRouter();
@@ -32,14 +32,9 @@ export default withPageAuthRequired(function Site({ user }) {
 
   console.log(data);
 
-  // const {
-  //   site_name,
-  //   site_desc,
-  //   no_of_logins,
-  //   no_of_failed_logins,
-  //   site_url,
-  //   __updatedtime__,
-  // } = data;
+  const lastLoginTime = data?.last_login || new Date(); //! new Date is to avoid error during build time
+  const date = fromUnixTime(lastLoginTime);
+  const prettifiedTime = formatDistanceToNow(date, { addSuffix: true });
 
   return (
     <div>
@@ -69,7 +64,9 @@ export default withPageAuthRequired(function Site({ user }) {
           <h1 className='text-3xl font-extrabold sm:text-4xl md:text-5xl'>
             {data?.site_name || 'Loading...'}
             <Link href={data?.site_url || 'Loading...'} target='__blank'>
-              <ExternalLink className='inline-block ml-5 !text-blue-400 hover:!text-blue-600' />
+              <Tooltip text={data?.site_url} type='secondary' placement='right'>
+                <ExternalLink className='inline-block ml-5 !text-blue-400 hover:!text-blue-600' />
+              </Tooltip>
             </Link>
           </h1>
           <Text size='large' type='secondary'>
@@ -90,7 +87,7 @@ export default withPageAuthRequired(function Site({ user }) {
             </Card>
             <Card width='300p' className='!mx-5 !my-5' type='secondary' shadow>
               <Text h5>Last Login At</Text>
-              <Text h2>{new Date().toLocaleString(data?.__updatedtime__)}</Text>
+              <Text h2>{prettifiedTime}</Text>
             </Card>
           </Row>
           <Divider volume={2} />
