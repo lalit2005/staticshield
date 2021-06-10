@@ -4,11 +4,15 @@ import {
   UserProfile,
 } from '@auth0/nextjs-auth0';
 import { NextApiRequest, NextApiResponse } from 'next';
-import fetchSites from '../../utils/fetchSites';
+import addHarperDbRecord from 'utils/addHarperDbRecord';
 
 async function fetchSitesApi(req: NextApiRequest, res: NextApiResponse) {
   const { user }: { user: UserProfile } = getSession(req, res);
-  const data = await fetchSites(user.sub);
+  req.body = JSON.parse(req.body);
+  const data = await addHarperDbRecord(req.body.record, user.sub);
+  console.log(req.body);
+  console.log(req.body.record);
+  console.log(data);
 
   res.json(data);
 }

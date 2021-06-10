@@ -7,32 +7,66 @@ import {
   Link,
   Note,
   Button,
+  useModal,
+  Modal,
 } from '@geist-ui/react';
 import DashboardNavbar from '@/components/dashboard/Navbar';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useForm } from 'react-hook-form';
 import { NewSiteFormValues } from '@/lib/interfaces';
+import checkIsGoodPassword from '@/lib/validatePassword';
+import { useEffect, useState } from 'react';
+import handleNewSite from '@/lib/handleNewSite';
+import { useRouter } from 'next/router';
+import { route } from 'next/dist/next-server/server/router';
 
 export default withPageAuthRequired(function New({ user }) {
-  const showToast = (message: string) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.prefetch('/dashboard');
+  }, []);
+
+  const showErrorMessage = (message: string) => {
     return (
       <p className='px-3 py-1 text-base text-red-500 border border-red-600 rounded max-w-[384px] bg-red-50'>
         {message}
       </p>
     );
   };
+
+  const [warningMessage, setWarningMessage] = useState(
+    "That's a very weak password"
+  );
+  const [description, setDescription] = useState('');
+
+  const { visible, setVisible, bindings } = useModal();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<NewSiteFormValues>();
 
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+  const onSubmit = async (data: NewSiteFormValues) => {
+    console.log(data);
+    const result = checkIsGoodPassword(data.password);
+    if (!result.isGoodPassword) {
+      setWarningMessage(result.message);
+      setVisible(true);
+      return;
+    }
+    const siteCreated = await handleNewSite({
+      ...data,
+      site_desc: description,
+    });
+    if (siteCreated.success) {
+      router.push('/dashboard');
+    }
   };
 
   return (
-    <div className='w-screen min-h-screen'>
+    <div>
       <DashboardNavbar
         user={user}
         isNewSiteButtonVisible={false}
@@ -56,7 +90,9 @@ export default withPageAuthRequired(function New({ user }) {
               Name of site
             </Input>
             {errors.site_name &&
-              showToast('Site name should be at least 2 characters long')}
+              showErrorMessage(
+                'Site name should be at least 2 characters long'
+              )}
             <Divider />
             <Input
               placeholder='acme.com'
@@ -69,7 +105,7 @@ export default withPageAuthRequired(function New({ user }) {
               })}>
               URL of site
             </Input>
-            {errors.site_url && showToast('Please enter a valid URL')}
+            {errors.site_url && showErrorMessage('Please enter a valid URL')}
             <Divider />
             <Text type='secondary'>
               A short description for your site (optional)
@@ -77,7 +113,11 @@ export default withPageAuthRequired(function New({ user }) {
             <Textarea
               placeholder='Acme helps grow your product...'
               width='80%'
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
+            {errors.site_desc &&
+              showErrorMessage('Please enter a valid description')}
             <Divider />
             <Input.Password
               placeholder='••••••••••'
@@ -91,29 +131,11 @@ export default withPageAuthRequired(function New({ user }) {
               Password for your website. Keep it at least 8 characters long
             </Input.Password>
             {errors.password &&
-              showToast(
+              showErrorMessage(
                 'Password should be at least 8 characters long and 50 characters at most'
               )}
 
             <Divider />
-            <Input
-              placeholder='0'
-              initialValue='0'
-              labelRight='hours'
-              className='mx-5 my-3 text-left'
-              {...register('expiration_hours', {
-                required: true,
-                valueAsNumber: true,
-                min: 0,
-                max: 23,
-              })}>
-              Login expiration time.{' '}
-              <Link color icon target='__blank'>
-                Learn more
-              </Link>
-            </Input>
-            {errors.expiration_hours &&
-              showToast('Value of hours should be between 0 and 23')}
 
             <Input
               placeholder='7'
@@ -123,26 +145,11 @@ export default withPageAuthRequired(function New({ user }) {
               {...register('expiration_days', {
                 required: true,
                 valueAsNumber: true,
-                min: 0,
-                max: 29,
+                min: 1,
               })}
             />
             {errors.expiration_days &&
-              showToast('Value of days should be between 0 and 29')}
-            <Input
-              placeholder='0'
-              initialValue='0'
-              labelRight='months'
-              className='my-3 ml-5 text-left'
-              {...register('expiration_months', {
-                required: true,
-                valueAsNumber: true,
-                min: 0,
-                max: 12,
-              })}
-            />
-            {errors.expiration_months &&
-              showToast('Value of month should be between 0 and 12')}
+              showErrorMessage('Value of days should be more than 1')}
             <Divider />
             <Button type='success' htmlType='submit'>
               Add site
@@ -150,6 +157,14 @@ export default withPageAuthRequired(function New({ user }) {
           </form>
         </div>
       </Page>
+      <Modal {...bindings}>
+        <Modal.Title>
+          <h3 className='!text-red-600 text-2xl -my-5'>Warning</h3>
+        </Modal.Title>
+        <Modal.Content>
+          <p className='-mt-10'>{warningMessage}</p>
+        </Modal.Content>
+      </Modal>
     </div>
   );
 });

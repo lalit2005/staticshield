@@ -6,8 +6,8 @@ export default function SiteCard(props: SiteCardProps) {
   const { site_desc, site_url, site_name, id: siteId } = props;
 
   let shortenedSiteDesc: string;
-  if (site_desc.length > 100) {
-    shortenedSiteDesc = site_desc.substr(0, 200) + '…';
+  if (site_desc?.length > 100) {
+    shortenedSiteDesc = site_desc?.substr(0, 200) + '…';
   } else {
     shortenedSiteDesc = site_desc;
   }
@@ -25,7 +25,9 @@ export default function SiteCard(props: SiteCardProps) {
             {site_url}
           </Text>
           <div className='flex items-center'>
-            <Text className=' !text-gray-700'>{shortenedSiteDesc}</Text>
+            <Text className=' !text-gray-700'>
+              {shortenedSiteDesc || 'No description ¯\\_(ツ)_/¯'}
+            </Text>
           </div>
         </Card>
       </NextLink>

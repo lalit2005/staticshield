@@ -15,12 +15,12 @@ export default function checkIsGoodPassword(
     message += rate.frequency + ' are "protected" using that same password.';
     console.log(message);
     return {
-      isGoodPassword: true,
+      isGoodPassword: false,
       message: message,
     };
   } else {
     return {
-      isGoodPassword: false,
+      isGoodPassword: true,
       message: 'Well done',
     };
   }

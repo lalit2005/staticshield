@@ -68,9 +68,7 @@ export default function GeneralSettingsTab() {
           The maximum duration for which a user has access to the website after
           a successful login
         </Text>
-        <Input className='mx-5 mt-4' type='pass' labelRight='hours' />
         <Input className='mx-5 mt-4' type='pass' labelRight='days' />
-        <Input className='mx-5 mt-4' type='pass' labelRight='months' />
         <Card.Footer className='!bg-warmgray-50'>
           <div className='flex items-center justify-between w-full'>
             <div>
