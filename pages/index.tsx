@@ -43,7 +43,7 @@ export default function Home() {
               size='large'
               type='success'
               className='!inline-block ml-2 !shadow-md'>
-              Go to Dashboard →
+              Get Started →
             </Button>
           </Link>
         </div>
