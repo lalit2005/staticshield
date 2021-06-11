@@ -141,7 +141,7 @@ export default withPageAuthRequired(function New({ user }) {
               placeholder='7'
               initialValue='7'
               labelRight='days'
-              className='mx-5 my-3 text-left'
+              className='my-3 text-left'
               {...register('expiration_days', {
                 required: true,
                 valueAsNumber: true,
