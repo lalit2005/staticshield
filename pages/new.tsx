@@ -147,8 +147,12 @@ export default withPageAuthRequired(function New({ user }) {
                 valueAsNumber: true,
                 min: 1,
                 max: 365,
-              })}
-            />
+              })}>
+              Login expiration time.{' '}
+              <Link color icon target='__blank'>
+                Learn more
+              </Link>
+            </Input>
             {errors.expiration_days &&
               showErrorMessage('Value of days should be more than 1')}
             <Divider />
