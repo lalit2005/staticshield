@@ -2,12 +2,9 @@ import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
 import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import FeatureCard from '@/components/FeatureCard';
-import { useUser } from '@auth0/nextjs-auth0';
 import features from '@/lib/features';
 
 export default function Home() {
-  const { user, error, isLoading } = useUser();
-
   return (
     <div className='text-center text-gray-900 bg-gray-50'>
       <div className='block'>
