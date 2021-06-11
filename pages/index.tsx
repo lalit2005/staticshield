@@ -41,12 +41,12 @@ export default function Home() {
         </Text>
 
         <div className='mt-12'>
-          <Link href={user ? '/dashboard' : '/signup'}>
+          <Link href='/signup'>
             <Button
               size='large'
               type='success'
               className='!inline-block ml-2 !shadow-md'>
-              {user ? 'Go to Dashboard →' : 'Get started →'}
+              Go to Dashboard →
             </Button>
           </Link>
         </div>
