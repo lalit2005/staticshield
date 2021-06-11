@@ -146,6 +146,7 @@ export default withPageAuthRequired(function New({ user }) {
                 required: true,
                 valueAsNumber: true,
                 min: 1,
+                max: 365,
               })}
             />
             {errors.expiration_days &&
