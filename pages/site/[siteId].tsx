@@ -66,7 +66,10 @@ export default withPageAuthRequired(function Site({ user }) {
             <Link
               href={'http://' + data?.site_url || 'Loading...'}
               target='__blank'>
-              <Tooltip text={data?.site_url} type='secondary' placement='right'>
+              <Tooltip
+                text={data?.site_url || 'Just a second please…'}
+                type='dark'
+                placement='right'>
                 <ExternalLink className='inline-block ml-5 !text-blue-400 hover:!text-blue-600' />
               </Tooltip>
             </Link>

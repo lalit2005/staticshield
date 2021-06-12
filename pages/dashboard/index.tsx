@@ -77,33 +77,3 @@ export default withPageAuthRequired(function Dashboard({ user }) {
     </div>
   );
 });
-
-// const siteCardData: SiteCardProps[] = [
-//   {
-//     id: '1',
-//     site_desc:
-//       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit error quo nobis est quasi, et qui fugit officia quae.',
-//     site_name: 'Test 1',
-//     site_url: 'https://example.com',
-//   },
-//   {
-//     id: '2',
-//     site_desc:
-//       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto harum neque sint enim quae quibusdam nulla quidem aspernatur! Eum, nisi!',
-//     site_name: 'Test 2',
-//     site_url: 'https://example.com',
-//   },
-//   {
-//     id: '3',
-//     site_desc:
-//       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit libero porro hic magni ab eius, provident eligendi voluptatum nesciunt tempore. Assumenda explicabo ea sapiente eaque.',
-//     site_name: 'Test 3',
-//     site_url: 'https://example.com',
-//   },
-//   {
-//     id: '4',
-//     site_desc: 'Lorem ipsum dolor sit amet consectetur',
-//     site_name: 'Test 4',
-//     site_url: 'https://example.com',
-//   },
-// ];
