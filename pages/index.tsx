@@ -18,7 +18,9 @@ export default function Home() {
         <img
           src='/staticshield.png'
           alt=''
-          className='w-40 h-40 mx-auto mt-16'
+          className='mx-auto mt-16'
+          width='160px'
+          height='160px'
         />
         <Text
           className='!font-extrabold mt-12 text-5xl sm:text-7xl bg-gradient-to-r from-black via-gray-600 to-gray-500 !text-transparent bg-clip-text'
