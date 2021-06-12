@@ -1,9 +1,11 @@
+import hashPassword from '@/lib/hashPassword';
 import { HarperDBRecordWithoutDefaults } from '@/lib/interfaces';
 
 const addHarperDbRecord = async (
   record: HarperDBRecordWithoutDefaults,
   user_id: string
 ) => {
+  record.password_hash = hashPassword(record.password_hash);
   const res = await fetch(process.env.HARPERDB_URL, {
     method: 'POST',
     headers: {

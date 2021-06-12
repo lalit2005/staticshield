@@ -18,7 +18,6 @@ import checkIsGoodPassword from '@/lib/validatePassword';
 import { useEffect, useState } from 'react';
 import handleNewSite from '@/lib/handleNewSite';
 import { useRouter } from 'next/router';
-import { route } from 'next/dist/next-server/server/router';
 
 export default withPageAuthRequired(function New({ user }) {
   const router = useRouter();
@@ -36,7 +35,7 @@ export default withPageAuthRequired(function New({ user }) {
   };
 
   const [warningMessage, setWarningMessage] = useState(
-    "That's a very weak password"
+    "That's a very weak password!"
   );
   const [description, setDescription] = useState('');
 
@@ -60,7 +59,7 @@ export default withPageAuthRequired(function New({ user }) {
       ...data,
       site_desc: description,
     });
-    if (siteCreated.success) {
+    if (siteCreated.success === true) {
       router.push('/dashboard');
     }
   };
@@ -141,6 +140,7 @@ export default withPageAuthRequired(function New({ user }) {
               placeholder='7'
               initialValue='7'
               labelRight='days'
+              type='number'
               className='my-3 text-left'
               {...register('expiration_days', {
                 required: true,
@@ -154,7 +154,9 @@ export default withPageAuthRequired(function New({ user }) {
               </Link>
             </Input>
             {errors.expiration_days &&
-              showErrorMessage('Value of days should be more than 1')}
+              showErrorMessage(
+                'Value of days should be more than 1 and less than 365'
+              )}
             <Divider />
             <Button type='success' htmlType='submit'>
               Add site
@@ -164,10 +166,10 @@ export default withPageAuthRequired(function New({ user }) {
       </Page>
       <Modal {...bindings}>
         <Modal.Title>
-          <h3 className='!text-red-600 text-2xl -my-5'>Warning</h3>
+          <h3 className='!text-red-600 text-2xl -mb-10'>Warning</h3>
         </Modal.Title>
         <Modal.Content>
-          <p className='-mt-10'>{warningMessage}</p>
+          <p>{warningMessage}</p>
         </Modal.Content>
       </Modal>
     </div>

@@ -1,3 +1,4 @@
+import hashPassword from '@/lib/hashPassword';
 import {
   getSession,
   withApiAuthRequired,
@@ -10,10 +11,6 @@ async function fetchSitesApi(req: NextApiRequest, res: NextApiResponse) {
   const { user }: { user: UserProfile } = getSession(req, res);
   req.body = JSON.parse(req.body);
   const data = await addHarperDbRecord(req.body.record, user.sub);
-  console.log(req.body);
-  console.log(req.body.record);
-  console.log(data);
-
   res.json(data);
 }
 
