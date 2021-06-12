@@ -13,7 +13,10 @@
     "@fontsource/inter": "^4.4.5",
     "@geist-ui/react": "^2.1.5",
     "@geist-ui/react-icons": "^1.0.1",
+    "@types/crypto-js": "^4.0.1",
     "autoprefixer": "^10.2.6",
+    "bcrypt": "^5.0.1",
+    "crypto-js": "^4.0.0",
     "date-fns": "^2.22.1",
     "dumb-passwords": "^0.2.1",
     "nanoid": "^3.1.23",
@@ -27,6 +30,7 @@
     "tailwindcss": "^2.1.4"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/dumb-passwords": "^0.2.0",
     "@types/react": "^17.0.11",
     "typescript": "^4.3.2"
