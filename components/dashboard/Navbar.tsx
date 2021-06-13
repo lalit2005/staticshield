@@ -9,7 +9,7 @@ import {
 } from '@geist-ui/react';
 import { DashboardNavbarProps } from '@/lib/interfaces';
 import NextLink from 'next/link';
-import { PlusSquare } from '@geist-ui/react-icons';
+import { Book, LogOut, PlusSquare, Smile, User } from '@geist-ui/react-icons';
 
 export default function DashboardNavbar(props: DashboardNavbarProps) {
   const { user, isNewSiteButtonVisible } = props;
@@ -18,31 +18,37 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
     return (
       <div className='!min-w-[200px]'>
         <Popover.Item>
-          <Tooltip
-            text={user?.email}
-            type='success'
-            className='!-my-5'
-            placement='left'>
-            <p className='!block font-bold'>{user?.name}</p>
-          </Tooltip>
+          <p className='!block font-bold'>
+            <User className='inline-block w-5 h-5 mr-3' />
+            {user?.name}
+          </p>
         </Popover.Item>
         <Popover.Item line />
         <Popover.Item>
-          <Link block href='/logout' className='font-bold'>
-            Logout
+          <Link block href='/logout' className='-mx-5'>
+            <p className='!font-bold -my-1'>
+              <LogOut className='inline-block w-5 h-5 mr-3' />
+              Logout
+            </p>
           </Link>
         </Popover.Item>
         <Popover.Item line />
         <Popover.Item>
           <Link block href='#' className='font-bold'>
-            Support
+            <p className='-my-1 !font-bold'>
+              <Smile className='inline-block w-5 h-5 mr-3' />
+              Support
+            </p>
           </Link>
         </Popover.Item>
         <Popover.Item line />
 
         <Popover.Item>
           <Link block href='#' className='font-bold'>
-            Docs
+            <p className='-my-1 !font-bold'>
+              <Book className='inline-block w-5 h-5 mr-3' />
+              Docs
+            </p>
           </Link>
         </Popover.Item>
       </div>
@@ -91,12 +97,19 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
               </NextLink>
             </Tooltip>
           )}
+
           <Popover content={avatarPopoverContent} placement='leftStart'>
-            <Avatar
-              src={user?.picture}
-              size='small'
-              className='cursor-pointer'
-            />
+            <Tooltip
+              text={user?.email}
+              type='dark'
+              className='!-my-5'
+              placement='leftStart'>
+              <Avatar
+                src={user?.picture}
+                size='small'
+                className='cursor-pointer'
+              />
+            </Tooltip>
           </Popover>
         </div>
       </div>
