@@ -2,10 +2,15 @@ import { Link, Row, Text } from '@geist-ui/react';
 import { useUser } from '@auth0/nextjs-auth0';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default function Navbar() {
   const { user, error, isLoading } = useUser();
   const router = useRouter();
+
+  useEffect(() => {
+    router.prefetch('/dashboard');
+  }, []);
 
   if (user) {
     router.push('/dashboard');
@@ -26,20 +31,6 @@ export default function Navbar() {
             <sup className='ml-1 text-gray-500'>BETA</sup>
           </div>
         </NextLink>
-        {/* {user ? (
-          <div className='flex items-center justify-between gap-x-3'>
-            <NextLink href='/dashboard'>
-              <Link block>Go To Dashboard</Link>
-            </NextLink>
-            <div>
-              <img
-                src={user.picture}
-                alt={user.nickname}
-                className='w-10 rounded-full'
-              />
-            </div>
-          </div>
-        ) : ( */}
         <div>
           <div className='inline-block'>
             <NextLink href='/login'>
