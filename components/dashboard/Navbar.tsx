@@ -24,6 +24,15 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
           </p>
         </Popover.Item>
         <Popover.Item line />
+        <Popover.Item className='md:!hidden'>
+          <Link block href='/new' className='-mx-5'>
+            <p className='!font-bold -my-1'>
+              <PlusSquare className='inline-block w-5 h-5 mr-3' />
+              Add new site
+            </p>
+          </Link>
+        </Popover.Item>
+        <Popover.Item line className='md:!hidden' />
         <Popover.Item>
           <Link block href='/logout' className='-mx-5'>
             <p className='!font-bold -my-1'>
