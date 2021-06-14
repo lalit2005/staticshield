@@ -106,20 +106,21 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
               </NextLink>
             </Tooltip>
           )}
-
-          <Popover content={avatarPopoverContent} placement='leftStart'>
-            <Tooltip
-              text={user?.email}
-              type='dark'
-              className='!-my-5'
-              placement='leftStart'>
-              <Avatar
-                src={user?.picture}
-                size='small'
-                className='cursor-pointer'
-              />
-            </Tooltip>
-          </Popover>
+          <div className='-mt-2 asdasdasd'>
+            <Popover content={avatarPopoverContent} placement='leftStart'>
+              <Tooltip
+                text={user?.email}
+                type='dark'
+                className='!-my-5'
+                placement='leftStart'>
+                <Avatar
+                  src={user?.picture}
+                  size='small'
+                  className='cursor-pointer'
+                />
+              </Tooltip>
+            </Popover>
+          </div>
         </div>
       </div>
     </div>
