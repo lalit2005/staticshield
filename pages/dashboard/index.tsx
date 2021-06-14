@@ -3,14 +3,23 @@ import { Breadcrumbs, Row, Text, Card, Loading } from '@geist-ui/react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import DashboardNavbar from '@/components/dashboard/Navbar';
 import SiteCard from '@/components/dashboard/SiteCard';
-import { SiteCardProps } from '@/lib/interfaces';
 import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 import Skeleton from 'react-loading-skeleton';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
   console.log(data);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    data?.forEach((site) => {
+      router.prefetch('/site/' + site.id);
+    });
+  }, []);
 
   return (
     <div className='w-screen h-screen'>
@@ -44,17 +53,19 @@ export default withPageAuthRequired(function Dashboard({ user }) {
           <div>
             {data?.map((site) => {
               return (
-                <NextLink href={'/site/' + site.id}>
-                  <div className='my-10'>
-                    <SiteCard
-                      site_desc={site.site_desc}
-                      site_name={site.site_name}
-                      id={site.id}
-                      key={site.id}
-                      site_url={site.site_url}
-                    />
-                  </div>
-                </NextLink>
+                <div
+                  className='my-10'
+                  onClick={() => {
+                    router.push('/site/' + site.id);
+                  }}>
+                  <SiteCard
+                    site_desc={site.site_desc}
+                    site_name={site.site_name}
+                    id={site.id}
+                    key={site.id}
+                    site_url={site.site_url}
+                  />
+                </div>
               );
             })}
           </div>
