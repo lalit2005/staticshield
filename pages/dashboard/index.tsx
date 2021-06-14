@@ -44,15 +44,17 @@ export default withPageAuthRequired(function Dashboard({ user }) {
           <div>
             {data?.map((site) => {
               return (
-                <div className='my-10'>
-                  <SiteCard
-                    site_desc={site.site_desc}
-                    site_name={site.site_name}
-                    id={site.id}
-                    key={site.id}
-                    site_url={site.site_url}
-                  />
-                </div>
+                <NextLink href={'/site/' + site.id}>
+                  <div className='my-10'>
+                    <SiteCard
+                      site_desc={site.site_desc}
+                      site_name={site.site_name}
+                      id={site.id}
+                      key={site.id}
+                      site_url={site.site_url}
+                    />
+                  </div>
+                </NextLink>
               );
             })}
           </div>
