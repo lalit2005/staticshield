@@ -171,6 +171,11 @@ export default withPageAuthRequired(function Site({ user }) {
           </div>
         </Page>
       </div>
+      <style jsx>{`
+        pre {
+          font-family: cursive !important;
+        }
+      `}</style>
     </div>
   );
 });

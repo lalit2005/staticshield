@@ -176,6 +176,11 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@fontsource/ibm-plex-mono@^4.4.5":
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-mono/-/ibm-plex-mono-4.4.5.tgz#691c535cb649356f57c0810620b4a314dea0d3aa"
+  integrity sha512-93865aR4zyXhWR5HNZ1gOI2AlezlSJ+MaZ1bKhjqCTCNlSB6TNPwGOzkLApUwucs5JPX/LS10ATfCms8+GkBVw==
+
 "@fontsource/inter@^4.4.5":
   version "4.4.5"
   resolved "https://registry.npmjs.org/@fontsource/inter/-/inter-4.4.5.tgz"
