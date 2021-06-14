@@ -20,15 +20,27 @@ import AdvancedSettingsTab from '@/components/site/AdvancedSettingsTab';
 import fetcher from '@/lib/fetcher';
 import useSWR from 'swr';
 import { fromUnixTime, formatDistanceToNow, getUnixTime } from 'date-fns';
+import { useEffect } from 'react';
 
 export default withPageAuthRequired(function Site({ user }) {
   const router = useRouter();
+
+  useEffect(() => {
+    router.prefetch('/dashboard');
+  }, []);
+
   const { siteId } = router.query;
 
   const data = useSWR(
     `/api/get-site-from-site-id/?siteId=${siteId}`,
     fetcher
   ).data;
+
+  console.log(data);
+
+  if (data === undefined) {
+    router.replace('/dashboard');
+  }
 
   console.log(data);
 
