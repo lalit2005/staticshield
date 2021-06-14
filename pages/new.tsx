@@ -9,6 +9,7 @@ import {
   Button,
   useModal,
   Modal,
+  useToasts,
 } from '@geist-ui/react';
 import DashboardNavbar from '@/components/dashboard/Navbar';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
@@ -41,6 +42,8 @@ export default withPageAuthRequired(function New({ user }) {
 
   const { visible, setVisible, bindings } = useModal();
 
+  const [toasts, setToast] = useToasts();
+
   const {
     register,
     handleSubmit,
@@ -49,6 +52,13 @@ export default withPageAuthRequired(function New({ user }) {
 
   const onSubmit = async (data: NewSiteFormValues) => {
     console.log(data);
+    if (data.site_url.includes(' ') || data.site_url.includes('	')) {
+      setToast({
+        text: "Website's URL is invalid, it should not contain spaces or tabs",
+        type: 'error',
+      });
+      return;
+    }
     const result = checkIsGoodPassword(data.password);
     if (!result.isGoodPassword) {
       setWarningMessage(result.message);
