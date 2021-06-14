@@ -1,7 +1,9 @@
 import { Card, Text, Input, Button, Textarea } from '@geist-ui/react';
 import checkIsGoodPassword from '@/lib/validatePassword';
+import { HarperDBRecord } from '@/lib/interfaces';
 
-export default function GeneralSettingsTab() {
+export default function GeneralSettingsTab({ data }) {
+  const siteData: HarperDBRecord = data;
   // const changePassword = () => {
   //   checkIsGoodPassword();
   // };
@@ -11,10 +13,14 @@ export default function GeneralSettingsTab() {
       <Card className='!mt-10'>
         <Text className='text-xl font-bold'>Site name</Text>
         <Text p>
-          The name of your password protected website (
-          {'Acme employee register'})
+          The name of your password protected website ({siteData?.site_name})
         </Text>
-        <Input placeholder='https://employee.acme.com' width='70%' />
+        <Input
+          placeholder="Acme's website"
+          width='70%'
+          clearable
+          initialValue={siteData.site_name}
+        />
         <Card.Footer className='!bg-warmgray-50'>
           <div className='flex items-center justify-between w-full'>
             <div>
@@ -31,7 +37,12 @@ export default function GeneralSettingsTab() {
       <Card className='!mt-10'>
         <Text className='text-xl font-bold'>Site Description</Text>
         <Text p>A short description about your password protected site</Text>
-        <Textarea width='50%' minHeight='100px' placeholder='Description...' />
+        <Textarea
+          width='50%'
+          minHeight='100px'
+          initialValue={siteData.site_desc}
+          placeholder='Description...'
+        />
         <Card.Footer className='!bg-warmgray-50'>
           <div className='flex items-center justify-between w-full'>
             <div>
@@ -48,7 +59,7 @@ export default function GeneralSettingsTab() {
       <Card className='!mt-10'>
         <Text className='text-xl font-bold'>Site URL</Text>
         <Text p>URL of the password protected website</Text>
-        <Input value={'https://employee.acme.com'} disabled width='70%' />
+        <Input initialValue={siteData.site_url} disabled width='70%' />
         <Card.Footer className='!bg-warmgray-50'>
           <div className='flex items-center justify-between w-full'>
             <div>
@@ -68,7 +79,13 @@ export default function GeneralSettingsTab() {
           The maximum duration for which a user has access to the website after
           a successful login
         </Text>
-        <Input className='mt-4' type='pass' labelRight='days' />
+        <Input
+          className='mt-4'
+          type='pass'
+          labelRight='days'
+          clearable
+          initialValue={siteData.max_login_duration.toString()}
+        />
         <Card.Footer className='!bg-warmgray-50'>
           <div className='flex items-center justify-between w-full'>
             <div>
@@ -91,7 +108,12 @@ export default function GeneralSettingsTab() {
           width='70%'
           label='Current Password'
         />
-        <Input.Password width='70%' className='mt-4' label='New Password →' />
+        <Input.Password
+          width='70%'
+          className='mt-4'
+          placeholder='••••••••••'
+          label='New Password →'
+        />
         <Card.Footer className='!bg-warmgray-50'>
           <div className='flex items-center justify-between w-full'>
             <div>

@@ -154,7 +154,7 @@ export default withPageAuthRequired(function Site({ user }) {
                       General
                     </>
                   }>
-                  <GeneralSettingsTab />
+                  <GeneralSettingsTab data={data} />
                 </Tabs.Item>
                 <Tabs.Item
                   value='3'
