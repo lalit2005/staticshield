@@ -9,13 +9,16 @@ import Head from 'next/head';
 function MyApp({ Component, pageProps, router }) {
   return (
     <UserProvider>
-      <Head>
-        <script
-          async
-          defer
-          data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
-          src={process.env.NEXT_PUBLIC_ANALYTICS_URL}></script>
-      </Head>
+      {process.env.NODE_ENV !== 'development' && (
+        <Head>
+          <script>alert("ugghhhh")</script>
+          <script
+            async
+            defer
+            data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
+            src={process.env.NEXT_PUBLIC_ANALYTICS_URL}></script>
+        </Head>
+      )}
       <motion.div
         key={router.route}
         initial='pageInitial'
