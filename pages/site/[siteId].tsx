@@ -38,9 +38,12 @@ export default withPageAuthRequired(function Site({ user }) {
 
   console.log(data);
 
-  if (data === undefined) {
-    router.replace('/dashboard');
-  }
+  //! timeout to avoid unnecessary redirects for correct paths
+  setTimeout(() => {
+    if (data === undefined) {
+      router.replace('/dashboard');
+    }
+  }, 5000);
 
   console.log(data);
 

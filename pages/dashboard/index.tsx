@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
-  console.log(data);
+  // console.log(data);
 
   const router = useRouter();
 
@@ -54,9 +54,16 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             {data?.map((site) => {
               return (
                 <div
+                  key={site.id}
                   className='my-10'
                   onClick={() => {
+                    console.log(
+                      '-------------------------clicked----------------------------------'
+                    );
                     router.push('/site/' + site.id);
+                    console.log(
+                      '-------------------------routed----------------------------------'
+                    );
                   }}>
                   <SiteCard
                     site_desc={site.site_desc}
