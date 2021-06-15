@@ -4,10 +4,18 @@ import '@/styles/globals.css';
 import { GeistProvider, CssBaseline } from '@geist-ui/react';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import { motion } from 'framer-motion';
+import Head from 'next/head';
 
 function MyApp({ Component, pageProps, router }) {
   return (
     <UserProvider>
+      <Head>
+        <script
+          async
+          defer
+          data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
+          src={process.env.NEXT_PUBLIC_ANALYTICS_URL}></script>
+      </Head>
       <motion.div
         key={router.route}
         initial='pageInitial'
