@@ -11,10 +11,10 @@ function MyApp({ Component, pageProps, router }) {
     <UserProvider>
       {process.env.NODE_ENV !== 'development' && (
         <Head>
-          <script>alert("ugghhhh")</script>
           <script
             async
             defer
+            data-domains='staticshield.vercel.app'
             data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
             src={process.env.NEXT_PUBLIC_ANALYTICS_URL}></script>
         </Head>
