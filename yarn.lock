@@ -2566,10 +2566,10 @@ postcss@^6.0.9:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-postcss@^8.1.6, postcss@^8.2.1, postcss@^8.3.2:
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.3.2.tgz#ed3ec489f5428af5740cd6effcc216b4d455ee64"
-  integrity sha512-y1FK/AWdZlBF5lusS5j5l4/vF67+vQZt1SXPVJ32y1kRGDQyrs1zk32hG1cInRTu14P0V+orPz+ifwW/7rR4bg==
+postcss@^8.1.6, postcss@^8.2.1, postcss@^8.3.3:
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.3.3.tgz#ef412a7a67e85c5b2c9f0ab3c4d9e8a3814d55cc"
+  integrity sha512-gnXd9C4bGKevvlNFd80I8WfxHX+g6MR+W2h19PlDNHUuT9248rHTvCIDeZI3Hvs5mB3gzXiNDwVK3S153WJbZA==
   dependencies:
     colorette "^1.2.2"
     nanoid "^3.1.23"
@@ -2703,10 +2703,10 @@ react-dom@17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-hook-form@^7.8.3:
-  version "7.8.3"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.8.3.tgz#104da2a1ae50aaaea949ddee9ec8684506c4e448"
-  integrity sha512-W444tNhyyR3eaQjgtdVOvzId8Fjoexdfko0d46Nme/3Cjo3ETcF9kSVg51ut8mI805Wh2K1GKim+hEgcfIrFLA==
+react-hook-form@^7.8.4:
+  version "7.8.4"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.8.4.tgz#4405b242db7b946f387f2a6c01f92390a2564893"
+  integrity sha512-hVh7uAJZS4/c20kNjW4rW+pD7+4RhuMDF3qY82f8wFuuPkoO+Pg5JHSJUqGdPdlI82snOlZ4DK/avIBn5SxItg==
 
 react-is@16.13.1, react-is@^16.8.1:
   version "16.13.1"
