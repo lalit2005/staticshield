@@ -31,19 +31,14 @@ export default withPageAuthRequired(function Site({ user }) {
 
   const { siteId } = router.query;
 
-  const data = useSWR(
+  const { data, error } = useSWR(
     `/api/get-site-from-site-id/?siteId=${siteId}`,
     fetcher
-  ).data;
+  );
 
-  console.log(data);
-
-  //! timeout to avoid unnecessary redirects for correct paths
-  setTimeout(() => {
-    if (data === undefined) {
-      router.replace('/dashboard');
-    }
-  }, 5000);
+  if (data?.length == 0) {
+    router.replace('/dashboard');
+  }
 
   console.log(data);
 

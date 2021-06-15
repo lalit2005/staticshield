@@ -14,23 +14,23 @@ export default function SiteCard(props: SiteCardProps) {
 
   return (
     <div>
-      {/* <NextLink href={'/site/' + siteId}> */}
-      <Card
-        hoverable
-        className='min-h-[40px] lg:max-w-md max-w-2xl cursor-pointer'>
-        <Text h3 className='-mb-1 font-bold'>
-          {site_name}
-        </Text>
-        <Text small type='secondary'>
-          {site_url}
-        </Text>
-        <div className='flex items-center'>
-          <Text className=' !text-gray-700'>
-            {shortenedSiteDesc || 'No description ¯\\_(ツ)_/¯'}
+      <NextLink href={'/site/' + siteId}>
+        <Card
+          hoverable
+          className='min-h-[40px] lg:max-w-md max-w-2xl cursor-pointer'>
+          <Text h3 className='-mb-1 font-bold'>
+            {site_name}
           </Text>
-        </div>
-      </Card>
-      {/* </NextLink> */}
+          <Text small type='secondary'>
+            {site_url}
+          </Text>
+          <div className='flex items-center'>
+            <Text className=' !text-gray-700'>
+              {shortenedSiteDesc || 'No description ¯\\_(ツ)_/¯'}
+            </Text>
+          </div>
+        </Card>
+      </NextLink>
     </div>
   );
 }

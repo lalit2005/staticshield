@@ -12,8 +12,14 @@ async function fetchSitesApi(req: NextApiRequest, res: NextApiResponse) {
     user.sub,
     req.query.siteId.toString()
   );
-  console.log(data);
 
+  if (data == [] || undefined || data.length == 0) {
+    res.json([]);
+    res.end(() => {
+      console.log('process ended');
+    });
+    return;
+  }
   res.json(data[0]);
 }
 
