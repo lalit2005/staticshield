@@ -25,7 +25,7 @@ export default withPageAuthRequired(function New({ user }) {
 
   useEffect(() => {
     router.prefetch('/dashboard');
-  }, []);
+  }, [router]);
 
   const showErrorMessage = (message: string) => {
     return (

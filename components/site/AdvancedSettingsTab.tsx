@@ -67,7 +67,8 @@ export default function AdvancedSettingsTab() {
           reversible, so please continue with caution.
         </Text>
         <Text>
-          Also do not forget to remove StaticShield's code from your website.
+          Also do not forget to remove StaticShield&apos;s code from your
+          website.
         </Text>
         <Card.Footer className='!bg-warmgray-100'>
           <div className='flex items-center justify-between w-full'>

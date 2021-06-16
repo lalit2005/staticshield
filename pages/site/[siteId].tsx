@@ -27,7 +27,7 @@ export default withPageAuthRequired(function Site({ user }) {
 
   useEffect(() => {
     router.prefetch('/dashboard');
-  }, []);
+  }, [router]);
 
   const { siteId } = router.query;
 
