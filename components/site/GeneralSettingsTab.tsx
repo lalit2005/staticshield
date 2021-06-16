@@ -54,7 +54,7 @@ export default function GeneralSettingsTab({ data }) {
   const handleFormSubmit = async (data) => {
     const res = await validateAndUpdateSiteData(data, editedInput, siteData.id);
     if (res.success) {
-      mutate('/api/site/' + siteData.id);
+      mutate('/api/get-site-from-site-id/?siteId=' + siteData.id);
     }
   };
 
