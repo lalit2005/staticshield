@@ -106,7 +106,6 @@ export default function AdvancedSettingsTab() {
         <Modal.Action
           type='error'
           onClick={() => {
-            console.log('Done deleting');
             router.push('/dashboard');
           }}
           disabled={disableDeleteButton}>

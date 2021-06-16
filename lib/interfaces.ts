@@ -53,3 +53,11 @@ export interface HarperDBRecord extends HarperDBRecordWithoutDefaults {
   __createdtime__: number;
   __updatedtime__: number;
 }
+
+export interface GeneralSiteSettingsFormValues {
+  site_name?: string;
+  site_desc?: string;
+  expiration_days?: number;
+  password?: string;
+  site_id?: string;
+}

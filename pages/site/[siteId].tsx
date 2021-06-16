@@ -33,7 +33,10 @@ export default withPageAuthRequired(function Site({ user }) {
 
   const { data, error } = useSWR(
     `/api/get-site-from-site-id/?siteId=${siteId}`,
-    fetcher
+    fetcher,
+    {
+      refreshInterval: 5000,
+    }
   );
 
   if (data?.length == 0) {

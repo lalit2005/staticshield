@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 import Skeleton from 'react-loading-skeleton';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { HarperDBRecord } from '@/lib/interfaces';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
@@ -45,7 +45,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             />
           )}
           <div>
-            {data?.map((site) => {
+            {data?.map((site: HarperDBRecord) => {
               return (
                 <div key={site.id} className='my-10'>
                   <SiteCard
