@@ -2,7 +2,7 @@ import { Lock, ArrowRight } from '@geist-ui/react-icons';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import Image from 'next/image';
-import Logo from './public/staticshield.png';
+import Logo from '../../public/logo.svg';
 import { useState } from 'react';
 
 export default function Site() {
