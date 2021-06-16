@@ -29,7 +29,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
               <Breadcrumbs.Item>StaticShield</Breadcrumbs.Item>
               <Breadcrumbs.Item>Dashboard</Breadcrumbs.Item>
               <NextLink href='/dashboard'>
-                <Breadcrumbs.Item nextLink>Sites</Breadcrumbs.Item>
+                <Breadcrumbs.Item nextLink>Sites and Stats</Breadcrumbs.Item>
               </NextLink>
             </Breadcrumbs>
           </div>
@@ -76,6 +76,23 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             </Card>
           </Row>
         </div>
+      </div>
+      <div className='block max-w-md mx-auto lg:hidden'>
+        <Text h2 className='mb-10 font-bold'>
+          Overall stats
+        </Text>
+        <Card type='success'>
+          <Text h4>Successful logins</Text>
+          <Text h3>59</Text>
+        </Card>
+        <Card type='warning' className='!my-4'>
+          <Text h4>Unsuccessful logins</Text>
+          <Text h3>05</Text>
+        </Card>
+        <Card type='secondary'>
+          <Text h4>Last login</Text>
+          <Text h3>12:45 5 June, 2021</Text>
+        </Card>
       </div>
     </div>
   );
