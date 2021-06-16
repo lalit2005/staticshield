@@ -51,10 +51,21 @@ export default function GeneralSettingsTab({ data }) {
     },
   });
 
-  const handleFormSubmit = async (data) => {
-    const res = await validateAndUpdateSiteData(data, editedInput, siteData.id);
-    if (res.success) {
-      mutate('/api/get-site-from-site-id/?siteId=' + siteData.id);
+  const handleFormSubmit = async (response) => {
+    const res = await validateAndUpdateSiteData(
+      response,
+      editedInput,
+      siteData.id
+    );
+    if (res) {
+      mutate(
+        '/api/get-site-from-site-id/?siteId=' + siteData.id,
+        {
+          ...data,
+          site_name: response.site_name,
+        },
+        false
+      );
     }
   };
 
