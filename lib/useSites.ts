@@ -1,4 +1,4 @@
-import useSWR, { mutate } from 'swr';
+import useSWR from 'swr';
 import fetcher from './fetcher';
 
 export default function useSites(siteId?: string) {
@@ -10,6 +10,5 @@ export default function useSites(siteId?: string) {
   return {
     data,
     error,
-    mutate,
   };
 }

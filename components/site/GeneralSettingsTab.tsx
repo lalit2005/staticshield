@@ -1,4 +1,11 @@
-import { Card, Text, Input, Button, Textarea } from '@geist-ui/react';
+import {
+  Card,
+  Text,
+  Input,
+  Button,
+  Textarea,
+  useToasts,
+} from '@geist-ui/react';
 import checkIsGoodPassword from '@/lib/validatePassword';
 import {
   GeneralSiteSettingsFormValues,
@@ -21,12 +28,12 @@ export default function GeneralSettingsTab({ data }) {
       </p>
     );
   };
+  const [toasts, setToast] = useToasts();
 
   const [editedInput, setEditedInput] =
     useState<'site_name' | 'site_desc' | 'expiration_days' | 'password' | null>(
       null
     );
-  const { mutate } = useSites();
 
   const [site_desc, setSite_desc] = useState(siteData?.site_desc);
 
@@ -51,21 +58,22 @@ export default function GeneralSettingsTab({ data }) {
     },
   });
 
-  const handleFormSubmit = async (response) => {
+  const handleFormSubmit = async (response: GeneralSiteSettingsFormValues) => {
     const res = await validateAndUpdateSiteData(
       response,
       editedInput,
-      siteData.id
+      siteData.id,
+      siteData
     );
-    if (res) {
-      mutate(
-        '/api/get-site-from-site-id/?siteId=' + siteData.id,
-        {
-          ...data,
-          site_name: response.site_name,
-        },
-        false
-      );
+    if (
+      res?.success === false &&
+      editedInput == 'password' &&
+      response.password === 'A-str0ng-p@55w0rd'
+    ) {
+      setToast({
+        text: 'Please change/edit the prefilled password. Try again',
+        type: 'error',
+      });
     }
   };
 
@@ -115,7 +123,7 @@ export default function GeneralSettingsTab({ data }) {
           width='50%'
           minHeight='100px'
           onChange={(e) => setSite_desc(e.target.value)}
-          value={site_desc}
+          initialValue={site_desc}
           placeholder='Description...'
           {...register('site_desc')}
         />

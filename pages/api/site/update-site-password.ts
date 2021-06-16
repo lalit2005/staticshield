@@ -4,13 +4,13 @@ import {
   UserProfile,
 } from '@auth0/nextjs-auth0';
 import { NextApiRequest, NextApiResponse } from 'next';
-import updateSiteName from 'utils/update/updateSiteName';
+import updateSitePassword from 'utils/update/updateSitePassword';
 
 async function fetchSitesApi(req: NextApiRequest, res: NextApiResponse) {
   const { user }: { user: UserProfile } = getSession(req, res);
   console.log(req.body);
-  const data = await updateSiteName(
-    req.body.siteName,
+  const data = await updateSitePassword(
+    req.body.password,
     user.sub,
     req.body.siteId
   );
