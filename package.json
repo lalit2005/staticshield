@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,json,css,md,html}\""
+    "format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,json,css,md,html}\"",
+    "lint": "next lint"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.4.0",
@@ -35,6 +36,8 @@
     "@types/bcrypt": "^5.0.0",
     "@types/dumb-passwords": "^0.2.0",
     "@types/react": "^17.0.11",
+    "eslint": "^7.28.0",
+    "eslint-config-next": "^11.0.0",
     "typescript": "^4.3.2"
   }
 }

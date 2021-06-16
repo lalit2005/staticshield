@@ -15,12 +15,6 @@ export default withPageAuthRequired(function Dashboard({ user }) {
 
   const router = useRouter();
 
-  useEffect(() => {
-    data?.forEach((site) => {
-      router.prefetch('/site/' + site.id);
-    });
-  }, []);
-
   return (
     <div className='w-screen h-screen'>
       <DashboardNavbar

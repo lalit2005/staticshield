@@ -1,10 +1,12 @@
 import { Link, Row, Text } from '@geist-ui/react';
 import { useUser } from '@auth0/nextjs-auth0';
 import NextLink from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Popover } from '@geist-ui/react';
 import { Menu, X } from '@geist-ui/react-icons';
+import Logo from '../public/staticshield.png';
 
 export default function Navbar() {
   const { user, error, isLoading } = useUser();
@@ -14,7 +16,7 @@ export default function Navbar() {
 
   useEffect(() => {
     router.prefetch('/dashboard');
-  }, []);
+  }, [router]);
 
   if (user) {
     router.push('/dashboard');
@@ -50,7 +52,7 @@ export default function Navbar() {
       <div className='text-gray-700 flex justify-around items-center !min-w-[100vw]'>
         <NextLink href='/'>
           <div className='flex items-center justify-between cursor-pointer select-none'>
-            <img src='/staticshield.png' alt='StaticShield' width='25px' />
+            <Image src={Logo} alt='StaticShield' width='30px' height='30px' />
             <Text b p className='ml-2 text-2xl'>
               Static
               <span className='px-1 bg-gray-900 rounded-md text-gray-50'>

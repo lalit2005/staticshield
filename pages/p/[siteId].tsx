@@ -1,6 +1,8 @@
 import { Lock, ArrowRight } from '@geist-ui/react-icons';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
+import Image from 'next/image';
+import Logo from './public/staticshield.png';
 import { useState } from 'react';
 
 export default function Site() {
@@ -39,11 +41,9 @@ export default function Site() {
         <NextLink href='/'>
           <p className='relative block mt-40 text-center cursor-pointer hover:underline bottom-4'>
             <span className='text-gray-700'>Powered by</span>
-            <img
-              src='/staticshield.png'
-              alt=''
-              className='relative inline-block w-5 h-5 ml-2 mr-1 bottom-px'
-            />
+            <div className='!relative !inline-block !w-5 !h-5 !ml-2 !mr-1 !bottom-px'>
+              <Image src={Logo} alt='' />
+            </div>
             <span className='font-medium'>StaticShield</span>
           </p>
         </NextLink>

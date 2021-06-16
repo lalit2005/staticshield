@@ -9,6 +9,8 @@ import {
 } from '@geist-ui/react';
 import { DashboardNavbarProps } from '@/lib/interfaces';
 import NextLink from 'next/link';
+import Image from 'next/image';
+import Logo from '../../public/staticshield.png';
 import { Book, LogOut, PlusSquare, Smile, User } from '@geist-ui/react-icons';
 
 export default function DashboardNavbar(props: DashboardNavbarProps) {
@@ -68,7 +70,7 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
     <div className='fixed z-30 flex items-center justify-between w-full px-16 mb-12 border-b border-gray-200 bg-gray-50'>
       <NextLink href='/dashboard'>
         <div className='flex items-center justify-between cursor-pointer select-none'>
-          <img src='/staticshield.png' alt='StaticShield' width='25px' />
+          <Image src={Logo} alt='StaticShield' width='30px' height='30px' />
           <Text b p className='ml-2 text-2xl'>
             Static
             <span className='px-1 bg-gray-900 rounded-md text-gray-50'>
