@@ -9,11 +9,11 @@ const schema = z.object({
   expiration_days: z.number().int().min(1).max(365),
 });
 
-export default function validateAndUpdateSiteData(
+export default async function validateAndUpdateSiteData(
   data: GeneralSiteSettingsFormValues,
   field: 'site_name' | 'site_desc' | 'password' | 'expiration_days',
   siteId: string
-): { success: boolean } {
+): Promise<{ success: boolean }> {
   if (!schema.safeParse(data).success) {
     return {
       success: false,
@@ -22,11 +22,18 @@ export default function validateAndUpdateSiteData(
 
   console.log(data);
   if (field === 'site_name') {
-    axios
-      .post('/api/site/update-name', {
+    try {
+      const response = axios.post('/api/site/update-name', {
         siteName: data.site_name,
         siteId: siteId,
-      })
-      .then((data) => console.log(data));
+      });
+    } catch (_) {
+      return {
+        success: false,
+      };
+    }
+    return {
+      success: true,
+    };
   }
 }

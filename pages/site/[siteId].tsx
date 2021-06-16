@@ -21,6 +21,7 @@ import fetcher from '@/lib/fetcher';
 import useSWR from 'swr';
 import { fromUnixTime, formatDistanceToNow, getUnixTime } from 'date-fns';
 import { useEffect } from 'react';
+import useSites from '@/lib/useSites';
 
 export default withPageAuthRequired(function Site({ user }) {
   const router = useRouter();
@@ -31,13 +32,7 @@ export default withPageAuthRequired(function Site({ user }) {
 
   const { siteId } = router.query;
 
-  const { data, error } = useSWR(
-    `/api/get-site-from-site-id/?siteId=${siteId}`,
-    fetcher,
-    {
-      refreshInterval: 5000,
-    }
-  );
+  const { data, error } = useSites(siteId.toString());
 
   if (data?.length == 0) {
     router.replace('/dashboard');

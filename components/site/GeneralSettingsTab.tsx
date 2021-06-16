@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useState } from 'react';
 import validateAndUpdateSiteData from '@/lib/validateAndUpdateSiteData';
+import useSites from '@/lib/useSites';
 
 export default function GeneralSettingsTab({ data }) {
   const siteData: HarperDBRecord = data;
@@ -25,6 +26,7 @@ export default function GeneralSettingsTab({ data }) {
     useState<'site_name' | 'site_desc' | 'expiration_days' | 'password' | null>(
       null
     );
+  const { mutate } = useSites();
 
   const [site_desc, setSite_desc] = useState(siteData?.site_desc);
 
@@ -49,8 +51,11 @@ export default function GeneralSettingsTab({ data }) {
     },
   });
 
-  const handleFormSubmit = (data) => {
-    validateAndUpdateSiteData(data, editedInput, siteData.id);
+  const handleFormSubmit = async (data) => {
+    const res = await validateAndUpdateSiteData(data, editedInput, siteData.id);
+    if (res.success) {
+      mutate('/api/site/' + siteData.id);
+    }
   };
 
   return (
