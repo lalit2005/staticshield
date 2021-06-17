@@ -6,7 +6,6 @@ import {
   Textarea,
   useToasts,
 } from '@geist-ui/react';
-import checkIsGoodPassword from '@/lib/validatePassword';
 import {
   GeneralSiteSettingsFormValues,
   HarperDBRecord,
@@ -16,7 +15,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useState } from 'react';
 import validateAndUpdateSiteData from '@/lib/validateAndUpdateSiteData';
-import useSites from '@/lib/useSites';
 
 export default function GeneralSettingsTab({ data }) {
   const siteData: HarperDBRecord = data;
@@ -30,10 +28,18 @@ export default function GeneralSettingsTab({ data }) {
   };
   const [toasts, setToast] = useToasts();
 
-  const [editedInput, setEditedInput] =
-    useState<'site_name' | 'site_desc' | 'expiration_days' | 'password' | null>(
-      null
-    );
+  type Fields =
+    | 'site_name'
+    | 'site_desc'
+    | 'expiration_days'
+    | 'password'
+    | null;
+
+  let editedInput: Fields;
+
+  const setEditedInput = (input: Fields) => {
+    editedInput = input;
+  };
 
   const [site_desc, setSite_desc] = useState(siteData?.site_desc);
 
