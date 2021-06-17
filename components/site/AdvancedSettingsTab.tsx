@@ -133,7 +133,9 @@ const AdvancedSettingsTab: React.FC<{ siteData: HarperDBRecord }> = ({
       </Card>
       <Modal {...bindings}>
         <Modal.Title>Delete site</Modal.Title>
-        <Modal.Subtitle>This deletion processcannot be reversed</Modal.Subtitle>
+        <Modal.Subtitle>
+          This deletion process cannot be reversed
+        </Modal.Subtitle>
         <Modal.Content>
           Enter <Code>{siteData.site_name}</Code> to continue
           <Input
