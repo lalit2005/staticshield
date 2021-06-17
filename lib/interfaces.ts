@@ -37,6 +37,7 @@ export interface NewSiteFormValues {
 
 export interface HarperDBRecordWithoutDefaults {
   last_login: string;
+  is_login_blocked: boolean;
   site_url: string;
   max_login_duration: number;
   max_logins: number;
@@ -60,4 +61,7 @@ export interface GeneralSiteSettingsFormValues {
   expiration_days?: number;
   password?: string;
   site_id?: string;
+}
+export interface AdvancedSiteSettingsFormValues {
+  is_login_blocked: boolean;
 }

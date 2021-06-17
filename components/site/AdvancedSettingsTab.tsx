@@ -7,23 +7,31 @@ import {
   Toggle,
   Modal,
   useModal,
+  useToasts,
 } from '@geist-ui/react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { HarperDBRecord } from '@/lib/interfaces';
+import blockLogins from '@/lib/blockLogins';
+import { mutate } from 'swr';
 
-export default function AdvancedSettingsTab() {
+const AdvancedSettingsTab: React.FC<{ siteData: HarperDBRecord }> = ({
+  siteData,
+}) => {
   const { visible, setVisible, bindings } = useModal();
   const [disableDeleteButton, setDisableDeleteButton] = useState(true);
-  const [siteName, setSiteName] = useState('');
+  const [siteNameDeletingInput, setSiteNameDeletingInput] = useState('');
+  const [isBlocked, setIsBlocked] = useState(siteData.is_login_blocked);
+  const [toasts, setToast] = useToasts();
   const router = useRouter();
 
   useEffect(() => {
-    if (siteName === "Acme's employee register") {
+    if (siteNameDeletingInput === siteData.site_name) {
       setDisableDeleteButton(false);
     } else {
       setDisableDeleteButton(true);
     }
-  }, [siteName]);
+  }, [siteData.site_name, siteNameDeletingInput]);
 
   return (
     <div>
@@ -42,7 +50,10 @@ export default function AdvancedSettingsTab() {
           <Toggle
             size='large'
             className='mx-3'
-            onChange={(e) => console.log(e.target)}
+            initialChecked={siteData?.is_login_blocked}
+            onChange={(e) => {
+              setIsBlocked(e.target.checked);
+            }}
           />
           Block logins
         </span>
@@ -52,7 +63,39 @@ export default function AdvancedSettingsTab() {
               <Text>Please use 48 characters at maximum</Text>
             </div>
             <div>
-              <Button size='small' type='secondary' auto>
+              <Button
+                size='small'
+                type='secondary'
+                auto
+                onClick={async () => {
+                  console.log(isBlocked);
+                  const res = await blockLogins(
+                    isBlocked,
+                    siteData?.id,
+                    siteData
+                  );
+                  if (isBlocked && res.success) {
+                    setToast({
+                      text: 'Logins blocked successfully',
+                      type: 'warning',
+                    });
+                  } else if (!isBlocked && res.success) {
+                    setToast({
+                      text: 'Logins enabled successfully',
+                      type: 'success',
+                    });
+                  } else {
+                    setToast({
+                      text: 'An unexpected error occured',
+                      type: 'error',
+                    });
+                  }
+                  mutate(
+                    '/api/get-site-from-site-id/?siteId=' + siteData?.id,
+                    { ...siteData, is_login_blocked: isBlocked },
+                    false
+                  );
+                }}>
                 Save
               </Button>
             </div>
@@ -96,7 +139,7 @@ export default function AdvancedSettingsTab() {
             width='100%'
             className='my-3 mt-5'
             label='Name of site →'
-            onChange={(e) => setSiteName(e.target.value)}
+            onChange={(e) => setSiteNameDeletingInput(e.target.value)}
             onPaste={(e) => e.preventDefault()}
           />
         </Modal.Content>
@@ -114,4 +157,6 @@ export default function AdvancedSettingsTab() {
       </Modal>
     </div>
   );
-}
+};
+
+export default AdvancedSettingsTab;

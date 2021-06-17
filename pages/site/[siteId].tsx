@@ -12,16 +12,17 @@ import {
   Snippet,
   Breadcrumbs,
   Tooltip,
+  Dot,
 } from '@geist-ui/react';
 import NextLink from 'next/link';
 import { Code, ExternalLink, Settings, Tool } from '@geist-ui/react-icons';
 import GeneralSettingsTab from '@/components/site/GeneralSettingsTab';
 import AdvancedSettingsTab from '@/components/site/AdvancedSettingsTab';
-import fetcher from '@/lib/fetcher';
-import useSWR from 'swr';
 import { fromUnixTime, formatDistanceToNow, getUnixTime } from 'date-fns';
 import { useEffect } from 'react';
 import useSites from '@/lib/useSites';
+import { HarperDBRecord } from '@/lib/interfaces';
+import SiteHead from '@/components/site/SiteHead';
 
 export default withPageAuthRequired(function Site({ user }) {
   const router = useRouter();
@@ -32,20 +33,22 @@ export default withPageAuthRequired(function Site({ user }) {
 
   const { siteId } = router.query;
 
-  const { data, error } = useSites(siteId.toString());
+  const { response: data, error } = useSites<HarperDBRecord>(siteId.toString());
 
-  if (data?.length == 0) {
+  if (JSON.stringify(data) === '[]') {
     router.replace('/dashboard');
   }
 
-  console.log(data);
+  console.log('---------------- From [siteId] -----------------------');
+  console.log(JSON.stringify(data));
 
   const lastLoginTime = data?.last_login || getUnixTime(new Date()); //! new Date is to avoid error during build time
-  const date = fromUnixTime(lastLoginTime);
+  const date = fromUnixTime(+lastLoginTime);
   const prettifiedTime = formatDistanceToNow(date, { addSuffix: true });
 
   return (
     <div>
+      <SiteHead data={data} />
       <DashboardNavbar
         user={user}
         isDashboardBadgeVisible={true}
@@ -69,8 +72,21 @@ export default withPageAuthRequired(function Site({ user }) {
               {data?.site_name || 'Loading...'}
             </Breadcrumbs.Item>
           </Breadcrumbs>
-          <h1 className='text-3xl font-extrabold sm:text-4xl md:text-5xl'>
-            {data?.site_name || 'Loading...'}
+          <div className='flex items-center'>
+            <h1 className='inline-block mr-5 text-3xl font-extrabold sm:text-4xl md:text-5xl'>
+              {data?.site_name || 'Loading...'}
+            </h1>
+            <Tooltip
+              offset={15}
+              text={
+                data?.is_login_blocked
+                  ? `Logins to '${data?.site_name}' have been blocked. Enable logins in Advanced Settings Tab below`
+                  : `Logins to '${data?.site_name}' are enabled. You can disable logins in Advanced Setting Tab`
+              }
+              placement='top'
+              type='dark'>
+              <Dot type={data?.is_login_blocked ? 'error' : 'success'} />
+            </Tooltip>
             <Link
               href={'http://' + data?.site_url || 'Loading...'}
               target='__blank'>
@@ -81,7 +97,7 @@ export default withPageAuthRequired(function Site({ user }) {
                 <ExternalLink className='inline-block ml-5 !text-blue-400 hover:!text-blue-600' />
               </Tooltip>
             </Link>
-          </h1>
+          </div>
           <Text size='large' type='secondary'>
             {data?.site_desc || 'No description ¯\\_(ツ)_/¯'}
           </Text>
@@ -172,7 +188,7 @@ export default withPageAuthRequired(function Site({ user }) {
                       Advanced
                     </>
                   }>
-                  <AdvancedSettingsTab />
+                  <AdvancedSettingsTab siteData={data} />
                 </Tabs.Item>
               </div>
             </Tabs>
