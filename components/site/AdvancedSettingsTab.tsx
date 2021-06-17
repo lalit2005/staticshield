@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import { HarperDBRecord } from '@/lib/interfaces';
 import blockLogins from '@/lib/blockLogins';
 import { mutate } from 'swr';
+import deleteSite from '@/lib/deleteSite';
 
 const AdvancedSettingsTab: React.FC<{ siteData: HarperDBRecord }> = ({
   siteData,
@@ -134,7 +135,7 @@ const AdvancedSettingsTab: React.FC<{ siteData: HarperDBRecord }> = ({
         <Modal.Title>Delete site</Modal.Title>
         <Modal.Subtitle>This deletion processcannot be reversed</Modal.Subtitle>
         <Modal.Content>
-          Enter <Code>{"Acme's employee register"}</Code> to continue
+          Enter <Code>{siteData.site_name}</Code> to continue
           <Input
             width='100%'
             className='my-3 mt-5'
@@ -149,7 +150,17 @@ const AdvancedSettingsTab: React.FC<{ siteData: HarperDBRecord }> = ({
         <Modal.Action
           type='error'
           onClick={() => {
-            router.push('/dashboard');
+            deleteSite(siteData.id)
+              .then(() => {
+                router.push('/dashboard');
+                setToast({
+                  text: `Successfully deleted ${siteData?.site_name}`,
+                  type: 'success',
+                });
+              })
+              .catch((e) =>
+                setToast({ text: 'An unexpected error occured', type: 'error' })
+              );
           }}
           disabled={disableDeleteButton}>
           Delete

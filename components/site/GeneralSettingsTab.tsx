@@ -80,7 +80,12 @@ export default function GeneralSettingsTab({ data }) {
         text: 'Please change/edit the prefilled password. Try again',
         type: 'error',
       });
+      return;
     }
+    setToast({
+      text: `Successfully updated ${editedInput.replaceAll('_', ' ')}`,
+      type: 'success',
+    });
   };
 
   return (
@@ -114,6 +119,7 @@ export default function GeneralSettingsTab({ data }) {
                 onClick={() => {
                   setEditedInput('site_name');
                   handleSubmit(handleFormSubmit)();
+                  return;
                 }}>
                 Save
               </Button>
@@ -146,6 +152,7 @@ export default function GeneralSettingsTab({ data }) {
                 onClick={() => {
                   setEditedInput('site_desc');
                   handleSubmit(handleFormSubmit)();
+                  return;
                 }}>
                 Save
               </Button>
@@ -208,6 +215,7 @@ export default function GeneralSettingsTab({ data }) {
                 onClick={() => {
                   setEditedInput('expiration_days');
                   handleSubmit(handleFormSubmit)();
+                  return;
                 }}>
                 Change expiration time
               </Button>
@@ -250,6 +258,7 @@ export default function GeneralSettingsTab({ data }) {
                 onClick={() => {
                   setEditedInput('password');
                   handleSubmit(handleFormSubmit)();
+                  return;
                 }}>
                 Change password
               </Button>
