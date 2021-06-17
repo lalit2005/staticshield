@@ -11,13 +11,11 @@ function MyApp({ Component, pageProps, router }) {
   return (
     <UserProvider>
       {process.env.NODE_ENV !== 'development' && (
-        <Head>
-          <Script
-            strategy='afterInteractive'
-            data-domains='staticshield.vercel.app'
-            data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
-            src={process.env.NEXT_PUBLIC_ANALYTICS_URL}></Script>
-        </Head>
+        <Script
+          strategy='afterInteractive'
+          data-domains='staticshield.vercel.app'
+          data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
+          src={process.env.NEXT_PUBLIC_ANALYTICS_URL}></Script>
       )}
       <motion.div
         key={router.route}
