@@ -154,7 +154,7 @@ const AdvancedSettingsTab: React.FC<{ siteData: HarperDBRecord }> = ({
           onClick={() => {
             deleteSite(siteData.id)
               .then(() => {
-                router.push('/dashboard');
+                router.replace('/dashboard/?mutate=1');
                 setToast({
                   text: `Successfully deleted ${siteData?.site_name}`,
                   type: 'success',

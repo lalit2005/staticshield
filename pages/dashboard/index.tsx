@@ -8,12 +8,19 @@ import fetcher from '@/lib/fetcher';
 import Skeleton from 'react-loading-skeleton';
 import { useRouter } from 'next/router';
 import { HarperDBRecord } from '@/lib/interfaces';
+import { mutate } from 'swr';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
   console.log(data);
 
   const router = useRouter();
+
+  if (router.query?.mutate?.toString() == '1') {
+    console.log('mutating');
+    mutate('/dashboard');
+    console.log('mutated');
+  }
 
   return (
     <div className='w-screen h-screen'>

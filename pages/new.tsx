@@ -70,7 +70,7 @@ export default withPageAuthRequired(function New({ user }) {
       site_desc: description,
     });
     if (siteCreated.success === true) {
-      router.push('/dashboard');
+      router.push('/dashboard/?mutate=1');
     }
   };
 
