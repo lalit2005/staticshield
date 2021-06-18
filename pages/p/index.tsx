@@ -4,11 +4,28 @@ import NextLink from 'next/link';
 import Image from 'next/image';
 import Logo from '../../public/logo.svg';
 import { useState } from 'react';
+import axios from 'axios';
+import { Loading, Row } from '@geist-ui/react/';
 
 export default function Site() {
   const router = useRouter();
-  const { siteId } = router.query;
-  const [password, setPassword] = useState('');
+  const { id } = router.query;
+  const [password, setPassword] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const res = await axios.post('/api/login-to-site', {
+      password: password,
+      siteId: id,
+    });
+    if (res.data) {
+      setIsLoading(false);
+    }
+    console.log(res.data);
+  };
+
   return (
     <div>
       <div className='w-screen h-screen max-w-md mx-auto'>
@@ -16,11 +33,7 @@ export default function Site() {
           <h1 className='mb-5 text-xl font-medium sm:text-2xl'>
             This page is password protected
           </h1>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert(password);
-            }}>
+          <form onSubmit={handleSubmit}>
             <label htmlFor='password' hidden>
               Enter password
             </label>
@@ -34,7 +47,13 @@ export default function Site() {
               className='px-5 py-2 border-b border-gray-400 rounded'
             />
             <button>
-              <ArrowRight className='inline-block px-1 !text-gray-500 hover:!text-gray-900' />
+              {isLoading ? (
+                <Row className='py-[10px] w-[50px] relative bottom-2'>
+                  <Loading size='large' />
+                </Row>
+              ) : (
+                <ArrowRight className='inline-block px-3 !text-gray-500 hover:!text-gray-900' />
+              )}
             </button>
           </form>
         </div>
