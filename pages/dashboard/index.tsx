@@ -77,13 +77,13 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             <Tooltip text='Total successful logins of all sites' type='dark'>
               <Card width='300p' className='!mx-5 !my-5' type='success' shadow>
                 <Text h5>Successful Logins</Text>
-                <Text h2>{totalSuccessfulLogins}</Text>
+                <Text h2>{totalSuccessfulLogins || '00'}</Text>
               </Card>
             </Tooltip>
             <Tooltip text='Total Unsuccessful logins of all sites' type='dark'>
               <Card width='300p' className='!mx-5 !my-5' type='warning' shadow>
                 <Text h5>Unsuccessful Logins</Text>
-                <Text h2>{totalUnSuccessfulLogins}</Text>
+                <Text h2>{totalUnSuccessfulLogins || '00'}</Text>
               </Card>
             </Tooltip>
             <Tooltip
@@ -108,13 +108,13 @@ export default withPageAuthRequired(function Dashboard({ user }) {
         <Tooltip text='Total successful logins of all sites' type='dark'>
           <Card type='success'>
             <Text h4>Successful logins</Text>
-            <Text h3>{totalSuccessfulLogins}</Text>
+            <Text h3>{totalSuccessfulLogins || '00'}</Text>
           </Card>
         </Tooltip>
         <Tooltip text='Total Unsuccessful logins of all sites' type='dark'>
           <Card type='warning' className='!my-4 !mx-2'>
             <Text h4>Unsuccessful logins</Text>
-            <Text h3>{totalUnSuccessfulLogins}</Text>
+            <Text h3>{totalUnSuccessfulLogins || '00'}</Text>
           </Card>
         </Tooltip>
         <Tooltip type='dark' text={getLastLogin(data, true).toLocaleString()}>
