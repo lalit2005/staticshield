@@ -30,7 +30,7 @@ export default function Site() {
               name='password'
               id='password'
               placeholder='Enter password'
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value.toString())}
               className='px-5 py-2 border-b border-gray-400 rounded'
             />
             <button>
@@ -39,13 +39,13 @@ export default function Site() {
           </form>
         </div>
         <NextLink href='/'>
-          <p className='relative block mt-40 text-center cursor-pointer hover:underline bottom-4'>
+          <div className='relative block mt-40 text-center cursor-pointer hover:underline bottom-4'>
             <span className='text-gray-700'>Powered by</span>
-            <div className='!relative !inline-block !w-5 !h-5 !ml-2 !mr-1 !bottom-px'>
+            <div className='!relative !inline-block !w-5 !h-5 !ml-2 !mr-1 !top-px'>
               <Image src={Logo} alt='' />
             </div>
             <span className='font-medium'>StaticShield</span>
-          </p>
+          </div>
         </NextLink>
       </div>
     </div>
