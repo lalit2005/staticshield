@@ -9,17 +9,16 @@ import Skeleton from 'react-loading-skeleton';
 import { useRouter } from 'next/router';
 import { HarperDBRecord } from '@/lib/interfaces';
 import { mutate } from 'swr';
+import sortSiteCardsByUpdatedDate from '@/lib/sortSiteCardsByUpdatedDate';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
   console.log(data);
-
+  const sortedData = data ? sortSiteCardsByUpdatedDate(data) : data;
   const router = useRouter();
 
   if (router.query?.mutate?.toString() == '1') {
-    console.log('mutating');
     mutate('/api/fetch-sites');
-    console.log('mutated');
   }
 
   return (
@@ -52,7 +51,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             />
           )}
           <div>
-            {data?.map((site: HarperDBRecord) => {
+            {sortedData?.map((site: HarperDBRecord) => {
               return (
                 <div key={site.id} className='my-10'>
                   <SiteCard
