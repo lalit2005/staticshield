@@ -17,6 +17,9 @@ function MyApp({ Component, pageProps, router }) {
           data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
           src={process.env.NEXT_PUBLIC_ANALYTICS_URL}></Script>
       )}
+      <Head>
+        <link rel='preconnect' href='https://vitals.vercel-insights.com/' />
+      </Head>
       <motion.div
         key={router.route}
         initial='pageInitial'
