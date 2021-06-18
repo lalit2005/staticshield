@@ -101,8 +101,8 @@ export default withPageAuthRequired(function Dashboard({ user }) {
           </Row>
         </div>
       </div>
-      <div className='block max-w-md mx-auto lg:hidden'>
-        <Text h2 className='mb-10 font-bold'>
+      <div className='block max-w-lg mx-auto mt-16 lg:hidden'>
+        <Text h1 className='mb-10 font-bold'>
           Overall stats
         </Text>
         <Tooltip text='Total successful logins of all sites' type='dark'>
@@ -112,7 +112,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
           </Card>
         </Tooltip>
         <Tooltip text='Total Unsuccessful logins of all sites' type='dark'>
-          <Card type='warning' className='!my-4'>
+          <Card type='warning' className='!my-4 !mx-2'>
             <Text h4>Unsuccessful logins</Text>
             <Text h3>{totalUnSuccessfulLogins}</Text>
           </Card>
