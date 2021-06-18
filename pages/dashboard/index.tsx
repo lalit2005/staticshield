@@ -18,7 +18,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
 
   if (router.query?.mutate?.toString() == '1') {
     console.log('mutating');
-    mutate('/dashboard');
+    mutate('/api/fetch-sites');
     console.log('mutated');
   }
 
