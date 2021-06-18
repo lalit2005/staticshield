@@ -120,7 +120,7 @@ export default withPageAuthRequired(function Site({ user }) {
                 className='!mx-5 !my-5'
                 type='secondary'
                 shadow>
-                <Text h5>Last Login At</Text>
+                <Text h5>Last Login</Text>
                 <Text h2>{prettifiedTime}</Text>
               </Card>
             </Tooltip>
