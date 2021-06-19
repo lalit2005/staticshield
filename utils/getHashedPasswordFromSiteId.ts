@@ -1,4 +1,4 @@
-const fetchSitesSiteId = async (siteId: string) => {
+const getHashedPasswordFromSiteId = async (siteId: string) => {
   const res = await fetch(process.env.HARPERDB_URL, {
     method: 'POST',
     headers: {
@@ -7,10 +7,10 @@ const fetchSitesSiteId = async (siteId: string) => {
     },
     body: JSON.stringify({
       operation: 'sql',
-      sql: `SELECT password_hash FROM site_schema.sites where id = "${siteId}"`,
+      sql: `SELECT password_hash, max_login_duration, is_login_blocked FROM site_schema.sites where id = "${siteId}"`,
     }),
   });
 
   return res.json();
 };
-export default fetchSitesSiteId;
+export default getHashedPasswordFromSiteId;
