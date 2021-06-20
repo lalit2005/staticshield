@@ -1,5 +1,5 @@
 import { HarperDBRecord } from './interfaces';
-import { max, fromUnixTime, formatDistanceToNow } from 'date-fns';
+import { max, formatDistanceToNow, getUnixTime, endOfToday } from 'date-fns';
 
 const getLastLogin = (data: HarperDBRecord[], rawDate?: boolean) => {
   if (!data) {
@@ -13,8 +13,10 @@ const getLastLogin = (data: HarperDBRecord[], rawDate?: boolean) => {
     timestamps.push(site.last_login);
   });
   const latest = max(timestamps);
-  const date = fromUnixTime(+latest);
-  const prettifiedTime = formatDistanceToNow(date, { addSuffix: true });
+  const date = getUnixTime(+latest) || endOfToday();
+  const prettifiedTime = formatDistanceToNow(date, {
+    addSuffix: true,
+  });
   console.log(prettifiedTime);
   return rawDate ? date : prettifiedTime;
 };
