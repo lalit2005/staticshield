@@ -3,10 +3,21 @@ import compareHashedPasswords from '@/lib/compareHashedPasswords';
 import getHashedPasswordFromSiteId from '@/utils/getHashedPasswordFromSiteId';
 import jwt from 'jsonwebtoken';
 
-const loginToSite = async (req: NextApiRequest, res: NextApiResponse) => {
+const loginToSite = async (
+  req: NextApiRequest,
+  res: NextApiResponse<{ success: boolean; token: string; message: string }>
+) => {
   const siteId = req.body.siteId;
   const password = req.body.password;
   const siteData = await getHashedPasswordFromSiteId(siteId);
+  if (siteData[0] == undefined) {
+    res.json({
+      success: false,
+      token: '',
+      message: 'Site not found. Invalid URL',
+    });
+    return;
+  }
   const {
     password_hash: passwordHash,
     is_login_blocked: isLoginBlocked,
@@ -37,21 +48,24 @@ const loginToSite = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const payload = {
-    password,
+    loggedIn: true,
   };
 
   const jwtToken = jwt.sign(payload, process.env.JWT_TOKEN, {
-    expiresIn: '1d',
+    expiresIn: maxLoginDuration + 'd',
   });
 
   // try {
-  //   const a = jwt.verify(jwtToken, 'process.env.JWT_TOKEN');
+  //   const a = jwt.verify(
+  //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNjI0MjA3MDg3LCJleHAiOjE2MjQyMDcwOTJ9.fbzPtp1rNTcY8067iqm_LB0Qhe2VdqM9a-SDCs3xzZU',
+  //     process.env.JWT_TOKEN
+  //   );
   //   console.log(a);
   // } catch (e) {
-  //   console.log(e);
+  //   console.log(e.message);
   // }
 
-  res.json({ success: true, token: jwtToken });
+  res.json({ success: true, token: jwtToken, message: 'success' });
 };
 
 export default loginToSite;
