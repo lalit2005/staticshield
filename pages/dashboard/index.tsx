@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Breadcrumbs, Row, Text, Card, Tooltip } from '@geist-ui/react';
+import { Breadcrumbs, Row, Text, Card, Tooltip, Button } from '@geist-ui/react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import DashboardNavbar from '@/components/dashboard/Navbar';
 import SiteCard from '@/components/dashboard/SiteCard';
@@ -13,6 +13,8 @@ import sortSiteCardsByUpdatedDate from '@/lib/sortSiteCardsByUpdatedDate';
 import getLastLogin from '@/lib/getLastLogin';
 import getSuccessfulLogins from '@/lib/getSuccessfulLogins';
 import getUnsuccessfulLogins from '@/lib/getUnsuccessfulLogins';
+import EmptyImage from '../../public/empty.png';
+import Image from 'next/image';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
@@ -41,7 +43,9 @@ export default withPageAuthRequired(function Dashboard({ user }) {
               <Breadcrumbs.Item>StaticShield</Breadcrumbs.Item>
               <Breadcrumbs.Item>Dashboard</Breadcrumbs.Item>
               <NextLink href='/dashboard'>
-                <Breadcrumbs.Item nextLink>Sites and Stats</Breadcrumbs.Item>
+                <Breadcrumbs.Item nextLink className='overflow-ellipsis'>
+                  Sites and Stats
+                </Breadcrumbs.Item>
               </NextLink>
             </Breadcrumbs>
           </div>
@@ -70,6 +74,52 @@ export default withPageAuthRequired(function Dashboard({ user }) {
                 </div>
               );
             })}
+            {sortedData?.length == 0 && (
+              <div>
+                <p className='text-sm text-gray-700 capitalize'>
+                  OH, IT&apos;S
+                  <h3 className='text-3xl font-bold'>Empty here 😶</h3>
+                </p>
+                <div className='mx-auto'>
+                  <div className='!w-64 !h-64'>
+                    <Image src={EmptyImage} placeholder='blur' alt='' />
+                    <NextLink href='/new'>
+                      <Button>Password protect a site now</Button>
+                    </NextLink>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className='block mt-16 lg:hidden'>
+            <Text h2 className='mb-10 font-extrabold'>
+              Overall stats
+            </Text>
+            <Tooltip text='Total successful logins of all sites' type='dark'>
+              <Card type='success' className='!mx-2'>
+                <Text h4>Successful logins</Text>
+                <Text h3>{totalSuccessfulLogins || '00'}</Text>
+              </Card>
+            </Tooltip>
+            <div>
+              <Tooltip
+                text='Total Unsuccessful logins of all sites'
+                type='dark'>
+                <Card type='warning' className='!mx-2 !my-4'>
+                  <Text h4>Unsuccessful logins</Text>
+                  <Text h3>{totalUnSuccessfulLogins || '00'}</Text>
+                </Card>
+              </Tooltip>
+            </div>
+            <Tooltip
+              type='dark'
+              className='!mx-2'
+              text={getLastLogin(data, true).toLocaleString()}>
+              <Card type='secondary'>
+                <Text h4>Last login</Text>
+                <Text h3>{LastLogin || 'Loading…'}</Text>
+              </Card>
+            </Tooltip>
           </div>
         </div>
         <div className='fixed top-0 right-0 hidden w-1/3 h-screen px-16 border-l lg:block border-warmgray-200 bg-warmgray-50'>
@@ -100,29 +150,6 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             </Tooltip>
           </Row>
         </div>
-      </div>
-      <div className='block max-w-lg mx-auto mt-16 lg:hidden'>
-        <Text h1 className='mb-10 font-bold'>
-          Overall stats
-        </Text>
-        <Tooltip text='Total successful logins of all sites' type='dark'>
-          <Card type='success'>
-            <Text h4>Successful logins</Text>
-            <Text h3>{totalSuccessfulLogins || '00'}</Text>
-          </Card>
-        </Tooltip>
-        <Tooltip text='Total Unsuccessful logins of all sites' type='dark'>
-          <Card type='warning' className='!my-4 !mx-2'>
-            <Text h4>Unsuccessful logins</Text>
-            <Text h3>{totalUnSuccessfulLogins || '00'}</Text>
-          </Card>
-        </Tooltip>
-        <Tooltip type='dark' text={getLastLogin(data, true).toLocaleString()}>
-          <Card type='secondary'>
-            <Text h4>Last login</Text>
-            <Text h3>{LastLogin || 'Loading…'}</Text>
-          </Card>
-        </Tooltip>
       </div>
     </div>
   );
