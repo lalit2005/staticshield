@@ -15,7 +15,7 @@
     "@fontsource/inter": "^4.4.5",
     "@geist-ui/react": "^2.1.5",
     "@geist-ui/react-icons": "^1.0.1",
-    "@hookform/resolvers": "^2.5.2",
+    "@hookform/resolvers": "^2.6.0",
     "autoprefixer": "^10.2.6",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
