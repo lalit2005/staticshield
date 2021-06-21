@@ -1,9 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
+import NextCors from 'nextjs-cors';
 
-export default function verify(req: NextApiRequest, res: NextApiResponse) {
+export default async function verify(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  await NextCors(req, res, {
+    // Options
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
+
   const { token } = req.query;
-  console.log();
 
   try {
     const payload = jwt.verify(token.toString(), process.env.JWT_TOKEN);

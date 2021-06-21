@@ -18,8 +18,8 @@
   }
 
   if (token) {
-    fetch('https://staticshield.vercel.app/api/verify-token/?token=' + token);
-    fetch('http://localhost:3000/api/verify-token/?token=' + token)
+    fetch('https://staticshield.vercel.app/api/verify-token/?token=' + token)
+      // fetch('http://localhost:3000/api/verify-token/?token=' + token)
       .then((res) => {
         res.json();
       })
