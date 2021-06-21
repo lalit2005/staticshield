@@ -15,6 +15,19 @@ export default function Site() {
   const [callbackUrl, setCallbackUrl] = useState<string>('https://example.com');
   const [toasts, setToast] = useToasts();
 
+  if (router.query.invalidtoken == '1') {
+    setToast({
+      text: 'The token stored in the browser has been modified. Please login again',
+      type: 'error',
+    });
+  }
+  if (router.query.expired == '1') {
+    setToast({
+      text: 'Your session has been expired. Please login again',
+      type: 'success',
+    });
+  }
+
   useEffect(() => {
     setCallbackUrl(document.referrer);
   }, []);

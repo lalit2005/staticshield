@@ -16,4 +16,28 @@
         .toString()}`
     );
   }
+
+  if (token) {
+    fetch('http://localhost:3000/api/verify-token/?token=' + token)
+      .then((res) => {
+        res.json();
+      })
+      .then((data) => {
+        if (data.expired) {
+          window.location.replace(
+            `https://staticshield.vercel.app/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
+              .split('?')[0]
+              .toString()}`
+          );
+        }
+        if (data.invalidToken) {
+          window.location.replace(
+            `https://staticshield.vercel.app/p/?invalidtoken=1&id=${siteId}&redirecturl=${window.location.href
+              .split('?')[0]
+              .toString()}`
+          );
+        }
+      })
+      .catch((error) => {});
+  }
 })();

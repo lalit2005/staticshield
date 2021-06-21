@@ -58,7 +58,6 @@ const loginToSite = async (
 
   const asd = await updateLoginCount(siteId, siteData[0]);
   console.log(asd);
-  // console.log(req.headers);
   res.json({ success: true, token: jwtToken, message: 'success' });
 };
 
