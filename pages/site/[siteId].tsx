@@ -150,9 +150,10 @@ export default withPageAuthRequired(function Site({ user }) {
                   for more detailed usage
                 </Text>
                 <Snippet
-                  symbol='𝗝𝗦'
+                  symbol='J͟s͟'
+                  // symbol='𝗝𝗦'
                   type='lite'
-                  text="<script src='https://staticshield.vercel.app/js-script'></script>"
+                  text={`<script src='https://staticshield.vercel.app/script.js data-site-id=${data?.id}'></script>`}
                   width='70%'
                   className='mt-10 mb-20'
                 />
