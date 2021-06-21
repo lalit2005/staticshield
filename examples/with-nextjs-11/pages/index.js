@@ -18,12 +18,11 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href='https://staticshield.vercel.app'>StaticShield</a>
         </h1>
-
-        <small></small>
+        <small>Password id 123123123, thats `123` thrice</small>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a className={styles.link} href='/protected'>
           Visit protected page
         </a>
-
         <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>
             <h2>Documentation &rarr;</h2>
