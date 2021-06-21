@@ -4,5 +4,4 @@
   if (tokenFromUrl) {
     window.localStorage.setItem('token', tokenFromUrl);
   }
-  console.log('Seeettttteeeeddddddtoookkkeeeeenn');
 })();

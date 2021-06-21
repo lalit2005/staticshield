@@ -12,13 +12,13 @@
   console.log('-------from script--------');
   if (token == null || undefined || !token) {
     console.log(
-      `http://localhost:3000/?id=${siteId}&redirecturl=${window.location.href
+      `https://staticshield.vercel.app?id=${siteId}&redirecturl=${window.location.href
         .split('?')[0]
         .toString()}`
     );
     debugger;
     window.location.replace(
-      `http://localhost:3000/?id=${siteId}&redirecturl=${window.location.href
+      `https://staticshield.vercel.app?id=${siteId}&redirecturl=${window.location.href
         .split('?')[0]
         .toString()}`
     );
