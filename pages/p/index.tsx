@@ -31,9 +31,9 @@ export default function Site() {
     }
     console.log(res.data);
     if (res.data.success) {
-      const url = new URL(callbackUrl);
-      url.searchParams.set('token', res.data.token);
-      router.replace(url);
+      const redirectUrl = new URL(callbackUrl);
+      redirectUrl.searchParams.set('token', res.data.token);
+      router.replace(redirectUrl);
     }
     if (!res.data.success) {
       setToast({ text: res.data.message, type: 'error' });
