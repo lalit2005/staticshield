@@ -2,6 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
   const { token } = req.query;
 
   try {

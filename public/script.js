@@ -1,4 +1,4 @@
-(function () {
+(async function () {
   const params = new URLSearchParams(window.location.search);
   const tokenFromUrl = params.get('token');
   if (tokenFromUrl) {
@@ -18,27 +18,29 @@
   }
 
   if (token) {
-    fetch('https://staticshield.vercel.app/api/verify-token/?token=' + token)
-      // fetch('http://localhost:3000/api/verify-token/?token=' + token)
-      .then((res) => {
-        res.json();
-      })
-      .then((data) => {
-        if (data.expired) {
-          window.location.replace(
-            `https://staticshield.vercel.app/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
-              .split('?')[0]
-              .toString()}`
-          );
-        }
-        if (data.invalidToken) {
-          window.location.replace(
-            `https://staticshield.vercel.app/p/?invalidtoken=1&id=${siteId}&redirecturl=${window.location.href
-              .split('?')[0]
-              .toString()}`
-          );
-        }
-      })
-      .catch((error) => {});
+    const res = await fetch(
+      'https://staticshield.vercel.app/api/verify-token/?token=' + token
+      // 'http://localhost:3000/api/verify-token/?token=' + token
+    );
+    const data = await res.json();
+    console.log(data);
+    if (data.expired == true) {
+      alert('Data expired');
+      window.location.replace(
+        `https://staticshield.vercel.app/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
+          // `http://localhost:3000/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
+          .split('?')[0]
+          .toString()}`
+      );
+    }
+
+    if (data.invalidtoken == true) {
+      alert('Data expired');
+      window.location.replace(
+        `https://staticshield.vercel.app/p/?invalidtoken=1&id=${siteId}&redirecturl=${window.location.href
+          .split('?')[0]
+          .toString()}`
+      );
+    }
   }
 })();

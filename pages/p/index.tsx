@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import Image from 'next/image';
 import Logo from '../../public/logo.svg';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Loading, Row, useToasts } from '@geist-ui/react';
 
@@ -12,25 +12,29 @@ export default function Site() {
   const { id } = router.query;
   const [password, setPassword] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [callbackUrl, setCallbackUrl] = useState<string>('https://example.com');
   const [toasts, setToast] = useToasts();
+  const [shownError, setShownError] = useState<boolean>(false);
 
-  if (router.query.invalidtoken == '1') {
-    setToast({
-      text: 'The token stored in the browser has been modified. Please login again',
-      type: 'error',
-    });
+  if (router.query?.invalidtoken == '1') {
+    setTimeout(() => {
+      !shownError &&
+        setToast({
+          text: 'The token stored in the browser has been modified by someone manually. Please login again',
+          type: 'success',
+        });
+      setShownError(true);
+    }, 1000);
   }
-  if (router.query.expired == '1') {
-    setToast({
-      text: 'Your session has been expired. Please login again',
-      type: 'success',
-    });
+  if (router.query?.expired == '1') {
+    setTimeout(() => {
+      !shownError &&
+        setToast({
+          text: 'Your session has been expired.\n Please login again',
+          type: 'success',
+        });
+      setShownError(true);
+    }, 1000);
   }
-
-  useEffect(() => {
-    setCallbackUrl(document.referrer);
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
