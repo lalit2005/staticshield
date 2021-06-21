@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import compareHashedPasswords from '@/lib/compareHashedPasswords';
 import getHashedPasswordFromSiteId from '@/utils/getHashedPasswordFromSiteId';
 import jwt from 'jsonwebtoken';
+import updateLoginCount from '@/utils/updateLoginCount';
 
 const loginToSite = async (
   req: NextApiRequest,
@@ -55,16 +56,9 @@ const loginToSite = async (
     expiresIn: maxLoginDuration + 'd',
   });
 
-  // try {
-  //   const a = jwt.verify(
-  //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNjI0MjA3MDg3LCJleHAiOjE2MjQyMDcwOTJ9.fbzPtp1rNTcY8067iqm_LB0Qhe2VdqM9a-SDCs3xzZU',
-  //     process.env.JWT_TOKEN
-  //   );
-  //   console.log(a);
-  // } catch (e) {
-  //   console.log(e.message);
-  // }
-
+  const asd = await updateLoginCount(siteId, siteData[0]);
+  console.log(asd);
+  // console.log(req.headers);
   res.json({ success: true, token: jwtToken, message: 'success' });
 };
 

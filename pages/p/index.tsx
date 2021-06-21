@@ -3,15 +3,21 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import Image from 'next/image';
 import Logo from '../../public/logo.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Loading, Row } from '@geist-ui/react/';
+import { Loading, Row, useToasts } from '@geist-ui/react';
 
 export default function Site() {
   const router = useRouter();
   const { id } = router.query;
   const [password, setPassword] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [callbackUrl, setCallbackUrl] = useState<string>('https://example.com');
+  const [toasts, setToast] = useToasts();
+
+  useEffect(() => {
+    setCallbackUrl(document.referrer);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +30,14 @@ export default function Site() {
       setIsLoading(false);
     }
     console.log(res.data);
+    if (res.data.success) {
+      const url = new URL(callbackUrl);
+      url.searchParams.set('token', res.data.token);
+      router.replace(url);
+    }
+    if (!res.data.success) {
+      setToast({ text: res.data.message, type: 'error' });
+    }
   };
 
   return (
@@ -42,6 +56,7 @@ export default function Site() {
               type='password'
               name='password'
               id='password'
+              autoFocus
               placeholder='Enter password'
               onChange={(e) => setPassword(e.target.value.toString())}
               className='px-5 py-2 border-b border-gray-400 rounded'
