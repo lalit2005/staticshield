@@ -1,17 +1,29 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
-import NextCors from 'nextjs-cors';
+import Cors from 'cors';
 
-export default async function verify(
+const cors = Cors({
+  methods: ['GET', 'HEAD'],
+  origin: '*',
+});
+
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+
+      return resolve(result);
+    });
+  });
+}
+
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  await NextCors(req, res, {
-    // Options
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    origin: '*',
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  });
+  await runMiddleware(req, res, cors);
 
   const { token } = req.query;
 
