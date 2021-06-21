@@ -1,24 +1,27 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
-import Cors from 'cors';
-import initMiddleware from '../../lib/init-middleware';
 
-// Initialize the cors middleware
-const cors = initMiddleware(
-  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-  Cors({
-    // Only allow requests with GET, POST and OPTIONS
-    origin: '*',
-    methods: ['GET', 'POST', 'OPTIONS'],
-  })
-);
+const allowCors = (fn) => async (req, res) => {
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  // another common pattern
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET,OPTIONS,PATCH,DELETE,POST,PUT'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+  return await fn(req, res);
+};
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  await cors(req, res);
-
+function handler(req: NextApiRequest, res: NextApiResponse) {
   const { token } = req.query;
 
   try {
@@ -47,3 +50,5 @@ export default async function handler(
     }
   }
 }
+
+module.exports = allowCors(handler);
