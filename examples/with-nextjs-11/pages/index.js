@@ -12,7 +12,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Script src='http://localhost:3000/protect-script.js'></Script>
+      <Script src='https://staticshield.vercel.app/protect-script.js'></Script>
 
       <main className={styles.main}>
         <h1 className={styles.title}>

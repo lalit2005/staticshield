@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Script
-        src='http://localhost:3000/script.js'
+        src='https://staticshield.vercel.app/script.js'
         data-site-id='c4c6c9a3-82d5-452c-9024-54f42e632267'
         strategy='beforeInteractive'></Script>
       <Head>

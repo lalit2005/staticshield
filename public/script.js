@@ -10,7 +10,7 @@
   const token = window.localStorage.getItem('token');
 
   if (token == null) {
-    window.location.href = `http://localhost:3000/p/?id=${siteId}`;
+    window.location.href = `http://staticshield.vercel.app/p/?id=${siteId}`;
   }
 
   console.log('-------from script--------');
