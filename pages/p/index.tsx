@@ -31,8 +31,7 @@ export default function Site() {
     }
     console.log(res.data);
     if (res.data.success) {
-      const redirectUrl = new URL(callbackUrl);
-      redirectUrl.searchParams.set('token', res.data.token);
+      const redirectUrl = router.query.redirecturl + res.data.token;
       router.replace(redirectUrl);
     }
     if (!res.data.success) {
