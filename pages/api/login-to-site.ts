@@ -34,6 +34,7 @@ const loginToSite = async (
       token: '',
       success: false,
     });
+    return;
   }
 
   const isPasswordCorrect = compareHashedPasswords(
