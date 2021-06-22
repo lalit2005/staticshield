@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Logo from '../../public/logo.svg';
 import { useState } from 'react';
 import axios from 'axios';
-import { Loading, Row, useToasts } from '@geist-ui/react';
+import { Loading, Row, useToasts, Text } from '@geist-ui/react';
 
 export default function Site() {
   const router = useRouter();
@@ -64,6 +64,7 @@ export default function Site() {
           <h1 className='mb-5 text-xl font-medium sm:text-2xl'>
             This page is password protected
           </h1>
+
           <form onSubmit={handleSubmit}>
             <label htmlFor='password' hidden>
               Enter password
@@ -88,6 +89,7 @@ export default function Site() {
               )}
             </button>
           </form>
+          <p className='!mt-7 text-sm text-gray-700'>{router.query?.cap}</p>
         </div>
         <NextLink href='/'>
           <div className='relative block mt-40 text-center cursor-pointer hover:underline bottom-4'>

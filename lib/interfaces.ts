@@ -47,6 +47,7 @@ export interface HarperDBRecordWithoutDefaults {
   site_name: string;
   user_id: string;
   password_hash: string;
+  cap: string;
 }
 
 export interface HarperDBRecord extends HarperDBRecordWithoutDefaults {
@@ -61,6 +62,7 @@ export interface GeneralSiteSettingsFormValues {
   expiration_days?: number;
   password?: string;
   site_id?: string;
+  cap: string;
 }
 export interface AdvancedSiteSettingsFormValues {
   is_login_blocked: boolean;

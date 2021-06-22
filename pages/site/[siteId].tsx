@@ -150,13 +150,22 @@ export default withPageAuthRequired(function Site({ user }) {
                   for more detailed usage
                 </Text>
                 <Text className='mt-10 font-bold !text-blue-500 underline'>
-                  HTML
+                  Vanilla HTML, JS, CSS
                 </Text>
                 <Snippet
                   symbol='J͟s͟'
-                  // symbol='𝗝𝗦'
                   type='lite'
-                  text={`<script src='https://staticshield.vercel.app/script.js data-site-id=${data?.id}'></script>  <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
+                  text={`<script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' data-cap='${data?.cap}'></script>  <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
+                  width='70%'
+                  className='my-5'
+                />
+                <Text className='mt-10 font-bold !text-blue-500 underline'>
+                  Svelte
+                </Text>
+                <Snippet
+                  symbol='J͟s͟'
+                  type='lite'
+                  text={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='https://staticshield.vercel.app/script.js'></script>  <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript> </svelte:head>`}
                   width='70%'
                   className='my-5'
                 />
@@ -166,7 +175,7 @@ export default withPageAuthRequired(function Site({ user }) {
                 <Snippet
                   symbol='J͟s͟'
                   type='lite'
-                  text={`<Script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' strategy='beforeInteractive'></Script> <noscript> <meta httpEquiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
+                  text={`<Script src='https://staticshield.vercel.app/script.js' data-cap='${data?.cap}' data-site-id='${data?.id}' strategy='beforeInteractive'></Script> <noscript> <meta httpEquiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
                   width='70%'
                   className='my-5'
                 />

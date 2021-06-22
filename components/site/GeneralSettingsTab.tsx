@@ -33,6 +33,7 @@ export default function GeneralSettingsTab({ data }) {
     | 'site_desc'
     | 'expiration_days'
     | 'password'
+    | 'cap'
     | null;
 
   let editedInput: Fields;
@@ -48,6 +49,7 @@ export default function GeneralSettingsTab({ data }) {
     password: z.string().nonempty().min(8).max(50),
     site_desc: z.string(),
     expiration_days: z.number().int().min(1).max(365),
+    cap: z.string().max(48).optional(),
   });
 
   const {
@@ -61,6 +63,7 @@ export default function GeneralSettingsTab({ data }) {
       site_desc: siteData.site_desc,
       expiration_days: siteData.max_login_duration,
       password: 'A-str0ng-p@55w0rd',
+      cap: siteData.cap,
     },
   });
 
@@ -160,6 +163,40 @@ export default function GeneralSettingsTab({ data }) {
           </div>
         </Card.Footer>
       </Card>
+      {/* ------------------------------------------------------------------ */}
+      <Card className='!mt-10'>
+        <Text className='text-xl font-bold'>Caption</Text>
+        <Text p>A caption to be displayed in login page</Text>
+        <Input
+          placeholder='Sign in to view employee details'
+          width='70%'
+          clearable
+          {...register('cap')}
+        />
+        {errors.cap &&
+          showErrorMessage('Caption should be 48 characters at most')}
+        <Card.Footer className='!bg-warmgray-50'>
+          <div className='flex items-center justify-between w-full'>
+            <div>
+              <Text>Please use 48 characters at maximum</Text>
+            </div>
+            <div>
+              <Button
+                type='secondary'
+                auto
+                size='small'
+                onClick={() => {
+                  setEditedInput('cap');
+                  handleSubmit(handleFormSubmit)();
+                  return;
+                }}>
+                Save
+              </Button>
+            </div>
+          </div>
+        </Card.Footer>
+      </Card>
+
       {/* ------------------------------------------------------------------ */}
       <Card className='!mt-10'>
         <Text className='text-xl font-bold'>Site URL</Text>

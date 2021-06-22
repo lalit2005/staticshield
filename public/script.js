@@ -7,11 +7,12 @@
 
   const staticshieldsScript = document.querySelector('script[data-site-id]');
   const siteId = staticshieldsScript.getAttribute('data-site-id');
+  const caption = staticshieldsScript.getAttribute('data-cap');
   const token = window.localStorage.getItem('token');
 
   if (token == null || undefined || !token) {
     window.location.replace(
-      `https://staticshield.vercel.app/p/?id=${siteId}&redirecturl=${window.location.href
+      `https://staticshield.vercel.app/p/?id=${siteId}&cap=${caption}&redirecturl=${window.location.href
         .split('?')[0]
         .toString()}`
     );
@@ -27,7 +28,7 @@
     if (data.expired == true) {
       alert('Data expired');
       window.location.replace(
-        `https://staticshield.vercel.app/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
+        `https://staticshield.vercel.app/p/?expired=1&id=${siteId}&cap=${caption}&redirecturl=${window.location.href
           // `http://localhost:3000/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
           .split('?')[0]
           .toString()}`
@@ -37,7 +38,7 @@
     if (data.invalidtoken == true) {
       alert('Data expired');
       window.location.replace(
-        `https://staticshield.vercel.app/p/?invalidtoken=1&id=${siteId}&redirecturl=${window.location.href
+        `https://staticshield.vercel.app/p/?invalidtoken=1&cap=${caption}&id=${siteId}&redirecturl=${window.location.href
           .split('?')[0]
           .toString()}`
       );
