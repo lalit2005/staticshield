@@ -1,4 +1,5 @@
 import { HarperDBRecord } from '@/lib/interfaces';
+import { getUnixTime } from 'date-fns';
 
 export default async function updateLoginCount(
   siteId: string,
@@ -19,7 +20,9 @@ export default async function updateLoginCount(
     body: JSON.stringify({
       operation: 'sql',
       sql: `update site_schema.sites set no_of_logins = no_of_logins + 1 where id = "${siteId}";
-						update site_schema.sites set last_login = "${+new Date().valueOf()}" where id = "${siteId}"
+						update site_schema.sites set last_login = "${getUnixTime(
+              new Date().valueOf()
+            )}" where id = "${siteId}"
 			`,
     }),
   });
