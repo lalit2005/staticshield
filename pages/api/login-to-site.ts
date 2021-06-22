@@ -23,7 +23,18 @@ const loginToSite = async (
     password_hash: passwordHash,
     is_login_blocked: isLoginBlocked,
     max_login_duration: maxLoginDuration,
+    max_logins: maxLogins,
+    no_of_logins: numberOfLogins,
   } = siteData[0];
+
+  if (+numberOfLogins >= +maxLogins) {
+    res.json({
+      message:
+        'This site exceeded the maximum number of logins given per month',
+      token: '',
+      success: false,
+    });
+  }
 
   const isPasswordCorrect = compareHashedPasswords(
     password.toString(),
