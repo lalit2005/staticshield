@@ -166,7 +166,7 @@ export default withPageAuthRequired(function Site({ user }) {
                 <Snippet
                   symbol='J͟s͟'
                   type='lite'
-                  text={`<Script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' strategy='beforeInteractive'></Script> <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
+                  text={`<Script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' strategy='beforeInteractive'></Script> <noscript> <meta httpEquiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
                   width='70%'
                   className='my-5'
                 />
