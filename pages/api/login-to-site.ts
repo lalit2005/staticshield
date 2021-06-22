@@ -3,6 +3,7 @@ import compareHashedPasswords from '@/lib/compareHashedPasswords';
 import getHashedPasswordFromSiteId from '@/utils/getHashedPasswordFromSiteId';
 import jwt from 'jsonwebtoken';
 import updateLoginCount from '@/utils/updateLoginCount';
+import updateUnsuccessfulLoginCount from '@/utils/updateUnsuccessfulLoginsCount';
 
 const loginToSite = async (
   req: NextApiRequest,
@@ -48,6 +49,7 @@ const loginToSite = async (
       token: '',
       message: 'The password you entered is incorrect',
     });
+    updateUnsuccessfulLoginCount(siteId, siteData[0]);
     return;
   }
   if (isLoginBlocked) {
