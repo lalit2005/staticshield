@@ -13,7 +13,7 @@ export default async function handleNewSite(siteDetails: NewSiteFormValues) {
     no_of_failed_logins: 1,
     password_hash: siteDetails.password,
     max_logins: 100,
-    last_login: getUnixTime(new Date()),
+    last_login: +new Date().valueOf(),
     is_login_blocked: false,
   };
 
