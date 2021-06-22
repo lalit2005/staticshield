@@ -180,7 +180,7 @@ export default withPageAuthRequired(function New({ user }) {
       </Page>
       <Modal {...bindings}>
         <Modal.Title>
-          <h3 className='!text-red-600 text-2xl -mb-10'>Warning</h3>
+          <h3 className='!text-red-600 text-2xl -mb-5'>Warning</h3>
         </Modal.Title>
         <Modal.Content>
           <p>{warningMessage}</p>

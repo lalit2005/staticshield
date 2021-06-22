@@ -149,11 +149,20 @@ export default withPageAuthRequired(function Site({ user }) {
                   </Link>{' '}
                   for more detailed usage
                 </Text>
+                <Text>HTML</Text>
                 <Snippet
                   symbol='J͟s͟'
                   // symbol='𝗝𝗦'
                   type='lite'
                   text={`<script src='https://staticshield.vercel.app/script.js data-site-id=${data?.id}'></script>`}
+                  width='70%'
+                  className='mt-10 mb-20'
+                />
+                <Text>Nextjs 11</Text>
+                <Snippet
+                  symbol='J͟s͟'
+                  type='lite'
+                  text={`<Script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' strategy='beforeInteractive'></Script>`}
                   width='70%'
                   className='mt-10 mb-20'
                 />

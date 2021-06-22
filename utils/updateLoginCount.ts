@@ -18,8 +18,9 @@ export default async function updateLoginCount(
     },
     body: JSON.stringify({
       operation: 'sql',
-      // sql: `SELECT last_login, max_logins,  FROM site_schema.sites where id = "${siteId}"`,
-      sql: `update site_schema.sites set no_of_logins = no_of_logins + 1 where id = "${siteId}"`,
+      sql: `update site_schema.sites set no_of_logins = no_of_logins + 1 where id = "${siteId}";
+						update site_schema.sites set  where id = "${siteId}"
+			`,
     }),
   });
   if (res.ok) {

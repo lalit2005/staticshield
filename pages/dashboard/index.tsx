@@ -21,7 +21,6 @@ export default withPageAuthRequired(function Dashboard({ user }) {
   console.log(data);
   const sortedData = data ? sortSiteCardsByUpdatedDate(data) : data;
   const router = useRouter();
-  const LastLogin = getLastLogin(data);
   const totalSuccessfulLogins = getSuccessfulLogins(data);
   const totalUnSuccessfulLogins = getUnsuccessfulLogins(data);
 
@@ -95,7 +94,9 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             <Text h2 className='mb-10 font-extrabold'>
               Overall stats
             </Text>
-            <Tooltip text='Total successful logins of all sites' type='dark'>
+            <Tooltip
+              text='Sum total of successful logins of all sites'
+              type='dark'>
               <Card type='success' className='!mx-2'>
                 <Text h4>Successful logins</Text>
                 <Text h3>{totalSuccessfulLogins || '00'}</Text>
@@ -103,7 +104,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             </Tooltip>
             <div>
               <Tooltip
-                text='Total Unsuccessful logins of all sites'
+                text='Sum total of unsuccessful logins of all sites'
                 type='dark'>
                 <Card type='warning' className='!mx-2 !my-4'>
                   <Text h4>Unsuccessful logins</Text>
@@ -111,15 +112,17 @@ export default withPageAuthRequired(function Dashboard({ user }) {
                 </Card>
               </Tooltip>
             </div>
-            <Tooltip
-              type='dark'
-              className='!mx-2'
-              text={getLastLogin(data, true).toLocaleString()}>
-              <Card type='secondary'>
-                <Text h4>Last login</Text>
-                <Text h3>{LastLogin || 'Loading…'}</Text>
-              </Card>
-            </Tooltip>
+            {data && data?.length > 0 && (
+              <Tooltip
+                type='dark'
+                className='!mx-2'
+                text={getLastLogin(data, true).toLocaleString()}>
+                <Card type='secondary'>
+                  <Text h4>Last login</Text>
+                  <Text h3>{getLastLogin(data, false) || 'Loading…'}</Text>
+                </Card>
+              </Tooltip>
+            )}
           </div>
         </div>
         <div className='fixed top-0 right-0 hidden w-1/3 h-screen px-16 border-l lg:block border-warmgray-200 bg-warmgray-50'>
@@ -136,18 +139,20 @@ export default withPageAuthRequired(function Dashboard({ user }) {
                 <Text h2>{totalUnSuccessfulLogins || '00'}</Text>
               </Card>
             </Tooltip>
-            <Tooltip
-              type='dark'
-              text={getLastLogin(data, true).toLocaleString()}>
-              <Card
-                width='300p'
-                className='!mx-5 !my-5'
-                type='secondary'
-                shadow>
-                <Text h5>Last Login</Text>
-                <Text h2>{LastLogin || 'Loading…'}</Text>
-              </Card>
-            </Tooltip>
+            {data && data?.length > 0 && (
+              <Tooltip
+                type='dark'
+                text={getLastLogin(data, true).toLocaleString()}>
+                <Card
+                  width='300p'
+                  className='!mx-5 !my-5'
+                  type='secondary'
+                  shadow>
+                  <Text h5>Last Login</Text>
+                  <Text h2>{getLastLogin(data, false) || 'Loading…'}</Text>
+                </Card>
+              </Tooltip>
+            )}
           </Row>
         </div>
       </div>
