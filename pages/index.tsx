@@ -1,4 +1,7 @@
 import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
+import { useUser } from '@auth0/nextjs-auth0';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import FeatureCard from '@/components/FeatureCard';
@@ -7,6 +10,17 @@ import Image from 'next/image';
 import Logo from '../public/staticshield.png';
 
 export default function Home() {
+  const { user, error, isLoading } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    router.prefetch('/dashboard');
+  }, [router]);
+
+  if (user) {
+    router.push('/dashboard');
+  }
+
   return (
     <div className='text-center text-gray-900 bg-gray-50'>
       <div className='block'>

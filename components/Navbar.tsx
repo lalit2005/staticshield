@@ -9,19 +9,7 @@ import { Menu, X } from '@geist-ui/react-icons';
 import Logo from '../public/staticshield.png';
 
 export default function Navbar() {
-  const { user, error, isLoading } = useUser();
-  const router = useRouter();
-
   const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    router.prefetch('/dashboard');
-  }, [router]);
-
-  if (user) {
-    router.push('/dashboard');
-  }
-
   const menuContent = () => {
     return (
       <div className='inline-block'>
