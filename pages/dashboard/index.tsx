@@ -15,6 +15,7 @@ import getSuccessfulLogins from '@/lib/getSuccessfulLogins';
 import getUnsuccessfulLogins from '@/lib/getUnsuccessfulLogins';
 import EmptyImage from '../../public/empty.png';
 import Image from 'next/image';
+import { formatDistanceToNow, fromUnixTime } from 'date-fns';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
@@ -116,10 +117,14 @@ export default withPageAuthRequired(function Dashboard({ user }) {
               <Tooltip
                 type='dark'
                 className='!mx-2'
-                text={getLastLogin(data, true).toLocaleString()}>
+                text={fromUnixTime(getLastLogin(data)).toLocaleString()}>
                 <Card type='secondary'>
                   <Text h4>Last login</Text>
-                  <Text h3>{getLastLogin(data, false) || 'Loading…'}</Text>
+                  <Text h3>
+                    {formatDistanceToNow(getLastLogin(data), {
+                      addSuffix: true,
+                    }) || 'Loading…'}
+                  </Text>
                 </Card>
               </Tooltip>
             )}
@@ -142,14 +147,18 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             {data && data?.length > 0 && (
               <Tooltip
                 type='dark'
-                text={getLastLogin(data, true).toLocaleString()}>
+                text={fromUnixTime(getLastLogin(data)).toLocaleString()}>
                 <Card
                   width='300p'
                   className='!mx-5 !my-5'
                   type='secondary'
                   shadow>
                   <Text h5>Last Login</Text>
-                  <Text h2>{getLastLogin(data, false) || 'Loading…'}</Text>
+                  <Text h2>
+                    {formatDistanceToNow(getLastLogin(data), {
+                      addSuffix: true,
+                    }) || 'Loading…'}
+                  </Text>
                 </Card>
               </Tooltip>
             )}
