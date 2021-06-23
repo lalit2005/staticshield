@@ -43,5 +43,11 @@
           .toString()}`
       );
     }
+    if (data.invalidtoken == false && data.expired == false) {
+      let asd = document
+        .querySelector('.staticshield-div')
+        .classList.toggle('staticshield-div');
+      console.log(asd);
+    }
   }
 })();
