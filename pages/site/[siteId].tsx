@@ -152,7 +152,7 @@ export default withPageAuthRequired(function Site({ user }) {
                   </Link>{' '}
                   for more detailed usage
                 </Text>
-                <Text className='mt-10 font-bold !text-blue-500 underline'>
+                <Text className='mt-10 font-bold !text-blue-500'>
                   Vanilla HTML, JS, CSS
                 </Text>
                 <Snippet
@@ -162,9 +162,7 @@ export default withPageAuthRequired(function Site({ user }) {
                   width='70%'
                   className='my-5'
                 />
-                <Text className='mt-10 font-bold !text-blue-500 underline'>
-                  Svelte
-                </Text>
+                <Text className='mt-10 font-bold !text-blue-500'>Svelte</Text>
                 <Snippet
                   symbol='J͟s͟'
                   type='lite'
@@ -172,7 +170,7 @@ export default withPageAuthRequired(function Site({ user }) {
                   width='70%'
                   className='my-5'
                 />
-                <Text className='mt-10 font-bold !text-blue-500 underline'>
+                <Text className='mt-10 font-bold !text-blue-500'>
                   Nextjs 11
                 </Text>
                 <Snippet

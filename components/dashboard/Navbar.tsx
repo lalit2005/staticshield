@@ -49,6 +49,7 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
       })
       .then(() => {
         setLoading(false);
+        setFeedback('');
         setToast({
           text: 'Your feedback was successfully delivered',
           type: 'success',
@@ -85,7 +86,7 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
         </Popover.Item>
         <Popover.Item line />
         <Popover.Item>
-          <Link block href='#' className='font-bold'>
+          <Link block href='/support' className='font-bold'>
             <p className='-my-1 !font-bold'>
               <Smile className='inline-block w-5 h-5 mr-3' />
               Support
@@ -95,7 +96,7 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
         <Popover.Item line />
 
         <Popover.Item>
-          <Link block href='#' className='font-bold'>
+          <Link block href='/docs' className='font-bold'>
             <p className='-my-1 !font-bold'>
               <Book className='inline-block w-5 h-5 mr-3' />
               Docs
