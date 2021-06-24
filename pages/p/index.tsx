@@ -39,27 +39,30 @@ export default function Site() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const res = await axios.post('/api/login-to-site', {
-      password: password,
-      siteId: id,
-    });
-    if (res.data) {
-      setIsLoading(false);
-    }
-    console.log(res.data);
-    if (res.data.success) {
-      const redirectUrl = new URL(router.query.redirecturl.toString());
-      redirectUrl.searchParams.set('token', res.data.token);
-      router.replace(redirectUrl);
-    }
-    if (!res.data.success) {
-      setToast({ text: res.data.message, type: 'error' });
-    }
-    if (res.status == 429) {
+    try {
+      const res = await axios.post('/api/login-to-site', {
+        password: password,
+        siteId: id,
+      });
+      if (res.data) {
+        setIsLoading(false);
+      }
+      console.log(res.data);
+      if (res.data.success) {
+        const redirectUrl = new URL(router.query.redirecturl.toString());
+        redirectUrl.searchParams.set('token', res.data.token);
+        router.replace(redirectUrl);
+      }
+      if (!res.data.success) {
+        setToast({ text: res.data.message, type: 'error' });
+      }
+    } catch (error) {
       setToast({
         text: 'You have exceeded the rate limit. Try again later',
         type: 'error',
+        delay: 5000,
       });
+      setIsLoading(false);
     }
   };
 
