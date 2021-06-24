@@ -6,6 +6,7 @@ import { UserProvider } from '@auth0/nextjs-auth0';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 import Script from 'next/script';
+import ProgressBar from 'nextjs-progressbar';
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps, router }) {
             opacity: 1,
           },
         }}>
+        <ProgressBar height={3} color='#0170F3' />
         <GeistProvider>
           <CssBaseline />
           <Component {...pageProps} />
