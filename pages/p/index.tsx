@@ -55,6 +55,12 @@ export default function Site() {
     if (!res.data.success) {
       setToast({ text: res.data.message, type: 'error' });
     }
+    if (res.status == 429) {
+      setToast({
+        text: 'You have exceeded the rate limit. Try again later',
+        type: 'error',
+      });
+    }
   };
 
   return (
