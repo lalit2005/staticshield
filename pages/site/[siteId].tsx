@@ -43,8 +43,9 @@ export default withPageAuthRequired(function Site({ user }) {
   console.log(JSON.stringify(data));
 
   const lastLoginTime = data?.last_login || getUnixTime(new Date()); //! new Date is to avoid error during build time
-  const date = fromUnixTime(+lastLoginTime);
-  const prettifiedTime = formatDistanceToNow(date, { addSuffix: true });
+  const prettifiedTime = formatDistanceToNow(+lastLoginTime, {
+    addSuffix: true,
+  });
 
   return (
     <div>
@@ -114,7 +115,9 @@ export default withPageAuthRequired(function Site({ user }) {
               <Text h5>Unsuccessful Logins</Text>
               <Text h2>{data?.no_of_failed_logins}</Text>
             </Card>
-            <Tooltip text={date.toLocaleString()} type='dark'>
+            <Tooltip
+              text={new Date(lastLoginTime).toLocaleString()}
+              type='dark'>
               <Card
                 width='300p'
                 className='!mx-5 !my-5'

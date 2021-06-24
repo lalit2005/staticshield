@@ -79,8 +79,9 @@ const loginToSite = async (
       expiresIn: maxLoginDuration + 'd',
     });
 
-    const asd = await updateLoginCount(siteId, siteData[0]);
-    console.log(asd);
+    const updateResponse = await updateLoginCount(siteId, siteData[0]);
+    console.log('from login-to-site');
+    console.log(updateResponse);
     res.json({ success: true, token: jwtToken, message: 'success' });
   } catch (error) {
     res.status(429).json({

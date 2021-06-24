@@ -8,8 +8,6 @@ export default async function updateLoginCount(
   if (data.no_of_logins >= data.max_logins) {
     return { success: false };
   }
-  console.log(data);
-  console.log(data.max_logins, data.max_logins);
 
   const res = await fetch(process.env.HARPERDB_URL, {
     method: 'POST',
@@ -19,9 +17,7 @@ export default async function updateLoginCount(
     },
     body: JSON.stringify({
       operation: 'sql',
-      sql: `update site_schema.sites set no_of_logins = no_of_logins + 1 where id = "${siteId}";
-						update site_schema.sites set last_login = "${new Date().valueOf()}" where id = "${siteId}"
-			`,
+      sql: `update site_schema.sites set no_of_logins = no_of_logins + 1, last_login = CURRENT_TIMESTAMP where id = "${siteId}"; `,
     }),
   });
   if (res.ok) {

@@ -15,7 +15,7 @@ import getSuccessfulLogins from '@/lib/getSuccessfulLogins';
 import getUnsuccessfulLogins from '@/lib/getUnsuccessfulLogins';
 import EmptyImage from '../../public/empty.png';
 import Image from 'next/image';
-import { formatDistanceToNow, fromUnixTime } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
@@ -117,13 +117,16 @@ export default withPageAuthRequired(function Dashboard({ user }) {
               <Tooltip
                 type='dark'
                 className='!mx-2'
-                text={fromUnixTime(getLastLogin(data)).toLocaleString()}>
+                text={new Date(getLastLogin(data)).toLocaleString()}>
                 <Card type='secondary'>
                   <Text h4>Last login</Text>
                   <Text h3>
-                    {formatDistanceToNow(getLastLogin(data), {
-                      addSuffix: true,
-                    }) || 'Loading…'}
+                    {formatDistanceToNow(
+                      +new Date(getLastLogin(data)).valueOf(),
+                      {
+                        addSuffix: true,
+                      }
+                    ) || 'Loading…'}
                   </Text>
                 </Card>
               </Tooltip>
@@ -147,7 +150,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             {data && data?.length > 0 && (
               <Tooltip
                 type='dark'
-                text={fromUnixTime(getLastLogin(data)).toLocaleString()}>
+                text={new Date(getLastLogin(data)).toLocaleString()}>
                 <Card
                   width='300p'
                   className='!mx-5 !my-5'
@@ -155,9 +158,12 @@ export default withPageAuthRequired(function Dashboard({ user }) {
                   shadow>
                   <Text h5>Last Login</Text>
                   <Text h2>
-                    {formatDistanceToNow(getLastLogin(data), {
-                      addSuffix: true,
-                    }) || 'Loading…'}
+                    {formatDistanceToNow(
+                      +new Date(getLastLogin(data)).valueOf(),
+                      {
+                        addSuffix: true,
+                      }
+                    ) || 'Loading…'}
                   </Text>
                 </Card>
               </Tooltip>
