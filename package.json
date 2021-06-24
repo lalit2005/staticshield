@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "minify": "npx uglify-js packages/script.js -m -c -o public/script.js",
     "format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,json,css,md,html}\"",
     "lint": "next lint"
   },
@@ -43,10 +44,11 @@
     "@types/dumb-passwords": "^0.2.0",
     "@types/human-date": "^1.4.0",
     "@types/jsonwebtoken": "^8.5.2",
+    "@types/lru-cache": "^5.1.0",
     "@types/react": "^17.0.11",
     "eslint": "^7.29.0",
     "eslint-config-next": "^11.0.0",
     "typescript": "^4.3.4",
-    "@types/lru-cache": "^5.1.0"
+    "uglify-js": "^3.13.9"
   }
 }
