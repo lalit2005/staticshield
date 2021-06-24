@@ -26,6 +26,7 @@
     "framer-motion": "^4.1.17",
     "human-date": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
+    "lru-cache": "^6.0.0",
     "next": "^11.0.0",
     "postcss": "^8.3.5",
     "react": "^17.0.2",
@@ -45,6 +46,7 @@
     "@types/react": "^17.0.11",
     "eslint": "^7.29.0",
     "eslint-config-next": "^11.0.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.4",
+    "@types/lru-cache": "^5.1.0"
   }
 }
