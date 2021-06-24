@@ -29,10 +29,17 @@ module.exports = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/docs/:slug*',
+        destination: 'https://staticshield-docs.vercel.app/:slug*',
+      },
+    ];
+  },
   async headers() {
     return [
       {
-        // matching all API routes
         source: '/api/verify-token',
         headers: [
           { key: 'Access-Control-Allow-Credentials', value: 'true' },
