@@ -2,13 +2,13 @@
   const params = new URLSearchParams(window.location.search);
   const tokenFromUrl = params.get('token');
   if (tokenFromUrl) {
-    window.localStorage.setItem('token', tokenFromUrl);
+    window.localStorage.setItem('staticshield-token', tokenFromUrl);
   }
 
   const staticshieldsScript = document.querySelector('script[data-site-id]');
   const siteId = staticshieldsScript.getAttribute('data-site-id');
   const caption = staticshieldsScript.getAttribute('data-cap');
-  const token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('staticshield-token');
 
   if (token == null || undefined || !token) {
     window.location.replace(
@@ -51,3 +51,9 @@
     }
   }
 })();
+
+window.logout = (redirecturl) => {
+  window.localStorage.removeItem('staticshield-token');
+  window.history.replaceState(null, null, redirecturl || '/');
+  window.location.reload();
+};
