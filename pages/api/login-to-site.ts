@@ -29,6 +29,7 @@ const loginToSite = async (
       });
       return;
     }
+
     const {
       password_hash: passwordHash,
       is_login_blocked: isLoginBlocked,
@@ -39,17 +40,23 @@ const loginToSite = async (
     } = siteData[0];
 
     if (
-      req.body.siteUrl !== siteUrl ||
-      'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
-      !req.body.siteUrl ||
-      !siteUrl
+      !new URL(req.body.siteUrl).origin.includes(
+        'http://localhost' || 'http://127.0.0.1:5500'
+      )
     ) {
-      res.json({
-        success: false,
-        token: '',
-        message: 'Invalid site',
-      });
-      return;
+      if (
+        req.body.siteUrl !== siteUrl ||
+        'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
+        !req.body.siteUrl ||
+        !siteUrl
+      ) {
+        res.json({
+          success: false,
+          token: '',
+          message: 'Invalid site',
+        });
+        return;
+      }
     }
 
     if (+numberOfLogins >= +maxLogins) {
