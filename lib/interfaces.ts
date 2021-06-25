@@ -16,6 +16,7 @@ export interface SiteCardProps {
   site_name: string;
   site_url: string;
   site_desc: string;
+  is_login_blocked: boolean;
 }
 
 interface SiteLoginDetails {
