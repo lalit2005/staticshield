@@ -49,6 +49,7 @@ const loginToSite = async (
         token: '',
         message: 'Invalid site',
       });
+      return;
     }
 
     if (+numberOfLogins >= +maxLogins) {
