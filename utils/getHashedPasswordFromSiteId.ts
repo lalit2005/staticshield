@@ -7,7 +7,7 @@ const getHashedPasswordFromSiteId = async (siteId: string) => {
     },
     body: JSON.stringify({
       operation: 'sql',
-      sql: `SELECT password_hash, max_login_duration, is_login_blocked, max_logins, no_of_logins FROM site_schema.sites where id = "${siteId}"`,
+      sql: `SELECT password_hash, max_login_duration, is_login_blocked, max_logins, no_of_logins, site_url FROM site_schema.sites where id = "${siteId}"`,
     }),
   });
 

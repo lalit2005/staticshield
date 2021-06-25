@@ -35,7 +35,21 @@ const loginToSite = async (
       max_login_duration: maxLoginDuration,
       max_logins: maxLogins,
       no_of_logins: numberOfLogins,
+      site_url: siteUrl,
     } = siteData[0];
+
+    if (
+      req.body.siteUrl !== siteUrl ||
+      'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
+      !req.body.siteUrl ||
+      !siteUrl
+    ) {
+      res.json({
+        success: false,
+        token: '',
+        message: 'Invalid site',
+      });
+    }
 
     if (+numberOfLogins >= +maxLogins) {
       res.json({

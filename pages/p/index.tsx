@@ -43,6 +43,7 @@ export default function Site() {
       const res = await axios.post('/api/login-to-site', {
         password: password,
         siteId: id,
+        siteUrl: router.query.redirecturl,
       });
       if (res.data) {
         setIsLoading(false);
