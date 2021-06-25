@@ -1,3 +1,4 @@
+import { HarperDBRecord } from '@/lib/interfaces';
 import {
   getSession,
   withApiAuthRequired,
@@ -8,8 +9,10 @@ import fetchSites from '../../utils/fetchSites';
 
 async function fetchSitesApi(req: NextApiRequest, res: NextApiResponse) {
   const { user }: { user: UserProfile } = getSession(req, res);
-  const data = await fetchSites(user.sub);
-
+  const data: HarperDBRecord[] = await fetchSites(user.sub);
+  for (let i = 0; i < data.length; i++) {
+    delete data[i]['password_hash'];
+  }
   res.json(data);
 }
 
