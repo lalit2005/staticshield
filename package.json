@@ -11,7 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.4.0",
+    "@auth0/nextjs-auth0": "^1.4.2",
     "@fontsource/ibm-plex-mono": "^4.4.5",
     "@fontsource/inter": "^4.4.5",
     "@geist-ui/react": "^2.1.5",
@@ -28,7 +28,7 @@
     "human-date": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
     "lru-cache": "^6.0.0",
-    "next": "^11.0.0",
+    "next": "^11.0.1",
     "nextjs-progressbar": "^0.0.11",
     "postcss": "^8.3.5",
     "react": "^17.0.2",
@@ -36,7 +36,7 @@
     "react-hook-form": "^7.9.0",
     "react-loading-skeleton": "^2.2.0",
     "swr": "^0.5.6",
-    "tailwindcss": "^2.2.2",
+    "tailwindcss": "^2.2.4",
     "zod": "^3.2.0"
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "@types/lru-cache": "^5.1.0",
     "@types/react": "^17.0.11",
     "eslint": "^7.29.0",
-    "eslint-config-next": "^11.0.0",
+    "eslint-config-next": "^11.0.1",
     "typescript": "^4.3.4",
     "uglify-js": "^3.13.9"
   }
