@@ -23,6 +23,7 @@ import { useEffect } from 'react';
 import useSites from '@/lib/useSites';
 import { HarperDBRecord } from '@/lib/interfaces';
 import SiteHead from '@/components/site/SiteHead';
+import CodeSnippet from '@/components/site/CodeSnippet';
 
 export default withPageAuthRequired(function Site({ user }) {
   const router = useRouter();
@@ -103,9 +104,9 @@ export default withPageAuthRequired(function Site({ user }) {
             {data?.site_desc || 'No description ¯\\_(ツ)_/¯'}
           </Text>
           <Divider volume={2} />
-          <Text h2 className='my-10'>
+          <h2 className='my-10 text-2xl font-bold sm:!text-3xl md:text-5xl'>
             Some stats
-          </Text>
+          </h2>
           <Row className='flex-wrap !-ml-5 justify-evenly -mt-5 select-none'>
             <Card width='300p' className='!mx-5 !my-5' type='success' shadow>
               <Text h5>Successful Logins</Text>
@@ -130,9 +131,9 @@ export default withPageAuthRequired(function Site({ user }) {
           </Row>
           <Divider volume={2} />
           <div>
-            <Text h2 className='my-10'>
+            <h2 className='my-10 text-2xl font-bold sm:!text-3xl md:text-5xl'>
               Site Settings
-            </Text>
+            </h2>
             <Tabs initialValue='1'>
               <Tabs.Item
                 value='1'
@@ -145,40 +146,65 @@ export default withPageAuthRequired(function Site({ user }) {
                 <Text h3 className='mt-10'>
                   Code snippet
                 </Text>
-                <Text>
+                <Text className='!mb-10'>
                   This is the code snippet you should add to your website.{' '}
-                  <Link color icon>
+                  <Link color icon href='/docs'>
                     Visit docs
                   </Link>{' '}
                   for more detailed usage
                 </Text>
-                <Text className='mt-10 font-bold !text-blue-500'>
-                  Vanilla HTML, JS, CSS
-                </Text>
-                <Snippet
-                  symbol='J͟s͟'
-                  type='lite'
-                  text={`<script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' data-cap='${data?.cap}'></script>  <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
-                  width='70%'
-                  className='my-5'
+                <CodeSnippet
+                  title='Vanilla HTML, JS, CSS'
+                  code={`<script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <style>.staticshield-div { display: none }</style>  <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
+                  link='#'
+                  caption='Add this snippet to any page in the head tag to password protect it.'
                 />
-                <Text className='mt-10 font-bold !text-blue-500'>Svelte</Text>
-                <Snippet
-                  symbol='J͟s͟'
-                  type='lite'
-                  text={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='https://staticshield.vercel.app/script.js'></script>  <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript> </svelte:head>`}
-                  width='70%'
-                  className='my-5'
+                <CodeSnippet
+                  title='Nextjs 11'
+                  code={`<Script src='https://staticshield.vercel.app/script.js' data-cap='${data?.cap}' data-site-id='${data?.id}' strategy='beforeInteractive'></Script><style jsx>{\`.staticshield-div { display: none }\`}</style><noscript><meta httpEquiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
+                  link='/docs/with/nextjs-11'
+                  caption="Do not forget to import Script from 'next/script'"
                 />
-                <Text className='mt-10 font-bold !text-blue-500'>
-                  Nextjs 11
-                </Text>
-                <Snippet
-                  symbol='J͟s͟'
-                  type='lite'
-                  text={`<Script src='https://staticshield.vercel.app/script.js' data-cap='${data?.cap}' data-site-id='${data?.id}' strategy='beforeInteractive'></Script> <noscript> <meta httpEquiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
-                  width='70%'
-                  className='my-5'
+                <CodeSnippet
+                  title='Svelte'
+                  code={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='https://staticshield.vercel.app/script.js'></script> <style>.staticshield-div { display: none }</style> <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript> </svelte:head>`}
+                  link='#'
+                  caption='Add this to any svelte page to password protect it.'
+                />
+                <CodeSnippet
+                  title='SvelteKit'
+                  code={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='https://staticshield.vercel.app/script.js'></script> <style>.staticshield-div { display: none }</style> <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript> </svelte:head>`}
+                  link='/docs/with/nextjs-11'
+                  caption='Add the snippet in any page to password protect it.s'
+                />
+                <CodeSnippet
+                  title='VueJS'
+                  code={`<script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <style>.staticshield-div { display: none }</style>  <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
+                  link='/docs/with/nextjs-11'
+                  caption='Add the snippet in any page to password protect it.s'
+                />
+                <CodeSnippet
+                  title='NuxtJS'
+                  code={`<script>
+export default {
+  head() {
+    return {
+      title: 'StaticShield + Nuxtjs',
+      script: [
+        {
+          hid: 'staticshield',
+          src: 'https://staticshield.vercel.app/script.js',
+          'data-site-id': 'fbe1e7da-d79b-4265-8209-a14f099d838e',
+          'data-cap': 'The password is 123test123',
+        },
+      ],
+    }
+  },
+}
+</script>
+`}
+                  link='/docs/with/nextjs-11'
+                  caption='Add the snippet in `index.html` to protect the whole Vue app. To password protect a single site, please visit docs'
                 />
               </Tabs.Item>
               <div>
@@ -219,11 +245,6 @@ export default withPageAuthRequired(function Site({ user }) {
           </div>
         </Page>
       </div>
-      <style jsx>{`
-        pre {
-          font-family: cursive !important;
-        }
-      `}</style>
     </div>
   );
 });
