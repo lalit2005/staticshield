@@ -49,7 +49,7 @@ export default function GeneralSettingsTab({ data }) {
     password: z.string().nonempty().min(8).max(50),
     site_desc: z.string(),
     expiration_days: z.number().int().min(1).max(365),
-    cap: z.string().max(48).optional(),
+    cap: z.string().max(48),
   });
 
   const {
@@ -171,7 +171,7 @@ export default function GeneralSettingsTab({ data }) {
           placeholder='Sign in to view employee details'
           width='70%'
           clearable
-          {...register('cap')}
+          {...register('cap', { required: false })}
         />
         {errors.cap &&
           showErrorMessage('Caption should be 48 characters at most')}

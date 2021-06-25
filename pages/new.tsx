@@ -51,7 +51,6 @@ export default withPageAuthRequired(function New({ user }) {
   } = useForm<NewSiteFormValues>();
 
   const onSubmit = async (data: NewSiteFormValues) => {
-    console.log(data);
     if (data.site_url.includes(' ') || data.site_url.includes('	')) {
       setToast({
         text: "Website's URL is invalid, it should not contain spaces or tabs",
@@ -131,6 +130,20 @@ export default withPageAuthRequired(function New({ user }) {
             />
             {errors.site_desc &&
               showErrorMessage('Please enter a valid description')}
+            <Divider />
+            <Input
+              placeholder="Acme's employee register"
+              width='80%'
+              {...register('cap', {
+                min: 2,
+                max: 28,
+              })}>
+              A caption to be displayed on login page (optional)
+            </Input>
+            {errors.cap &&
+              showErrorMessage(
+                'Site name should be at least 2 characters long and 48 characters at most'
+              )}
             <Divider />
             <Input.Password
               placeholder='••••••••••'

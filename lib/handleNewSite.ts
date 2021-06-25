@@ -1,9 +1,6 @@
-import { getUnixTime } from 'date-fns';
 import { NewSiteFormValues } from './interfaces';
 
 export default async function handleNewSite(siteDetails: NewSiteFormValues) {
-  console.log(siteDetails);
-
   const body = {
     site_name: siteDetails.site_name,
     site_desc: siteDetails.site_desc,
@@ -15,6 +12,7 @@ export default async function handleNewSite(siteDetails: NewSiteFormValues) {
     max_logins: 100,
     last_login: +new Date().valueOf(),
     is_login_blocked: false,
+    cap: siteDetails.cap,
   };
 
   const response = await fetch('/api/add-new-site', {

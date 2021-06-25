@@ -33,6 +33,7 @@ export interface NewSiteFormValues {
   site_desc: string;
   password: string;
   expiration_days: number;
+  cap: string;
 }
 
 export interface HarperDBRecordWithoutDefaults {
