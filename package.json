@@ -11,7 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.4.0",
+    "@auth0/nextjs-auth0": "^1.4.2",
     "@fontsource/ibm-plex-mono": "^4.4.5",
     "@fontsource/inter": "^4.4.5",
     "@geist-ui/react": "^2.1.5",
