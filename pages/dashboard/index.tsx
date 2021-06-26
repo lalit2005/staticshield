@@ -70,6 +70,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
                     id={site.id}
                     key={site.id}
                     site_url={site.site_url}
+                    is_login_blocked={site.is_login_blocked}
                   />
                 </div>
               );

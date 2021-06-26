@@ -8,7 +8,8 @@
     "start": "next start",
     "minify": "npx uglify-js packages/script.js -m -c -o public/script.js",
     "format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,json,css,md,html}\"",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-pwa-assets": "npx pwa-asset-generator ../staticshield.png -m ../manifest.json -d -q 100 -u -b \"rgba(255, 255, 255,)\" -"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.4.2",
@@ -29,6 +30,7 @@
     "jsonwebtoken": "^8.5.1",
     "lru-cache": "^6.0.0",
     "next": "^11.0.1",
+    "next-pwa": "^5.2.21",
     "nextjs-progressbar": "^0.0.11",
     "postcss": "^8.3.5",
     "react": "^17.0.2",
@@ -49,6 +51,7 @@
     "@types/react": "^17.0.11",
     "eslint": "^7.29.0",
     "eslint-config-next": "^11.0.1",
+    "pwa-asset-generator": "^4.1.1",
     "typescript": "^4.3.4",
     "uglify-js": "^3.13.9"
   }

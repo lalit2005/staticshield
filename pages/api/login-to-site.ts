@@ -41,7 +41,7 @@ const loginToSite = async (
 
     if (
       !new URL(req.body.siteUrl).origin.includes(
-        'http://localhost' || 'http://127.0.0.1:5500'
+        'http://localhost' || 'http://127.0.0.1'
       )
     ) {
       if (

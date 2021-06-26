@@ -1,9 +1,15 @@
-import { Card, Text } from '@geist-ui/react';
+import { Card, Text, Dot } from '@geist-ui/react';
 import { SiteCardProps } from '@/lib/interfaces';
 import NextLink from 'next/link';
 
 export default function SiteCard(props: SiteCardProps) {
-  const { site_desc, site_url, site_name, id: siteId } = props;
+  const {
+    site_desc,
+    site_url,
+    site_name,
+    id: siteId,
+    is_login_blocked: isLoginBlocked,
+  } = props;
 
   let shortenedSiteDesc: string;
   if (site_desc?.length > 100) {
@@ -19,6 +25,15 @@ export default function SiteCard(props: SiteCardProps) {
           hoverable
           className='min-h-[40px] lg:max-w-md max-w-2xl cursor-pointer'>
           <Text h3 className='-mb-1 font-bold'>
+            <Dot
+              type={isLoginBlocked ? 'error' : 'success'}
+              className='relative mx-2 bottom-1'
+              title={
+                isLoginBlocked
+                  ? `Logins to ${site_name} have been blocked`
+                  : `Logins to ${site_name} have been enabled`
+              }
+            />
             {site_name}
           </Text>
           <Text small type='secondary'>
