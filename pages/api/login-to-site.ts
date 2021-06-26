@@ -54,7 +54,8 @@ const loginToSite = async (
         // 'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
         // !req.body.siteUrl ||
         // !siteUrl
-        new URL(req.body.siteUrl).origin === new URL(siteUrl).origin
+        new URL(req.body.siteUrl).origin ===
+        new URL('https://' + siteUrl).origin
       ) {
         res.json({
           success: false,
