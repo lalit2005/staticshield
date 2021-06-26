@@ -30,6 +30,7 @@ const loginToSite = async (
       });
       return;
     }
+    console.log(siteData);
 
     const {
       password_hash: passwordHash,
