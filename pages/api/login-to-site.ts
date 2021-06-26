@@ -30,6 +30,7 @@ const loginToSite = async (
       });
       return;
     }
+    console.log('-----1-----');
     console.log(siteData);
 
     const {
@@ -40,6 +41,17 @@ const loginToSite = async (
       no_of_logins: numberOfLogins,
       site_url: siteUrl,
     } = siteData[0];
+
+    console.log('-----2-----');
+    console.log(
+      passwordHash,
+      isLoginBlocked,
+      maxLoginDuration,
+      maxLogins,
+      numberOfLogins,
+      siteUrl
+    );
+    console.log('-----2-----');
 
     console.log(new URL(siteUrl));
     console.log(new URL(req.body.siteUrl));
@@ -54,8 +66,7 @@ const loginToSite = async (
         // 'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
         // !req.body.siteUrl ||
         // !siteUrl
-        new URL(req.body.siteUrl).origin ===
-        new URL('https://' + siteUrl).origin
+        new URL(req.body.siteUrl).origin == new URL('https://' + siteUrl).origin
       ) {
         res.json({
           success: false,
