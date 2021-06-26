@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps, router }) {
       <Head>
         <link rel='preconnect' href='https://vitals.vercel-insights.com/' />
         <link rel='manifest' href='/manifest.json' />
-
+        <meta name='theme-color' content='#F8FAFC' />
         <>
           <link
             rel='icon'
