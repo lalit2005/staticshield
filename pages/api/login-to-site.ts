@@ -51,6 +51,8 @@ const loginToSite = async (
         // !siteUrl
         new URL(req.body.siteUrl).origin === new URL(siteUrl).origin
       ) {
+        console.log(new URL(siteUrl));
+        console.log(new URL(req.body.siteUrl));
         res.json({
           success: false,
           token: '',
