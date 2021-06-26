@@ -39,6 +39,9 @@ const loginToSite = async (
       site_url: siteUrl,
     } = siteData[0];
 
+    console.log(new URL(siteUrl));
+    console.log(new URL(req.body.siteUrl));
+
     if (
       !new URL(req.body.siteUrl).origin.includes(
         'http://localhost' || 'http://127.0.0.1'
@@ -51,8 +54,6 @@ const loginToSite = async (
         // !siteUrl
         new URL(req.body.siteUrl).origin === new URL(siteUrl).origin
       ) {
-        console.log(new URL(siteUrl));
-        console.log(new URL(req.body.siteUrl));
         res.json({
           success: false,
           token: '',
