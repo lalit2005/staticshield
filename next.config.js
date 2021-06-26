@@ -4,7 +4,16 @@
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
 
-module.exports = {
+// @ts-ignore
+const withPWA = require('next-pwa');
+const runtimeCaching = require('next-pwa/cache');
+
+// @ts-ignore
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+    runtimeCaching,
+  },
   async redirects() {
     return [
       {
@@ -57,4 +66,4 @@ module.exports = {
       },
     ];
   },
-};
+});
