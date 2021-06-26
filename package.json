@@ -9,7 +9,7 @@
     "minify": "npx uglify-js packages/script.js -m -c -o public/script.js",
     "format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,json,css,md,html}\"",
     "lint": "next lint",
-    "generate-pwa-assets": "cd ./public/icons/ && npx pwa-asset-generator ../staticshield.png -m ../manifest.json -d -q 100 -u -f -o false"
+    "generate-pwa-assets": "cd ./public/icons/ && npx pwa-asset-generator ../staticshield-rounded.png -m ../manifest.json -d -q 100 -u -f -o false"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.4.2",
