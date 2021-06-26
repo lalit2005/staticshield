@@ -45,10 +45,11 @@ const loginToSite = async (
       )
     ) {
       if (
-        req.body.siteUrl !== siteUrl ||
-        'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
-        !req.body.siteUrl ||
-        !siteUrl
+        // req.body.siteUrl !== siteUrl ||
+        // 'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
+        // !req.body.siteUrl ||
+        // !siteUrl
+        new URL(req.body.siteUrl).origin === new URL(siteUrl).origin
       ) {
         res.json({
           success: false,
@@ -95,6 +96,7 @@ const loginToSite = async (
 
     const payload = {
       loggedIn: true,
+      // siteUrl: siteUrl,
     };
 
     const jwtToken = jwt.sign(payload, process.env.JWT_TOKEN, {
@@ -102,8 +104,6 @@ const loginToSite = async (
     });
 
     const updateResponse = await updateLoginCount(siteId, siteData[0]);
-    console.log('from login-to-site');
-    console.log(updateResponse);
     res.json({ success: true, token: jwtToken, message: 'success' });
   } catch (error) {
     res.status(429).json({
