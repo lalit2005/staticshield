@@ -3,7 +3,7 @@
   "name": "StaticShield",
   "start_url": "/",
   "display": "fullscreen",
-  "theme_color": "#000000",
+  "theme_color": "#F8FAFC",
   "background_color": "#ffffff",
   "icons": [
     {
