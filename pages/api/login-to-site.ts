@@ -15,7 +15,6 @@ const loginToSite = async (
   req: NextApiRequest,
   res: NextApiResponse<{ success: boolean; token: string; message: string }>
 ) => {
-  console.log(new URL(req.body.siteUrl));
   try {
     await limiter.check(res, 5, 'CACHE_TOKEN'); // 5 requests per minute
 
@@ -30,9 +29,6 @@ const loginToSite = async (
       });
       return;
     }
-    console.log('-----1-----');
-    console.log(siteData);
-
     const {
       password_hash: passwordHash,
       is_login_blocked: isLoginBlocked,
@@ -42,40 +38,19 @@ const loginToSite = async (
       site_url: siteUrl,
     } = siteData[0];
 
-    console.log('-----2-----');
-    console.log(
-      passwordHash,
-      isLoginBlocked,
-      maxLoginDuration,
-      maxLogins,
-      numberOfLogins,
-      siteUrl
-    );
-    console.log('-----2-----');
-
-    console.log(new URL(siteUrl));
-    console.log(new URL(req.body.siteUrl));
-
-    // if (
-    //   !new URL(req.body.siteUrl).origin.includes(
-    //     'http://localhost' || 'http://127.0.0.1'
-    //   )
-    // ) {
-    //   if (
-    //     // req.body.siteUrl !== siteUrl ||
-    //     // 'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
-    //     // !req.body.siteUrl ||
-    //     // !siteUrl
-    //     new URL(req.body.siteUrl).origin == new URL('https://' + siteUrl).origin
-    //   ) {
-    //     res.json({
-    //       success: false,
-    //       token: '',
-    //       message: 'Invalid site',
-    //     });
-    //     return;
-    //   }
-    // }
+    if (
+      req.body.siteUrl !== siteUrl ||
+      'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
+      !req.body.siteUrl ||
+      !siteUrl
+    ) {
+      res.json({
+        success: false,
+        token: '',
+        message: 'Invalid site',
+      });
+      return;
+    }
 
     if (+numberOfLogins >= +maxLogins) {
       res.json({
@@ -113,7 +88,6 @@ const loginToSite = async (
 
     const payload = {
       loggedIn: true,
-      // siteUrl: siteUrl,
     };
 
     const jwtToken = jwt.sign(payload, process.env.JWT_TOKEN, {
@@ -121,6 +95,8 @@ const loginToSite = async (
     });
 
     const updateResponse = await updateLoginCount(siteId, siteData[0]);
+    console.log('from login-to-site');
+    console.log(updateResponse);
     res.json({ success: true, token: jwtToken, message: 'success' });
   } catch (error) {
     res.status(429).json({
