@@ -39,7 +39,11 @@ const loginToSite = async (
       site_url: siteUrl,
     } = siteData[0];
 
-    if (req.body.suteUrl !== 'https://' + siteUrl || !siteUrl) {
+    if (
+      new URL(req.body.siteUrl).origin !==
+        new URL('https://' + siteUrl).origin ||
+      !siteUrl
+    ) {
       res.json({
         success: false,
         token: '',
