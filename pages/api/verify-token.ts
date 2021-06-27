@@ -11,10 +11,9 @@ export default function handler(
   const { token } = req.query;
 
   try {
-    const decryptedToken = AES.decrypt(
-      token.toString(),
-      process.env.TOKEN_SECRET
-    ).toString(enc.Utf8);
+    const decryptedToken = decodeURIComponent(
+      AES.decrypt(token.toString(), process.env.TOKEN_SECRET).toString(enc.Utf8)
+    );
     const payload = jwt.verify(decryptedToken, process.env.JWT_TOKEN);
     console.log(payload);
 
