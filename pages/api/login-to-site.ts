@@ -16,7 +16,6 @@ const loginToSite = async (
   req: NextApiRequest,
   res: NextApiResponse<{ success: boolean; token: string; message: string }>
 ) => {
-  console.log(req);
   try {
     await limiter.check(res, 5, 'CACHE_TOKEN'); // 5 requests per minute
 
@@ -89,18 +88,19 @@ const loginToSite = async (
 
     const payload = {
       loggedIn: true,
+      siteUrl: siteUrlFromDb,
     };
 
     const jwtToken = jwt.sign(payload, process.env.JWT_TOKEN, {
       expiresIn: maxLoginDuration + 'd',
     });
     const updateResponse = await updateLoginCount(siteId, siteData[0]);
-    console.log('from login-to-site');
     console.log(updateResponse);
     const encryptedToken = AES.encrypt(
       jwtToken,
       process.env.TOKEN_SECRET
     ).toString();
+    console.log(encryptedToken);
     res.json({ success: true, token: encryptedToken, message: 'success' });
   } catch (error) {
     res.status(429).json({
