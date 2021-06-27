@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
+import { AES, enc } from 'crypto-js';
 
 export default function handler(
   req: NextApiRequest,
@@ -10,7 +11,11 @@ export default function handler(
   const { token } = req.query;
 
   try {
-    const payload = jwt.verify(token.toString(), process.env.JWT_TOKEN);
+    const decryptedToken = AES.decrypt(
+      token.toString(),
+      process.env.TOKEN_SECRET
+    ).toString(enc.Utf8);
+    const payload = jwt.verify(decryptedToken, process.env.JWT_TOKEN);
     console.log(payload);
 
     res.json({

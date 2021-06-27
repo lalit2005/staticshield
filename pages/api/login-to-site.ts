@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 import updateLoginCount from '@/utils/updateLoginCount';
 import updateUnsuccessfulLoginCount from '@/utils/updateUnsuccessfulLoginsCount';
 import rateLimit from '@/lib/rate-limit';
+import { AES } from 'crypto-js';
 
 const limiter = rateLimit({
   interval: 60 * 1000, // 60 seconds
@@ -36,13 +37,13 @@ const loginToSite = async (
       max_login_duration: maxLoginDuration,
       max_logins: maxLogins,
       no_of_logins: numberOfLogins,
-      site_url: siteUrl,
+      site_url: siteUrlFromDb,
     } = siteData[0];
 
     if (
       new URL(req.body.siteUrl).origin !==
-        new URL('https://' + siteUrl).origin ||
-      !siteUrl
+        new URL('https://' + siteUrlFromDb).origin ||
+      !siteUrlFromDb
     ) {
       res.json({
         success: false,
@@ -93,11 +94,14 @@ const loginToSite = async (
     const jwtToken = jwt.sign(payload, process.env.JWT_TOKEN, {
       expiresIn: maxLoginDuration + 'd',
     });
-
     const updateResponse = await updateLoginCount(siteId, siteData[0]);
     console.log('from login-to-site');
     console.log(updateResponse);
-    res.json({ success: true, token: jwtToken, message: 'success' });
+    const encryptedToken = AES.encrypt(
+      jwtToken,
+      process.env.TOKEN_SECRET
+    ).toString();
+    res.json({ success: true, token: encryptedToken, message: 'success' });
   } catch (error) {
     res.status(429).json({
       success: false,
