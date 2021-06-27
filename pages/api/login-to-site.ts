@@ -38,19 +38,19 @@ const loginToSite = async (
       site_url: siteUrl,
     } = siteData[0];
 
-    if (
-      req.body.siteUrl !== siteUrl ||
-      'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
-      !req.body.siteUrl ||
-      !siteUrl
-    ) {
-      res.json({
-        success: false,
-        token: '',
-        message: 'Invalid site',
-      });
-      return;
-    }
+    // if (
+    //   req.body.siteUrl !== siteUrl ||
+    //   'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
+    //   !req.body.siteUrl ||
+    //   !siteUrl
+    // ) {
+    //   res.json({
+    //     success: false,
+    //     token: '',
+    //     message: 'Invalid site',
+    //   });
+    //   return;
+    // }
 
     if (+numberOfLogins >= +maxLogins) {
       res.json({
