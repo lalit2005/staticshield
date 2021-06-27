@@ -56,26 +56,26 @@ const loginToSite = async (
     console.log(new URL(siteUrl));
     console.log(new URL(req.body.siteUrl));
 
-    if (
-      !new URL(req.body.siteUrl).origin.includes(
-        'http://localhost' || 'http://127.0.0.1'
-      )
-    ) {
-      if (
-        // req.body.siteUrl !== siteUrl ||
-        // 'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
-        // !req.body.siteUrl ||
-        // !siteUrl
-        new URL(req.body.siteUrl).origin == new URL('https://' + siteUrl).origin
-      ) {
-        res.json({
-          success: false,
-          token: '',
-          message: 'Invalid site',
-        });
-        return;
-      }
-    }
+    // if (
+    //   !new URL(req.body.siteUrl).origin.includes(
+    //     'http://localhost' || 'http://127.0.0.1'
+    //   )
+    // ) {
+    //   if (
+    //     // req.body.siteUrl !== siteUrl ||
+    //     // 'https://' + req.body.suteUrl !== 'https://' + siteUrl ||
+    //     // !req.body.siteUrl ||
+    //     // !siteUrl
+    //     new URL(req.body.siteUrl).origin == new URL('https://' + siteUrl).origin
+    //   ) {
+    //     res.json({
+    //       success: false,
+    //       token: '',
+    //       message: 'Invalid site',
+    //     });
+    //     return;
+    //   }
+    // }
 
     if (+numberOfLogins >= +maxLogins) {
       res.json({
