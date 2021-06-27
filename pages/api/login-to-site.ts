@@ -15,6 +15,7 @@ const loginToSite = async (
   req: NextApiRequest,
   res: NextApiResponse<{ success: boolean; token: string; message: string }>
 ) => {
+  console.log(req);
   try {
     await limiter.check(res, 5, 'CACHE_TOKEN'); // 5 requests per minute
 

@@ -38,3 +38,7 @@ yarn-error.log*
 
 # VSCode extensions
 .VSCodeCounter
+public/workbox-6b19f60b.js.map
+public/workbox-6b19f60b.js
+public/sw.js.map
+public/sw.js
