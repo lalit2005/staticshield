@@ -64,26 +64,25 @@ export default function Home() {
               size='large'
               type='success'
               className='!inline-block ml-2 !shadow-md'>
-              Get Started →
+              Get Started &rarr;
             </Button>
           </Link>
         </div>
+        <div className='mt-24'>
+          <h2 className='mb-12 text-5xl font-extrabold'>Features</h2>
 
-        <Divider className='!mt-20 !mb-12'>
-          <span className='-mx-6 text-gray-500 bg-gray-50'>FEATURES</span>
-        </Divider>
-
-        <div className='flex flex-wrap'>
-          {features.map((feature) => {
-            return (
-              <FeatureCard
-                key={feature.feature}
-                feature={feature.feature}
-                // eslint-disable-next-line react/no-children-prop
-                children={feature.children}
-              />
-            );
-          })}
+          <div className='flex flex-wrap'>
+            {features.map((feature) => {
+              return (
+                <FeatureCard
+                  key={feature.feature}
+                  feature={feature.feature}
+                  // eslint-disable-next-line react/no-children-prop
+                  children={feature.children}
+                />
+              );
+            })}
+          </div>
         </div>
       </Page>
       <style jsx>{`
