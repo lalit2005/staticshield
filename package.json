@@ -53,6 +53,6 @@
     "eslint-config-next": "^11.0.1",
     "pwa-asset-generator": "^4.1.1",
     "typescript": "^4.3.4",
-    "uglify-js": "^3.13.9"
+    "uglify-js": "^3.13.10"
   }
 }
