@@ -12,12 +12,12 @@ export default function handler(
   console.log(token);
   console.log(token);
   try {
-    let decryptedToken = AES.decrypt(
-      decodeURIComponent(token.toString()),
-      process.env.TOKEN_SECRET
-    )
-      .toString(enc.Utf8)
-      .replaceAll(' ', '');
+    let decryptedToken = token
+      .toString()
+      .split('')
+      .reverse()
+      .join('')
+      .replaceAll(process.env.TOKEN_SECRET, '.');
     const payload = jwt.verify(decryptedToken, process.env.JWT_TOKEN);
     console.log(payload);
     res.json({
