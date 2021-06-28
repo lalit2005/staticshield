@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import { AES, enc } from 'crypto-js';
 
 export default function handler(
@@ -21,6 +21,16 @@ export default function handler(
     console.log(decryptedToken);
     const payload = jwt.verify(decryptedToken, process.env.JWT_TOKEN);
     console.log(payload);
+    if (
+      new URL(`https://${payload.siteUrl}`).origin !==
+      new URL(req.headers.referer).origin
+    ) {
+      res.json({
+        invalidtoken: true,
+        expired: false,
+      });
+      return;
+    }
     res.json({
       invalidtoken: false,
       expired: false,
