@@ -1,4 +1,4 @@
-import { NewSiteFormValues } from './interfaces';
+import { NewSiteFormValues } from '../types/interfaces';
 
 export default async function handleNewSite(siteDetails: NewSiteFormValues) {
   const body = {

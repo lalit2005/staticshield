@@ -10,7 +10,7 @@ import {
   Tooltip,
   useToasts,
 } from '@geist-ui/react';
-import { DashboardNavbarProps } from '@/lib/interfaces';
+import { DashboardNavbarProps } from 'types/interfaces';
 import NextLink from 'next/link';
 import Image from 'next/image';
 import Logo from '../../public/staticshield.png';

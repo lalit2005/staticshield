@@ -1,4 +1,4 @@
-import { HarperDBRecord } from '@/lib/interfaces';
+import { HarperDBRecord } from 'types/interfaces';
 import Head from 'next/head';
 
 const SiteHead: React.FC<{ data: HarperDBRecord }> = ({ data }) => {

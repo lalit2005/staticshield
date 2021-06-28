@@ -1,5 +1,5 @@
 import hashPassword from '@/lib/hashPassword';
-import { HarperDBRecordWithoutDefaults } from '@/lib/interfaces';
+import { HarperDBRecordWithoutDefaults } from 'types/interfaces';
 
 const addHarperDbRecord = async (
   record: HarperDBRecordWithoutDefaults,

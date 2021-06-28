@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 import Skeleton from 'react-loading-skeleton';
 import { useRouter } from 'next/router';
-import { HarperDBRecord } from '@/lib/interfaces';
+import { HarperDBRecord } from 'types/interfaces';
 import { mutate } from 'swr';
 import sortSiteCardsByUpdatedDate from '@/lib/sortSiteCardsByUpdatedDate';
 import getLastLogin from '@/lib/getLastLogin';

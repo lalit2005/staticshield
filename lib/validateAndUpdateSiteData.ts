@@ -1,4 +1,7 @@
-import { GeneralSiteSettingsFormValues, HarperDBRecord } from './interfaces';
+import {
+  GeneralSiteSettingsFormValues,
+  HarperDBRecord,
+} from '../types/interfaces';
 import * as z from 'zod';
 import axios from 'axios';
 import { mutate } from 'swr';

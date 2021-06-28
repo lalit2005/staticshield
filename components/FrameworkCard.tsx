@@ -1,4 +1,4 @@
-import { FrameworkCardProps } from '@/lib/interfaces';
+import { FrameworkCardProps } from 'types/interfaces';
 import Image from 'next/image';
 import NextLink from 'next/link';
 

@@ -1,4 +1,4 @@
-import { FrameworkCardProps } from './interfaces';
+import { FrameworkCardProps } from '../types/interfaces';
 import Next from '../public/frameworks/nextjs.png';
 import Svelte from '../public/frameworks/svelte.png';
 import SvelteKit from '../public/frameworks/svelte.png';

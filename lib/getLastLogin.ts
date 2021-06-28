@@ -27,7 +27,7 @@
 
 // export default getLastLogin;
 
-import { HarperDBRecord } from './interfaces';
+import { HarperDBRecord } from '../types/interfaces';
 import { max, fromUnixTime, formatDistanceToNow } from 'date-fns';
 
 const getLastLogin = (data: HarperDBRecord[]) => {

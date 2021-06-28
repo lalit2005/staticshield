@@ -1,4 +1,4 @@
-import { HarperDBRecord } from '@/lib/interfaces';
+import { HarperDBRecord } from 'types/interfaces';
 import { getUnixTime } from 'date-fns';
 
 export default async function updateLoginCount(

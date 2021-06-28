@@ -11,7 +11,7 @@ import {
 } from '@geist-ui/react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { HarperDBRecord } from '@/lib/interfaces';
+import { HarperDBRecord } from 'types/interfaces';
 import blockLogins from '@/lib/blockLogins';
 import { mutate } from 'swr';
 import deleteSite from '@/lib/deleteSite';

@@ -21,7 +21,7 @@ import AdvancedSettingsTab from '@/components/site/AdvancedSettingsTab';
 import { fromUnixTime, formatDistanceToNow, getUnixTime } from 'date-fns';
 import { useEffect } from 'react';
 import useSites from '@/lib/useSites';
-import { HarperDBRecord } from '@/lib/interfaces';
+import { HarperDBRecord } from 'types/interfaces';
 import SiteHead from '@/components/site/SiteHead';
 import CodeSnippet from '@/components/site/CodeSnippet';
 

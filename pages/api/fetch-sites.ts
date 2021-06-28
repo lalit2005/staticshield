@@ -1,4 +1,4 @@
-import { HarperDBRecord } from '@/lib/interfaces';
+import { HarperDBRecord } from 'types/interfaces';
 import {
   getSession,
   withApiAuthRequired,

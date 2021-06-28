@@ -1,4 +1,4 @@
-import { HarperDBRecord } from './interfaces';
+import { HarperDBRecord } from '../types/interfaces';
 
 const getSuccessfulLogins = (data: HarperDBRecord[]): number => {
   if (!data) {

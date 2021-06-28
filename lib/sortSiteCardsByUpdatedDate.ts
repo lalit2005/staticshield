@@ -1,4 +1,4 @@
-import { HarperDBRecord } from './interfaces';
+import { HarperDBRecord } from '../types/interfaces';
 
 const sortSiteCardsByUpdatedDate = (data: HarperDBRecord[]) => {
   const sortedData = data.sort((a, b) => {

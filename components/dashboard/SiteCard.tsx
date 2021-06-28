@@ -1,5 +1,5 @@
 import { Card, Text, Dot } from '@geist-ui/react';
-import { SiteCardProps } from '@/lib/interfaces';
+import { SiteCardProps } from 'types/interfaces';
 import NextLink from 'next/link';
 
 export default function SiteCard(props: SiteCardProps) {

@@ -14,7 +14,7 @@ import {
 import DashboardNavbar from '@/components/dashboard/Navbar';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useForm } from 'react-hook-form';
-import { NewSiteFormValues } from '@/lib/interfaces';
+import { NewSiteFormValues } from 'types/interfaces';
 import checkIsGoodPassword from '@/lib/validatePassword';
 import { useEffect, useState } from 'react';
 import handleNewSite from '@/lib/handleNewSite';

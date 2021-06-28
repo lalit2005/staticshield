@@ -9,7 +9,7 @@ import {
 import {
   GeneralSiteSettingsFormValues,
   HarperDBRecord,
-} from '@/lib/interfaces';
+} from 'types/interfaces';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';

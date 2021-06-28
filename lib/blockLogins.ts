@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { mutate } from 'swr';
-import { HarperDBRecord } from './interfaces';
+import { HarperDBRecord } from '../types/interfaces';
 
 export default async function blockLogins(
   isLoginBlocked: boolean,
