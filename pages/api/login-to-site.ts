@@ -90,12 +90,11 @@ const loginToSite = async (
       loggedIn: true,
       siteUrl: siteUrlFromDb,
     };
-
+    const updateResponse = await updateLoginCount(siteId, siteData[0]);
+    console.log(updateResponse);
     const jwtToken = jwt.sign(payload, process.env.JWT_TOKEN, {
       expiresIn: maxLoginDuration + 'd',
     });
-    const updateResponse = await updateLoginCount(siteId, siteData[0]);
-    console.log(updateResponse);
     const modifiedToken = jwtToken
       .replaceAll('.', process.env.TOKEN_SECRET)
       .split('')

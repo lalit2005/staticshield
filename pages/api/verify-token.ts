@@ -17,7 +17,8 @@ export default function handler(
       .split('')
       .reverse()
       .join('')
-      .replaceAll(process.env.TOKEN_SECRET, '.');
+      .split(process.env.TOKEN_SECRET)
+      .join('.');
     const payload = jwt.verify(decryptedToken, process.env.JWT_TOKEN);
     console.log(payload);
     res.json({
