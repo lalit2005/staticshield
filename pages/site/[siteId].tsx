@@ -166,6 +166,12 @@ export default withPageAuthRequired(function Site({ user }) {
                   caption="Do not forget to import Script from 'next/script'"
                 />
                 <CodeSnippet
+                  title='Nextjs(<v11)'
+                  code={`<script src='https://staticshield.vercel.app/script.js' data-cap='${data?.cap}' data-site-id='${data?.id}' strategy='beforeInteractive' /><style jsx>{\`.staticshield-div { display: none }\`}</style><noscript><meta httpEquiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript>`}
+                  link='/docs/with/nextjs'
+                  caption='Do not forget to inject the script in Next.js <Head> tag.'
+                />
+                <CodeSnippet
                   title='Svelte'
                   code={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='https://staticshield.vercel.app/script.js'></script> <style>.staticshield-div { display: none }</style> <noscript> <meta http-equiv='refresh' content='0; url=https://staticshield.vercel.app/errors/noscript'/></noscript> </svelte:head>`}
                   link='#'
