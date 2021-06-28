@@ -16,6 +16,7 @@ import getUnsuccessfulLogins from '@/lib/getUnsuccessfulLogins';
 import EmptyImage from '../../public/empty.png';
 import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
+import Head from 'next/head';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
@@ -31,6 +32,9 @@ export default withPageAuthRequired(function Dashboard({ user }) {
 
   return (
     <div className='w-screen h-screen'>
+      <Head>
+        <title>Dashboard | StaticShield</title>
+      </Head>
       <DashboardNavbar
         user={user}
         isNewSiteButtonVisible

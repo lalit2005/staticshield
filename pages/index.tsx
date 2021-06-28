@@ -68,7 +68,7 @@ export default function Home() {
             </Button>
           </Link>
         </div>
-        <div className='mt-24'>
+        <div className='mt-60'>
           <h2 className='mb-12 text-5xl font-extrabold'>Features</h2>
 
           <div className='flex flex-wrap'>
