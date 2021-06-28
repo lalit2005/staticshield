@@ -19,6 +19,12 @@ export interface SiteCardProps {
   is_login_blocked: boolean;
 }
 
+export interface FrameworkCardProps {
+  name: string;
+  link: string;
+  img: any;
+}
+
 interface SiteLoginDetails {
   max_login_duration: number;
   no_of_logins: number;
