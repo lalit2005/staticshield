@@ -10,7 +10,6 @@ export default function handler(
   res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
   const { token } = req.query;
   console.log(token);
-  console.log(token);
   try {
     let decryptedToken = token
       .toString()
@@ -19,6 +18,7 @@ export default function handler(
       .join('')
       .split(process.env.TOKEN_SECRET)
       .join('.');
+    console.log(decryptedToken);
     const payload = jwt.verify(decryptedToken, process.env.JWT_TOKEN);
     console.log(payload);
     res.json({

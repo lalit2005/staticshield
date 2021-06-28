@@ -96,7 +96,8 @@ const loginToSite = async (
       expiresIn: maxLoginDuration + 'd',
     });
     const modifiedToken = jwtToken
-      .replaceAll('.', process.env.TOKEN_SECRET)
+      .split('.')
+      .join(process.env.TOKEN_SECRET)
       .split('')
       .reverse()
       .join('');
