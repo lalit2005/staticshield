@@ -12,13 +12,14 @@ export default function handler(
   console.log(token);
   console.log(token);
   try {
-    const decryptedToken = AES.decrypt(
+    let decryptedToken = AES.decrypt(
       decodeURIComponent(token.toString()),
       process.env.TOKEN_SECRET
-    ).toString(enc.Utf8);
+    )
+      .toString(enc.Utf8)
+      .replaceAll(' ', '');
     const payload = jwt.verify(decryptedToken, process.env.JWT_TOKEN);
     console.log(payload);
-
     res.json({
       invalidtoken: false,
       expired: false,
