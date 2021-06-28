@@ -79,7 +79,9 @@ export default function Home() {
               className='shadow-2xl rounded-2xl'
               src={process.env.NEXT_PUBLIC_LOOM_ID}
               frameBorder={0}
+              // @ts-ignore
               webkitallowfullscreen
+              // @ts-ignore
               mozallowfullscreen
               allowFullScreen
               style={{
