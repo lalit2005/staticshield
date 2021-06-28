@@ -68,9 +68,32 @@ export default function Home() {
             </Button>
           </Link>
         </div>
-        <div className='mt-60'>
-          <h2 className='mb-12 text-5xl font-extrabold'>Features</h2>
-
+        <div className='mt-32'>
+          <h2 className='mb-12 text-4xl font-extrabold'>
+            Watch password protecting a website in record time
+          </h2>
+          <div
+            style={{ position: 'relative', paddingBottom: '62.5%', height: 0 }}
+            className='!max-w-5xl !mx-10'>
+            <iframe
+              className='shadow-2xl rounded-2xl'
+              src={process.env.NEXT_PUBLIC_LOOM_ID}
+              frameBorder={0}
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowFullScreen
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+              }}
+            />
+          </div>
+        </div>
+        <div className='mt-32'>
+          <h2 className='mb-12 text-4xl font-extrabold'>Features</h2>
           <div className='flex flex-wrap'>
             {features.map((feature) => {
               return (
