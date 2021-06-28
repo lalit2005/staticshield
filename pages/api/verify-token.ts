@@ -9,7 +9,8 @@ export default function handler(
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
   const { token } = req.query;
-
+  console.log(token);
+  console.log(token);
   try {
     const decryptedToken = AES.decrypt(
       decodeURIComponent(token.toString()),
