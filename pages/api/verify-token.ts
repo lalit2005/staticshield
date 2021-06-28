@@ -19,7 +19,7 @@ export default function handler(
       .split(process.env.TOKEN_SECRET)
       .join('.');
     console.log(decryptedToken);
-    const payload = jwt.verify(decryptedToken, process.env.JWT_TOKEN);
+    const payload: any = jwt.verify(decryptedToken, process.env.JWT_TOKEN);
     console.log(payload);
     if (
       new URL(`https://${payload.siteUrl}`).origin !==
