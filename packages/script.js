@@ -27,7 +27,6 @@
     const data = await res.json();
     console.log(data);
     if (data.expired == true) {
-      alert('Data expired');
       window.location.replace(
         `https://staticshield.vercel.app/p/?expired=1&id=${siteId}&cap=${caption}&redirecturl=${window.location.href
           // `http://localhost:3000/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
@@ -37,7 +36,6 @@
     }
 
     if (data.invalidtoken == true) {
-      alert('Data expired');
       window.location.replace(
         `https://staticshield.vercel.app/p/?invalidtoken=1&cap=${caption}&id=${siteId}&redirecturl=${window.location.href
           .split('?')[0]
