@@ -96,9 +96,10 @@ const loginToSite = async (
     });
     const updateResponse = await updateLoginCount(siteId, siteData[0]);
     console.log(updateResponse);
-    const encryptedToken = encodeURIComponent(
-      AES.encrypt(jwtToken, process.env.TOKEN_SECRET).toString()
-    );
+    const encryptedToken = AES.encrypt(
+      jwtToken,
+      process.env.TOKEN_SECRET
+    ).toString();
     console.log(encryptedToken);
     res.json({ success: true, token: encryptedToken, message: 'success' });
   } catch (error) {
