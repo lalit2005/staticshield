@@ -10,7 +10,7 @@ export default function NoScriptError() {
         <div className='max-w-lg mx-auto'>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src='noscript-error-banner.png'
+            src='/noscript-error-banner.png'
             alt='StaticShield requires Javascript'
           />
         </div>
