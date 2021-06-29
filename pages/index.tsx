@@ -1,18 +1,20 @@
 import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import FeatureCard from '@/components/FeatureCard';
 import features from '@/lib/features';
 import Image from 'next/image';
 import Logo from '../public/staticshield.png';
+import Thumbnail from '../public/thumbnail.png';
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
   const router = useRouter();
-
+  const [isEmbedVideoVisible, setIsEmbedVideoVisible] =
+    useState<boolean>(false);
   useEffect(() => {
     router.prefetch('/dashboard');
   }, [router]);
@@ -75,23 +77,33 @@ export default function Home() {
           <div
             style={{ position: 'relative', paddingBottom: '62.5%', height: 0 }}
             className='!max-w-5xl !mx-10'>
-            <iframe
-              className='shadow-2xl rounded-2xl'
-              src={process.env.NEXT_PUBLIC_LOOM_ID}
-              frameBorder={0}
-              // @ts-ignore
-              webkitallowfullscreen
-              // @ts-ignore
-              mozallowfullscreen
-              allowFullScreen
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-              }}
-            />
+            {isEmbedVideoVisible ? (
+              <iframe
+                className='shadow-2xl rounded-2xl'
+                src={process.env.NEXT_PUBLIC_LOOM_ID}
+                frameBorder={0}
+                // @ts-ignore
+                webkitallowfullscreen
+                // @ts-ignore
+                mozallowfullscreen
+                allowFullScreen
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
+            ) : (
+              <div
+                className='transition-all duration-300 cursor-pointer opacity-70 hover:opacity-100'
+                onClick={() => {
+                  setIsEmbedVideoVisible(true);
+                }}>
+                <Image src={Thumbnail} alt='View the demo' />
+              </div>
+            )}
           </div>
         </div>
         <div className='mt-32'>
