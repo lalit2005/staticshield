@@ -12,6 +12,7 @@ import {
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Footer from '@/components/Footer';
 
 export default withPageAuthRequired(function Support({ user }) {
   const [sub, setSub] = useState<string>('');
@@ -86,6 +87,7 @@ export default withPageAuthRequired(function Support({ user }) {
           <Divider />
         </div>
       </Page>
+      <Footer />
     </div>
   );
 });

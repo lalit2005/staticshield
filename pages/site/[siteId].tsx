@@ -24,6 +24,7 @@ import useSites from '@/lib/useSites';
 import { HarperDBRecord } from 'types/interfaces';
 import SiteHead from '@/components/site/SiteHead';
 import CodeSnippet from '@/components/site/CodeSnippet';
+import Footer from '@/components/Footer';
 
 export default withPageAuthRequired(function Site({ user }) {
   const router = useRouter();
@@ -251,6 +252,7 @@ export default {
           </div>
         </Page>
       </div>
+      <Footer />
     </div>
   );
 });

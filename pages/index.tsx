@@ -10,7 +10,7 @@ import Image from 'next/image';
 import Logo from '../public/staticshield.png';
 import Thumbnail from '../public/thumbnail.png';
 import Banner from '../public/frameworks.png';
-import Gif from '../public/frameworks/frameworks.gif';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -132,6 +132,21 @@ export default function Home() {
           <img src='/frameworks/frameworks.gif' alt='' />
         </div>
       </Page>
+      <div className='flex flex-col flex-wrap items-baseline max-w-3xl py-10 mx-auto text-center bg-blue-600 rounded-lg shadow-lg px-14'>
+        <div>
+          <h2 className='mr-5 text-4xl font-extrabold text-white'>
+            Start password protecting websites now
+          </h2>
+        </div>
+        <div className='mx-auto my-5'>
+          <Link href='/signup'>
+            <Button type='secondary' size='large'>
+              Sign up now
+            </Button>
+          </Link>
+        </div>
+      </div>
+      <Footer />
       <style jsx>{`
         span.heading-underline {
           position: relative;

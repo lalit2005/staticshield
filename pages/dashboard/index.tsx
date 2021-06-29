@@ -17,6 +17,7 @@ import EmptyImage from '../../public/empty.png';
 import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
 import Head from 'next/head';
+import Footer from '@/components/Footer';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
@@ -176,6 +177,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
           </Row>
         </div>
       </div>
+      <Footer />
     </div>
   );
 });

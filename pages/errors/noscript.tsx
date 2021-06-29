@@ -3,6 +3,9 @@ import { Text, Link } from '@geist-ui/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Banner from '../../public/noscript-error-banner.png';
+import Footer from '@/components/Footer';
+
+export const config = { unstable_runtimeJS: false };
 
 export default function NoScriptError() {
   return (
@@ -30,6 +33,7 @@ export default function NoScriptError() {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
