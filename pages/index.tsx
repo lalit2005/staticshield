@@ -32,7 +32,9 @@ export default function Home() {
       </div>
       <Page>
         <Head>
-          <title>StaticShield</title>
+          <title>
+            StaticShield. The easiest way to password protect websites
+          </title>
           <link rel='icon' href='/staticshield.png' />
         </Head>
         <div className='mx-auto mt-16'>
