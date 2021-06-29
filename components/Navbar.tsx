@@ -112,7 +112,7 @@ export default function Navbar() {
             <NextLink href='/login'>
               <a
                 href='/login'
-                className='px-3 py-2 ml-2 text-black bg-white border border-gray-500 rounded-md shadow hover:bg-warmgray-200'>
+                className='px-3 py-2 ml-2 text-black border border-gray-500 rounded-md shadow bg-warmgray-50 hover:bg-warmgray-100'>
                 Sign In
               </a>
             </NextLink>
