@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps, router }) {
             'StaticShield is the easiest way to password protect websites',
           images: [
             {
-              url: '/ogimage.png',
+              url: 'https://staticshield.vercel.app/ogimage.png',
             },
           ],
           site_name: 'SiteName',
