@@ -1,4 +1,4 @@
-import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
+import { Button, Page, Text, Link } from '@geist-ui/react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -9,6 +9,8 @@ import features from '@/lib/features';
 import Image from 'next/image';
 import Logo from '../public/staticshield.png';
 import Thumbnail from '../public/thumbnail.png';
+import Banner from '../public/frameworks.png';
+import Gif from '../public/frameworks/frameworks.gif';
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -120,6 +122,14 @@ export default function Home() {
               );
             })}
           </div>
+        </div>
+        <div className='mt-32'>
+          <h2 className='mb-12 text-4xl font-extrabold'>
+            Protect any website with StaticShield
+          </h2>
+          <Image src={Banner} alt='' placeholder='blur' />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src='/frameworks/frameworks.gif' alt='' />
         </div>
       </Page>
       <style jsx>{`
