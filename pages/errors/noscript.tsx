@@ -1,9 +1,6 @@
 import Navbar from '@/components/Navbar';
 import { Text, Link } from '@geist-ui/react';
-import Banner from '../../public/noscript-error-banner.png';
 import Footer from '@/components/Footer';
-
-export const config = { unstable_runtimeJS: false };
 
 export default function NoScriptError() {
   return (
