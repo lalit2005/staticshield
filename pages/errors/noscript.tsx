@@ -1,7 +1,5 @@
 import Navbar from '@/components/Navbar';
 import { Text, Link } from '@geist-ui/react';
-import Head from 'next/head';
-import Image from 'next/image';
 import Banner from '../../public/noscript-error-banner.png';
 import Footer from '@/components/Footer';
 
@@ -13,7 +11,11 @@ export default function NoScriptError() {
       <Navbar />
       <div className='pt-32'>
         <div className='max-w-lg mx-auto'>
-          <Image src={Banner} placeholder='blur' alt='' />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src='noscript-error-banner.png'
+            alt='StaticShield requires Javascript'
+          />
         </div>
         <div className='max-w-lg mx-auto mt-20'>
           <Text h3>
