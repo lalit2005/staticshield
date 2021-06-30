@@ -5,6 +5,7 @@ import Image from 'next/image';
 import RotatingText from 'react-rotating-text';
 import frameworks from '@/lib/frameworks';
 import FrameworkCard from '@/components/FrameworkCard';
+import Footer from '@/components/Footer';
 
 const With = () => {
   return (
@@ -41,6 +42,7 @@ const With = () => {
           </div>
         </div>
       </Page>
+      <Footer />
     </div>
   );
 };
