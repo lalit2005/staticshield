@@ -19,17 +19,26 @@
   }
 
   if (token) {
-    const res = await fetch(
-      'https://staticshield.vercel.app/api/verify-token/?token=' +
-        decodeURIComponent(token)
-      // 'http://localhost:3000/api/verify-token/?token=' + token
-    );
+    try {
+      const res = await fetch(
+        'https://staticshield.vercel.app/api/verify-token/?token=' +
+          decodeURIComponent(token)
+        // 'http://localhost:3000/api/verify-token/?token=' + token
+      );
+    } catch (error) {
+      window.location.replace(
+        `https://staticshield.vercel.app/p/?&cap=${caption}&id=${siteId}&redirecturl=${window.location.href
+          .split('?')[0]
+          .toString()}`
+      );
+    }
+
     const data = await res.json();
     console.log(data);
 
     if (!data) {
       window.location.replace(
-        `https://staticshield.vercel.app/p/?invalidtoken=1&cap=${caption}&id=${siteId}&redirecturl=${window.location.href
+        `https://staticshield.vercel.app/p/?&cap=${caption}&id=${siteId}&redirecturl=${window.location.href
           .split('?')[0]
           .toString()}`
       );
