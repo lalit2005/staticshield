@@ -43,6 +43,7 @@
       );
     }
     if (data.invalidtoken == false && data.expired == false) {
+      window.staticshieldToken = localStorage.getItem('staticshield-token');
       let asd = document
         .querySelector('.staticshield-div')
         .classList.toggle('staticshield-div');
