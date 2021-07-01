@@ -19,8 +19,9 @@
   }
 
   if (token) {
+    let res;
     try {
-      const res = await fetch(
+      res = await fetch(
         'https://staticshield.vercel.app/api/verify-token/?token=' +
           decodeURIComponent(token)
         // 'http://localhost:3000/api/verify-token/?token=' + token
