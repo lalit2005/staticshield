@@ -26,27 +26,36 @@
     );
     const data = await res.json();
     console.log(data);
-    if (data.expired == true) {
-      window.location.replace(
-        `https://staticshield.vercel.app/p/?expired=1&id=${siteId}&cap=${caption}&redirecturl=${window.location.href
-          // `http://localhost:3000/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
-          .split('?')[0]
-          .toString()}`
-      );
-    }
 
-    if (data.invalidtoken == true) {
+    if (!data) {
       window.location.replace(
         `https://staticshield.vercel.app/p/?invalidtoken=1&cap=${caption}&id=${siteId}&redirecturl=${window.location.href
           .split('?')[0]
           .toString()}`
       );
-    }
-    if (data.invalidtoken == false && data.expired == false) {
-      let asd = document
-        .querySelector('.staticshield-div')
-        .classList.toggle('staticshield-div');
-      console.log(asd);
+
+      if (data.expired == true) {
+        window.location.replace(
+          `https://staticshield.vercel.app/p/?expired=1&id=${siteId}&cap=${caption}&redirecturl=${window.location.href
+            // `http://localhost:3000/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
+            .split('?')[0]
+            .toString()}`
+        );
+      }
+
+      if (data.invalidtoken == true) {
+        window.location.replace(
+          `https://staticshield.vercel.app/p/?invalidtoken=1&cap=${caption}&id=${siteId}&redirecturl=${window.location.href
+            .split('?')[0]
+            .toString()}`
+        );
+      }
+      if (data.invalidtoken == false && data.expired == false) {
+        let asd = document
+          .querySelector('.staticshield-div')
+          .classList.toggle('staticshield-div');
+        console.log(asd);
+      }
     }
   }
 })();
