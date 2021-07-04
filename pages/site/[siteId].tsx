@@ -222,13 +222,13 @@ ngOnInit(): void {
   script.type = 'text/javascript';
   script.src = 'https://staticshield.vercel.app/script.js';
   script.dataset.siteId = '${data?.id}';
-  script.dataset.cap = "The password is 123test123";
+  script.dataset.cap = "${data?.cap}";
 
   document.querySelector('head')?.appendChild(script);
 }                  
 `}
                   link='/docs/with/angular'
-                  caption={data?.cap}
+                  caption='Add the snippet in `app.component.ts` to protect the whole Angular app. To password protect a single site, add the snippet in `{page-component}.component.ts`'
                 />
               </Tabs.Item>
               <div>
