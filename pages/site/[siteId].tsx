@@ -182,18 +182,18 @@ export default withPageAuthRequired(function Site({ user }) {
                   title='SvelteKit'
                   code={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='https://staticshield.vercel.app/script.js'></script><script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style> <noscript> <meta http-equiv='refresh' content='0; url='https://bit.ly/ss-noscript'/></noscript> </svelte:head>`}
                   link='/docs/with/nextjs-11'
-                  caption='Add the snippet in any page to password protect it.s'
+                  caption='Add the snippet in any page to password protect it.'
                 />
                 <CodeSnippet
                   title='VueJS'
                   code={`<script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <style>.staticshield-div { display: none }</style> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <noscript> <meta http-equiv='refresh' content='0; url='https://bit.ly/ss-noscript'/></noscript>`}
                   link='/docs/with/nextjs-11'
-                  caption='Add the snippet in any page to password protect it.s'
+                  caption='Add the snippet in any page to password protect it.'
                 />
                 <CodeSnippet
                   title='NuxtJS'
                   code={`<script>
-									setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);
+setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);
 export default {
   head() {
     return {
@@ -222,13 +222,13 @@ ngOnInit(): void {
   script.type = 'text/javascript';
   script.src = 'https://staticshield.vercel.app/script.js';
   script.dataset.siteId = '${data?.id}';
-  script.dataset.cap = "The password is 123test123";
+  script.dataset.cap = "${data?.cap}";
 
   document.querySelector('head')?.appendChild(script);
 }                  
 `}
                   link='/docs/with/angular'
-                  caption={data?.cap}
+                  caption='Add the snippet in `app.component.ts` to protect the whole Angular app. To password protect a single site, add the snippet in `{page-component}.component.ts`'
                 />
               </Tabs.Item>
               <div>
