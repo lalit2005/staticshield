@@ -214,6 +214,22 @@ export default {
                   link='/docs/with/nextjs-11'
                   caption='Add the snippet in `index.html` to protect the whole Vue app. To password protect a single site, please visit docs'
                 />
+                <CodeSnippet
+                  title='Angular'
+                  code={`
+ngOnInit(): void {
+  const script = document.createElement("script")
+  script.type = 'text/javascript';
+  script.src = 'https://staticshield.vercel.app/script.js';
+  script.dataset.siteId = '${data?.id}';
+  script.dataset.cap = "The password is 123test123";
+
+  document.querySelector('head')?.appendChild(script);
+}                  
+`}
+                  link='/docs/with/angular'
+                  caption={data?.cap}
+                />
               </Tabs.Item>
               <div>
                 <Tabs.Item
