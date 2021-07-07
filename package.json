@@ -51,7 +51,7 @@
     "@types/dumb-passwords": "^0.2.0",
     "@types/human-date": "^1.4.0",
     "@types/jsonwebtoken": "^8.5.3",
-    "@types/lru-cache": "^5.1.0",
+    "@types/lru-cache": "^5.1.1",
     "@types/react": "^17.0.13",
     "eslint": "^7.29.0",
     "eslint-config-next": "^11.0.1",
