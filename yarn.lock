@@ -1070,10 +1070,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-mono/-/ibm-plex-mono-4.4.5.tgz#691c535cb649356f57c0810620b4a314dea0d3aa"
   integrity sha512-93865aR4zyXhWR5HNZ1gOI2AlezlSJ+MaZ1bKhjqCTCNlSB6TNPwGOzkLApUwucs5JPX/LS10ATfCms8+GkBVw==
 
-"@fontsource/inter@^4.4.5":
-  version "4.4.5"
-  resolved "https://registry.npmjs.org/@fontsource/inter/-/inter-4.4.5.tgz"
-  integrity sha512-eRUmB54CbyC3MhAuw2VvTPEc3wy8sFi0/1mVHaC7ZXglXcrSWXY+p8Xad/Zy8AcmS9BuqCCEH2qJbOt9XdX65Q==
+"@fontsource/inter@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.0.tgz#b99e49fa178e4086250fb3df2ed6a7366c9a0cb5"
+  integrity sha512-2efK8Ru0LkuOYrEpiHPlV02YkTdIKGbezlxVNeA8/3c+tNt7P2aQPuiYYkVy7N4GA5LWSUVcLL/91MpCIjinOw==
 
 "@fullhuman/postcss-purgecss@^4.0.3":
   version "4.0.3"
