@@ -1351,10 +1351,10 @@
   resolved "https://registry.yarnpkg.com/@types/crypto-js/-/crypto-js-4.0.2.tgz#4524325a175bf819fec6e42560c389ce1fb92c97"
   integrity sha512-sCVniU+h3GcGqxOmng11BRvf9TfN9yIs8KKjB8C8d75W69cpTfZG80gau9yTx5SxF3gvHGbJhdESzzvnjtf3Og==
 
-"@types/dumb-passwords@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/@types/dumb-passwords/-/dumb-passwords-0.2.0.tgz"
-  integrity sha512-PAqgf2VHIkXYuwiFHsP8MltoIeQRAYtYENC5Hg5YAgHT4Kz6Ynf2EJzreuGtPJiHxcryxr3gKWPcb9XdgSdHnQ==
+"@types/dumb-passwords@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@types/dumb-passwords/-/dumb-passwords-0.2.1.tgz#fb59d6062be84fa94f8c6a6042ec2970a7992c73"
+  integrity sha512-Q9qccrXSw9kMQ/fm5Z3+by3quKQ4YIZEGzpghLCqfNmya2o8QkfRGNlO7O2N1trJlJda+iRR44fsbDzHS/7zfA==
 
 "@types/estree@0.0.39":
   version "0.0.39"
