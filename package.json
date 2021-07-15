@@ -20,7 +20,7 @@
     "@hookform/resolvers": "^2.6.0",
     "@types/cors": "^2.8.11",
     "@types/react-hamburger-menu": "^0.0.3",
-    "autoprefixer": "^10.2.6",
+    "autoprefixer": "^10.3.0",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "crypto-js": "^4.0.0",
