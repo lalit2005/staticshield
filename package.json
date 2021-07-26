@@ -24,7 +24,7 @@
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "crypto-js": "^4.0.0",
-    "date-fns": "^2.22.1",
+    "date-fns": "^2.23.0",
     "dumb-passwords": "^0.2.1",
     "framer-motion": "^4.1.17",
     "human-date": "^1.4.0",
