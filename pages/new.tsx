@@ -38,7 +38,7 @@ export default withPageAuthRequired(function New({ user }) {
 
   useEffect(() => {
     router.prefetch('/dashboard');
-    setDescription(router.query?.desc.toString() || '');
+    setDescription(router.query?.desc?.toString() || '');
   }, [router]);
 
   const { visible, setVisible, bindings } = useModal();
@@ -51,8 +51,8 @@ export default withPageAuthRequired(function New({ user }) {
     formState: { errors },
   } = useForm<NewSiteFormValues>({
     defaultValues: {
-      site_name: router.query?.name.toString() || '',
-      site_url: router.query?.url.toString() || '',
+      site_name: router.query?.name?.toString() || '',
+      site_url: router.query?.url?.toString() || '',
     },
   });
 
