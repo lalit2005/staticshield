@@ -23,10 +23,6 @@ import { useRouter } from 'next/router';
 export default withPageAuthRequired(function New({ user }) {
   const router = useRouter();
 
-  useEffect(() => {
-    router.prefetch('/dashboard');
-  }, [router]);
-
   const showErrorMessage = (message: string) => {
     return (
       <p className='px-3 py-1 text-base text-red-500 border border-red-600 rounded max-w-[384px]'>
@@ -40,6 +36,11 @@ export default withPageAuthRequired(function New({ user }) {
   );
   const [description, setDescription] = useState('');
 
+  useEffect(() => {
+    router.prefetch('/dashboard');
+    setDescription(router.query?.desc.toString() || '');
+  }, [router]);
+
   const { visible, setVisible, bindings } = useModal();
 
   const [toasts, setToast] = useToasts();
@@ -48,7 +49,12 @@ export default withPageAuthRequired(function New({ user }) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<NewSiteFormValues>();
+  } = useForm<NewSiteFormValues>({
+    defaultValues: {
+      site_name: router.query?.name.toString() || '',
+      site_url: router.query?.url.toString() || '',
+    },
+  });
 
   const onSubmit = async (data: NewSiteFormValues) => {
     if (data.site_url.includes(' ') || data.site_url.includes('	')) {
