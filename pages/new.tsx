@@ -84,7 +84,7 @@ export default withPageAuthRequired(function New({ user }) {
         router.push(
           `/site/${
             siteCreated?.data?.inserted_hashes[0]
-          }/?code=yes&redirect=http://localhost:3000/password-protecting/${router.query?.id?.toString()}`
+          }/?code=yes&redirect=https://pagely.site/password-protecting/${router.query?.id?.toString()}`
         );
       } else {
         router.push('/dashboard/?mutate=1');
