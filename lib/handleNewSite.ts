@@ -23,7 +23,7 @@ export default async function handleNewSite(siteDetails: NewSiteFormValues) {
   });
 
   if (response.ok) {
-    return { success: true };
+    return { success: true, data: await response.json() };
   } else {
     return { success: false };
   }

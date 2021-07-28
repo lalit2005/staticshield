@@ -41,8 +41,13 @@ export default withPageAuthRequired(function Site({ user }) {
     router.replace('/dashboard');
   }
 
-  console.log('---------------- From [siteId] -----------------------');
-  console.log(JSON.stringify(data));
+  if (router.query?.code?.toString() === 'yes') {
+    data &&
+      router.push(
+        router.query?.redirect?.toString() +
+          `/?code=<script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style>  <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`
+      );
+  }
 
   const lastLoginTime = data?.last_login || getUnixTime(new Date()); //! new Date is to avoid error during build time
   const prettifiedTime = formatDistanceToNow(+lastLoginTime, {

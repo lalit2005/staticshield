@@ -75,7 +75,20 @@ export default withPageAuthRequired(function New({ user }) {
       site_desc: description,
     });
     if (siteCreated.success === true) {
-      router.push('/dashboard/?mutate=1');
+      if (
+        router.query?.name?.toString() &&
+        router.query?.url?.toString() &&
+        router.query?.desc?.toString()
+      ) {
+        alert(JSON.stringify(siteCreated?.data, null, 2));
+        router.push(
+          `/site/${
+            siteCreated?.data?.inserted_hashes[0]
+          }/?code=yes&redirect=http://localhost:3000/password-protecting/${router.query?.id?.toString()}`
+        );
+      } else {
+        router.push('/dashboard/?mutate=1');
+      }
     }
   };
 
