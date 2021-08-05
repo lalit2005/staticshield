@@ -55,7 +55,7 @@
     "@types/react": "^17.0.15",
     "eslint": "^7.31.0",
     "eslint-config-next": "^11.0.1",
-    "pwa-asset-generator": "^4.3.1",
+    "pwa-asset-generator": "^4.3.4",
     "typescript": "^4.3.5",
     "uglify-js": "^3.14.0"
   }
