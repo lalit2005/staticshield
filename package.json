@@ -43,7 +43,7 @@
     "react-rotating-text": "^1.4.1",
     "swr": "^0.5.6",
     "tailwindcss": "^2.2.7",
-    "zod": "^3.5.1"
+    "zod": "^3.7.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
