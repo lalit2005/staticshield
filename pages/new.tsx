@@ -80,7 +80,7 @@ export default withPageAuthRequired(function New({ user }) {
         router.query?.url?.toString() &&
         router.query?.desc?.toString()
       ) {
-        alert(JSON.stringify(siteCreated?.data, null, 2));
+        // alert(JSON.stringify(siteCreated?.data, null, 2));
         router.push(
           `/site/${
             siteCreated?.data?.inserted_hashes[0]
