@@ -52,7 +52,7 @@
     "@types/human-date": "^1.4.2",
     "@types/jsonwebtoken": "^8.5.4",
     "@types/lru-cache": "^5.1.1",
-    "@types/react": "^17.0.15",
+    "@types/react": "^17.0.16",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.0.1",
     "pwa-asset-generator": "^4.3.4",
