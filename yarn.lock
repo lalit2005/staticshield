@@ -2735,10 +2735,10 @@ detective@^5.2.0:
     defined "^1.0.0"
     minimist "^1.1.1"
 
-devtools-protocol@0.0.883894:
-  version "0.0.883894"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.883894.tgz#d403f2c75cd6d71c916aee8dde9258da988a4da9"
-  integrity sha512-33idhm54QJzf3Q7QofMgCvIVSd2o9H3kQPWaKT/fhoZh+digc+WSiMhbkeG3iN79WY4Hwr9G05NpbhEVrsOYAg==
+devtools-protocol@0.0.901419:
+  version "0.0.901419"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.901419.tgz#79b5459c48fe7e1c5563c02bd72f8fec3e0cebcd"
+  integrity sha512-4INMPwNm9XRpBukhNbF7OB6fNTTCaI8pzy/fXg0xQzAy5h3zL1P8xT3QazgKqBrb/hAYwIBizqDBZ7GtJE74QQ==
 
 didyoumean@^1.2.2:
   version "1.2.2"
@@ -5329,13 +5329,13 @@ punycode@^2.1.0:
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-10.1.0.tgz#ffd9fd780ad237b9ac23cc95cbb919be5e4523a5"
-  integrity sha512-x2yDSJI/PRiWhDqAt1jd4rhTotxwjwKzHLIIqD2MlJ+TmzGJfBY9snAGIVXJwkWfKJg+Ef5xupdK0EbHDqBpFw==
+puppeteer-core@10.2.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-10.2.0.tgz#8d6606cf345fc0e421bc0612055579ea53234111"
+  integrity sha512-c1COxSnfynsE6Mtt+dW0t3TITjF9Ku4dnJbFMDDVhLQuMTYSpz4rkSP37qvzcSo3k02/Ac3GYWk0/ncp6DKZNA==
   dependencies:
     debug "4.3.1"
-    devtools-protocol "0.0.883894"
+    devtools-protocol "0.0.901419"
     extract-zip "2.0.1"
     https-proxy-agent "5.0.0"
     node-fetch "2.6.1"
@@ -5357,10 +5357,10 @@ purgecss@^4.0.3:
     postcss "^8.2.1"
     postcss-selector-parser "^6.0.2"
 
-pwa-asset-generator@^4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/pwa-asset-generator/-/pwa-asset-generator-4.3.4.tgz#097d1e68a407d6521f9ec83c8ca24723f250e9bb"
-  integrity sha512-xZfGxxIra4SRGg5kiMYHHoO3fqlwVk2OXDl7a/OzKdZpSy8eF1S17XF5joE9791/ALuwxrAHV8ZzUMYbPERm7A==
+pwa-asset-generator@^4.3.5:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/pwa-asset-generator/-/pwa-asset-generator-4.3.5.tgz#02553eec7546912603119e14538c346154dca844"
+  integrity sha512-ZjewdvYVRR1jG1TW9UsSY+JsTTz1boa7hrLxvs/307UebK8vf8MXeB/vya7dOBJl9NWb0jLevVNa6Z7ptLgTlw==
   dependencies:
     chalk "4.1.2"
     cheerio "1.0.0-rc.10"
@@ -5371,7 +5371,7 @@ pwa-asset-generator@^4.3.4:
     meow "9.0.0"
     mime-types "2.1.32"
     progress "2.0.3"
-    puppeteer-core "10.1.0"
+    puppeteer-core "10.2.0"
     slash "3.0.0"
 
 querystring-es3@0.2.1, querystring-es3@^0.2.0:
