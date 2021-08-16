@@ -15,7 +15,7 @@
     "@auth0/nextjs-auth0": "^1.5.0",
     "@fontsource/ibm-plex-mono": "^4.5.0",
     "@fontsource/inter": "^4.4.5",
-    "@geist-ui/react": "^2.1.5",
+    "@geist-ui/react": "^2.2.0",
     "@geist-ui/react-icons": "^1.0.1",
     "@hookform/resolvers": "^2.7.1",
     "@types/cors": "^2.8.12",
