@@ -5391,10 +5391,10 @@ purgecss@^4.0.3:
     postcss "^8.2.1"
     postcss-selector-parser "^6.0.2"
 
-pwa-asset-generator@^4.3.5:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/pwa-asset-generator/-/pwa-asset-generator-4.3.5.tgz#02553eec7546912603119e14538c346154dca844"
-  integrity sha512-ZjewdvYVRR1jG1TW9UsSY+JsTTz1boa7hrLxvs/307UebK8vf8MXeB/vya7dOBJl9NWb0jLevVNa6Z7ptLgTlw==
+pwa-asset-generator@^4.3.6:
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/pwa-asset-generator/-/pwa-asset-generator-4.3.6.tgz#feaa722b9e47aff32c61bd4be0094756707d15bf"
+  integrity sha512-SLl+I31Mhediri5YRc5bbg/bS001jBchLba9sYmzYHk4J4bFRmYSoilGYq2nAGNtBCBVCjbJU5u/fW/hzy3Q5g==
   dependencies:
     chalk "4.1.2"
     cheerio "1.0.0-rc.10"
