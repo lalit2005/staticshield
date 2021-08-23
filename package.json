@@ -50,7 +50,7 @@
     "@types/crypto-js": "^4.0.2",
     "@types/dumb-passwords": "^0.2.1",
     "@types/human-date": "^1.4.2",
-    "@types/jsonwebtoken": "^8.5.4",
+    "@types/jsonwebtoken": "^8.5.5",
     "@types/lru-cache": "^5.1.1",
     "@types/react": "^17.0.18",
     "eslint": "^7.32.0",
