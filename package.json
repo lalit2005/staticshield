@@ -21,7 +21,7 @@
     "@types/cors": "^2.8.12",
     "@types/react-hamburger-menu": "^0.0.4",
     "autoprefixer": "^10.3.2",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "bcrypt": "^5.0.1",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.23.0",
