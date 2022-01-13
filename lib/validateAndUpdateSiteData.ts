@@ -15,7 +15,13 @@ const schema = z.object({
 
 export default async function validateAndUpdateSiteData(
   data: GeneralSiteSettingsFormValues,
-  field: 'site_name' | 'site_desc' | 'password' | 'expiration_days' | 'cap',
+  field:
+    | 'site_name'
+    | 'site_desc'
+    | 'password'
+    | 'expiration_days'
+    | 'cap'
+    | 'title',
   siteId: string,
   previousData: GeneralSiteSettingsFormValues
 ): Promise<{ success: boolean }> {
@@ -130,6 +136,25 @@ export default async function validateAndUpdateSiteData(
     mutate(
       '/api/get-site-from-site-id/?siteId=' + siteId,
       { ...previousData, cap: data.cap },
+      false
+    );
+    return {
+      success: true,
+    };
+  } else if (field === 'title') {
+    try {
+      const response = axios.post('/api/site/update-title', {
+        title: data.title,
+        siteId: siteId,
+      });
+    } catch (_) {
+      return {
+        success: false,
+      };
+    }
+    mutate(
+      '/api/get-site-from-site-id/?siteId=' + siteId,
+      { ...previousData, title: data.title },
       false
     );
     return {

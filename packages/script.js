@@ -1,7 +1,7 @@
 (async function () {
   const params = new URLSearchParams(window.location.search);
-  // base url
-  const B_URL = 'https://staticshield.vercel.app';
+  // const BASE_URL = 'http://localhost:3000';
+  const BASE_URL = 'https://staticshield.vercel.app';
   const tokenFromUrl = params.get('token');
   if (tokenFromUrl) {
     window.localStorage.setItem('staticshield-token', tokenFromUrl);
@@ -9,12 +9,11 @@
 
   const staticshieldsScript = document.querySelector('script[data-site-id]');
   const siteId = staticshieldsScript.getAttribute('data-site-id');
-  const caption = staticshieldsScript.getAttribute('data-cap');
   const token = window.localStorage.getItem('staticshield-token');
 
   if (token == null || undefined || !token) {
     window.location.replace(
-      `${B_URL}/p/?id=${siteId}&cap=${caption}&redirecturl=${window.location.href
+      `${BASE_URL}/p/${siteId}/?&redirecturl=${window.location.href
         .split('?')[0]
         .toString()}`
     );
@@ -30,8 +29,7 @@
     console.log(data);
     if (data.expired == true) {
       window.location.replace(
-        `${B_URL}/p/?expired=1&id=${siteId}&cap=${caption}&redirecturl=${window.location.href
-          // `http://localhost:3000/p/?expired=1&id=${siteId}&redirecturl=${window.location.href
+        `${BASE_URL}/p/${siteId}/?expired=1&redirecturl=${window.location.href
           .split('?')[0]
           .toString()}`
       );
@@ -39,7 +37,7 @@
 
     if (data.invalidtoken == true) {
       window.location.replace(
-        `${B_URL}/p/?invalidtoken=1&cap=${caption}&id=${siteId}&redirecturl=${window.location.href
+        `${BASE_URL}/p/${siteId}/?invalidtoken=1&&redirecturl=${window.location.href
           .split('?')[0]
           .toString()}`
       );

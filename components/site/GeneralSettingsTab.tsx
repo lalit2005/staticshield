@@ -34,6 +34,7 @@ export default function GeneralSettingsTab({ data }) {
     | 'expiration_days'
     | 'password'
     | 'cap'
+    | 'title'
     | null;
 
   let editedInput: Fields;
@@ -50,6 +51,7 @@ export default function GeneralSettingsTab({ data }) {
     site_desc: z.string(),
     expiration_days: z.number().int().min(1).max(365),
     cap: z.string().max(48),
+    title: z.string().max(64),
   });
 
   const {
@@ -187,6 +189,40 @@ export default function GeneralSettingsTab({ data }) {
                 size='small'
                 onClick={() => {
                   setEditedInput('cap');
+                  handleSubmit(handleFormSubmit)();
+                  return;
+                }}>
+                Save
+              </Button>
+            </div>
+          </div>
+        </Card.Footer>
+      </Card>
+
+      {/* ------------------------------------------------------------------ */}
+      <Card className='!mt-10'>
+        <Text className='text-xl font-bold'>Title</Text>
+        <Text p>Title to be shown in the login page</Text>
+        <Input
+          placeholder='This page is password protected'
+          width='70%'
+          clearable
+          {...register('title', { required: false })}
+        />
+        {errors.cap &&
+          showErrorMessage('Caption should be 48 characters at most')}
+        <Card.Footer className='!bg-warmgray-50'>
+          <div className='flex items-center justify-between w-full'>
+            <div>
+              <Text>Please use 64 characters at maximum</Text>
+            </div>
+            <div>
+              <Button
+                type='secondary'
+                auto
+                size='small'
+                onClick={() => {
+                  setEditedInput('title');
                   handleSubmit(handleFormSubmit)();
                   return;
                 }}>

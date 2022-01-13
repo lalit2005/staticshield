@@ -6,14 +6,19 @@ import Logo from '../../public/logo.svg';
 import { useState } from 'react';
 import axios from 'axios';
 import { Loading, Row, useToasts, Text } from '@geist-ui/react';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { HarperDBRecord } from 'types/interfaces';
 
-export default function Site() {
+export default function Site({ id, title, caption, isLoginBlocked }) {
   const router = useRouter();
-  const { id } = router.query;
   const [password, setPassword] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [toasts, setToast] = useToasts();
   const [shownError, setShownError] = useState<boolean>(false);
+
+  if (isLoginBlocked) {
+    router.replace('/errors/logins-blocked');
+  }
 
   if (router.query?.invalidtoken == '1') {
     setTimeout(() => {
@@ -37,6 +42,10 @@ export default function Site() {
   }
 
   const handleSubmit = async (e) => {
+    if (isLoginBlocked) {
+      setToast({ text: 'Login is blocked', type: 'error' });
+      return;
+    }
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -72,9 +81,8 @@ export default function Site() {
       <div className='w-screen h-screen max-w-md mx-auto'>
         <div className='text-center pt-[30vh]'>
           <h1 className='mb-5 text-xl font-medium sm:text-2xl'>
-            This page is password protected
+            {title || 'This page is password protected'}
           </h1>
-
           <form onSubmit={handleSubmit}>
             <label htmlFor='password' hidden>
               Enter password
@@ -99,7 +107,7 @@ export default function Site() {
               )}
             </button>
           </form>
-          <p className='!mt-7 text-sm text-gray-700'>{router.query?.cap}</p>
+          <p className='!mt-7 text-sm text-gray-700'>{caption}</p>
         </div>
         <NextLink href='/'>
           <div className='relative block mt-40 text-center cursor-pointer hover:underline bottom-4'>
@@ -114,3 +122,36 @@ export default function Site() {
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const siteId = params.siteId as string;
+
+  const res = await fetch(process.env.HARPERDB_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${process.env.HARPERDB_KEY}`,
+    },
+    body: JSON.stringify({
+      operation: 'sql',
+      sql: `SELECT * FROM site_schema.sites where id = "${siteId}"`,
+    }),
+  });
+  const data: HarperDBRecord = (await res.json())[0];
+
+  return {
+    props: {
+      id: siteId,
+      title: data.title,
+      isLoginBlocked: data.is_login_blocked,
+      caption: data.cap,
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
