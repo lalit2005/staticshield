@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps, router }) {
           data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
           src={process.env.NEXT_PUBLIC_ANALYTICS_URL}></Script>
       )}
-      <Script strategy='afterInteractive'>
+      <Script strategy='afterInteractive' id='analytics'>
         (function(c,l,a,r,i,t,y){'{'}
         c[a]=c[a]||() =&gt; {'{'}(c[a].q=c[a].q||[]).push(arguments){'}'};
         t=l.createElement(r);t.async=1;t.src=&quot;https://www.clarity.ms/tag/&quot;+i;

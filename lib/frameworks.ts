@@ -7,6 +7,7 @@ import React from '../public/frameworks/react.png';
 import Vue from '../public/frameworks/vue.png';
 import Nuxt from '../public/frameworks/nuxtjs.png';
 import Gatsby from '../public/frameworks/gatsby.png';
+import Angular from '../public/frameworks/angular.png';
 
 const frameworks: FrameworkCardProps[] = [
   {
@@ -29,6 +30,11 @@ const frameworks: FrameworkCardProps[] = [
     name: 'Nuxt.js',
     img: Nuxt,
     link: '/docs/with/nuxtjs',
+  },
+  {
+    name: 'Angular',
+    img: Angular,
+    link: '/docs/with/angular',
   },
   {
     name: 'React',
