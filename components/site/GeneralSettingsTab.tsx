@@ -168,7 +168,10 @@ export default function GeneralSettingsTab({ data }) {
       {/* ------------------------------------------------------------------ */}
       <Card className='!mt-10'>
         <Text className='text-xl font-bold'>Caption</Text>
-        <Text p>A caption to be displayed in login page</Text>
+        <Text p>
+          A caption to be displayed in login page. It will take 10 mins at max
+          to be updated in the login page.
+        </Text>
         <Input
           placeholder='Sign in to view employee details'
           width='70%'
@@ -202,7 +205,10 @@ export default function GeneralSettingsTab({ data }) {
       {/* ------------------------------------------------------------------ */}
       <Card className='!mt-10'>
         <Text className='text-xl font-bold'>Title</Text>
-        <Text p>Title to be shown in the login page</Text>
+        <Text p>
+          Title to be shown in the login page. It will take 10 mins at max to be
+          updated in the login page.
+        </Text>
         <Input
           placeholder='This page is password protected'
           width='70%'
