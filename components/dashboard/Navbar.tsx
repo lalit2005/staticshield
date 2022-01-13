@@ -23,39 +23,45 @@ import {
   User,
 } from '@geist-ui/react-icons';
 import { useState } from 'react';
-import axios from 'axios';
+import useWeb3forms from 'use-web3forms';
+import { useForm } from 'react-hook-form';
+
+interface FormValues {
+  feedback: string;
+  email: string;
+  name: string;
+}
 
 export default function DashboardNavbar(props: DashboardNavbarProps) {
-  const [feedback, setFeedback] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
-  const [toasts, setToast] = useToasts();
+  const [_, setToast] = useToasts();
   const { user, isNewSiteButtonVisible } = props;
 
-  const handleSubmit = () => {
-    setLoading(true);
+  const { register, handleSubmit, reset } = useForm<FormValues>({
+    defaultValues: {
+      email: user?.email,
+      name: user?.name,
+    },
+  });
 
-    if (feedback.length === 0 || !feedback || !feedback.trim()) {
-      setToast({ text: 'Please enter a valid feedback', type: 'error' });
+  const { submit } = useWeb3forms<FormValues>({
+    apikey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+    onSuccess: () => {
       setLoading(false);
-      return;
-    }
-
-    axios
-      .post('https://api.web3forms.com/submit/', {
-        apikey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-        feedback: feedback,
-        email: user?.email,
-        name: user?.name,
-      })
-      .then(() => {
-        setLoading(false);
-        setFeedback('');
-        setToast({
-          text: 'Your feedback was successfully delivered',
-          type: 'success',
-        });
+      setToast({
+        text: 'Your feedback was successfully delivered',
+        type: 'success',
       });
-  };
+      reset();
+    },
+    onError: () => {
+      setLoading(false);
+      setToast({
+        text: 'Your feedback was successfully delivered',
+        type: 'success',
+      });
+    },
+  });
 
   const avatarPopoverContent = () => {
     return (
@@ -109,24 +115,32 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
 
   const feedbackPopover = () => (
     <>
-      <Popover.Item>Thanks for giving feedback 😀</Popover.Item>
-      <Popover.Item>
-        <Textarea
-          value={feedback}
-          onChange={(e) => setFeedback(e.target.value.toString())}
-        />
-      </Popover.Item>
-      <Popover.Item>
-        <Button type='secondary' onClick={handleSubmit}>
-          {loading ? (
-            <Spinner className='relative top-1' />
-          ) : (
-            <>
-              Send Feedback <Send className='p-1' />
-            </>
-          )}
-        </Button>
-      </Popover.Item>
+      <form
+        onSubmit={() => {
+          setLoading(true);
+          handleSubmit(submit)();
+        }}>
+        <Popover.Item>Thanks for giving feedback 😀</Popover.Item>
+        <Popover.Item>
+          <Textarea
+            {...register('feedback', {
+              required: 'Please enter a valid feedback',
+              minLength: '3',
+            })}
+          />
+        </Popover.Item>
+        <Popover.Item>
+          <Button htmlType='submit' type='secondary'>
+            {loading ? (
+              <Spinner className='relative top-1' />
+            ) : (
+              <>
+                Send Feedback <Send className='p-1' />
+              </>
+            )}
+          </Button>
+        </Popover.Item>
+      </form>
     </>
   );
 
