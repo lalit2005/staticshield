@@ -1073,10 +1073,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/ibm-plex-mono@^4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-mono/-/ibm-plex-mono-4.5.0.tgz#3f5965361a8190978369e798674a46551d33776c"
-  integrity sha512-c5+AWTzj0NlJr9OR2J5AqYVxPyqR4lPPytIXF1E78QqdA8N97/9tjorDYE6yu+D6fLEtsFv3tihp7yeCjXFj6A==
+"@fontsource/ibm-plex-mono@^4.5.4":
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-mono/-/ibm-plex-mono-4.5.4.tgz#e103b5cf491a02ed29cfba9fffd56513128846db"
+  integrity sha512-+5p7mw1Ue/PMOi8Dmu/BoSQZCCq6sJZRo2vj0kPm/vZ1t3qDHLjLClXz9g/E9BJya9qKkATPQLixyVapwBriig==
 
 "@fontsource/inter@^4.4.5":
   version "4.5.0"
