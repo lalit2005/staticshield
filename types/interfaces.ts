@@ -74,6 +74,7 @@ export interface GeneralSiteSettingsFormValues {
   site_id?: string;
   cap: string;
   title: string;
+  logo_url: string;
 }
 export interface AdvancedSiteSettingsFormValues {
   is_login_blocked: boolean;

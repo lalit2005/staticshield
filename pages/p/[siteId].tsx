@@ -9,7 +9,7 @@ import { Loading, Row, useToasts, Text } from '@geist-ui/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { HarperDBRecord } from 'types/interfaces';
 
-export default function Site({ id, title, caption, isLoginBlocked }) {
+export default function Site({ id, title, caption, isLoginBlocked, logoUrl }) {
   const router = useRouter();
   const [password, setPassword] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -80,6 +80,8 @@ export default function Site({ id, title, caption, isLoginBlocked }) {
     <div>
       <div className='w-screen h-screen max-w-md mx-auto'>
         <div className='text-center pt-[30vh]'>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logoUrl} className='h-28 -mt-12 mb-8 mx-auto' alt='' />
           <h1 className='mb-5 text-xl font-medium sm:text-2xl'>
             {title || 'This page is password protected'}
           </h1>
@@ -145,6 +147,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       title: data.title,
       isLoginBlocked: data.is_login_blocked,
       caption: data.cap,
+      logoUrl: data.logo_url,
     },
   };
 };

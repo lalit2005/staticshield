@@ -21,7 +21,8 @@ export default async function validateAndUpdateSiteData(
     | 'password'
     | 'expiration_days'
     | 'cap'
-    | 'title',
+    | 'title'
+    | 'logo_url',
   siteId: string,
   previousData: GeneralSiteSettingsFormValues
 ): Promise<{ success: boolean }> {
@@ -115,6 +116,27 @@ export default async function validateAndUpdateSiteData(
     mutate(
       '/api/get-site-from-site-id/?siteId=' + siteId,
       { ...previousData, password: data.password },
+      false
+    );
+    return {
+      success: true,
+    };
+  }
+  // -------------------------------------------------------------
+  else if (field === 'logo_url') {
+    try {
+      const response = axios.post('/api/site/update-logo-url', {
+        logoUrl: data.logo_url,
+        siteId: siteId,
+      });
+    } catch (_) {
+      return {
+        success: false,
+      };
+    }
+    mutate(
+      '/api/get-site-from-site-id/?siteId=' + siteId,
+      { ...previousData, logo_url: data.logo_url },
       false
     );
     return {

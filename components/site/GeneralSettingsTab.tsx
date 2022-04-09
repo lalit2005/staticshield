@@ -35,6 +35,7 @@ export default function GeneralSettingsTab({ data }) {
     | 'password'
     | 'cap'
     | 'title'
+    | 'logo_url'
     | null;
 
   let editedInput: Fields;
@@ -52,6 +53,7 @@ export default function GeneralSettingsTab({ data }) {
     expiration_days: z.number().int().min(1).max(365),
     cap: z.string().max(48),
     title: z.string().max(64),
+    logo_url: z.string(),
   });
 
   const {
@@ -66,6 +68,7 @@ export default function GeneralSettingsTab({ data }) {
       expiration_days: siteData.max_login_duration,
       password: 'A-str0ng-p@55w0rd',
       cap: siteData.cap,
+      logo_url: siteData.logo_url,
     },
   });
 
@@ -229,6 +232,41 @@ export default function GeneralSettingsTab({ data }) {
                 size='small'
                 onClick={() => {
                   setEditedInput('title');
+                  handleSubmit(handleFormSubmit)();
+                  return;
+                }}>
+                Save
+              </Button>
+            </div>
+          </div>
+        </Card.Footer>
+      </Card>
+      {/* ------------------------------------------------------------------ */}
+      <Card className='!mt-10'>
+        <Text className='text-xl font-bold'>Logo URL</Text>
+        <Text p>
+          URL of the logo to be displayed in the login page. It will take 10
+          mins at max to be updated in the login page.
+        </Text>
+        <Input
+          placeholder='https://mywebsite.com/logo.png'
+          width='70%'
+          clearable
+          {...register('logo_url', { required: false })}
+        />
+        {errors.cap && showErrorMessage('Enter a valid')}
+        <Card.Footer className='!bg-warmgray-50'>
+          <div className='flex items-center justify-between w-full'>
+            <div>
+              <Text>Recommended image dimension is 513 x 513</Text>
+            </div>
+            <div>
+              <Button
+                type='secondary'
+                auto
+                size='small'
+                onClick={() => {
+                  setEditedInput('logo_url');
                   handleSubmit(handleFormSubmit)();
                   return;
                 }}>
