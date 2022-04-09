@@ -68,6 +68,7 @@ export default function GeneralSettingsTab({ data }) {
       expiration_days: siteData.max_login_duration,
       password: 'A-str0ng-p@55w0rd',
       cap: siteData.cap,
+      title: siteData.title || '',
       logo_url: siteData.logo_url,
     },
   });
