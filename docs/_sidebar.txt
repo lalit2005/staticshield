@@ -1,6 +1,9 @@
+- INTRODUCTION
 how-it-works.md
 framework-agnostic.md
 security.md
+
+- INTEGRATIONS
 with-nextjs-11.md
 with-nextjs.md
 with-svelte.md
