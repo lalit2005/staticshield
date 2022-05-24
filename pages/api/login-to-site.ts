@@ -104,6 +104,7 @@ const loginToSite = async (
     console.log(modifiedToken);
     res.json({ success: true, token: modifiedToken, message: 'success' });
   } catch (error) {
+    console.error(error);
     res.status(429).json({
       success: false,
       token: '',
