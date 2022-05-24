@@ -9,6 +9,7 @@ import Script from 'next/script';
 import ProgressBar from 'nextjs-progressbar';
 import PwaImages from '@/components/PwaImages';
 import { NextSeo } from 'next-seo';
+import BASE_URL from '@/lib/baseUrl';
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -38,13 +39,13 @@ function MyApp({ Component, pageProps, router }) {
         title='StaticShield'
         description='StaticShield is the easiest way to password protect websites'
         openGraph={{
-          url: 'https://staticshield.vercel.app',
+          url: BASE_URL,
           title: 'StaticShield',
           description:
             'StaticShield is the easiest way to password protect websites',
           images: [
             {
-              url: 'https://staticshield.vercel.app/ogimage.png',
+              url: `${BASE_URL}/ogimage.png`,
             },
           ],
           site_name: 'SiteName',
