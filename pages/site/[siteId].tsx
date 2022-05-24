@@ -9,7 +9,6 @@ import {
   Tabs,
   Text,
   Link,
-  Snippet,
   Breadcrumbs,
   Tooltip,
   Dot,
@@ -18,13 +17,16 @@ import NextLink from 'next/link';
 import { Code, ExternalLink, Settings, Tool } from '@geist-ui/react-icons';
 import GeneralSettingsTab from '@/components/site/GeneralSettingsTab';
 import AdvancedSettingsTab from '@/components/site/AdvancedSettingsTab';
-import { fromUnixTime, formatDistanceToNow, getUnixTime } from 'date-fns';
+import { formatDistanceToNow, getUnixTime } from 'date-fns';
 import { useEffect } from 'react';
 import useSites from '@/lib/useSites';
 import { HarperDBRecord } from 'types/interfaces';
 import SiteHead from '@/components/site/SiteHead';
 import CodeSnippet from '@/components/site/CodeSnippet';
 import Footer from '@/components/Footer';
+import BASE_URL from '@/lib/baseUrl';
+
+const SCRIPT_URL = `${BASE_URL}/script.js`;
 
 export default withPageAuthRequired(function Site({ user }) {
   const router = useRouter();
@@ -45,7 +47,7 @@ export default withPageAuthRequired(function Site({ user }) {
     data &&
       router.push(
         router.query?.redirect?.toString() +
-          `/?code=<script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style>  <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`
+          `/?code=<script src='${SCRIPT_URL}' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style>  <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`
       );
   }
 
@@ -161,37 +163,37 @@ export default withPageAuthRequired(function Site({ user }) {
                 </Text>
                 <CodeSnippet
                   title='Vanilla HTML, JS, CSS'
-                  code={`<script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style>  <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`}
+                  code={`<script src='${SCRIPT_URL}' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style>  <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`}
                   link='#'
                   caption='Add this snippet to any page in the head tag to password protect it.'
                 />
                 <CodeSnippet
                   title='Nextjs 11'
-                  code={`<Script src='https://staticshield.vercel.app/script.js' data-cap='${data?.cap}' data-site-id='${data?.id}' strategy='beforeInteractive'></Script><Script strategy='beforeInteractive'>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</Script><style jsx>{\`.staticshield-div { display: none }\`}</style><noscript><meta httpEquiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`}
+                  code={`<Script src='${SCRIPT_URL}' data-cap='${data?.cap}' data-site-id='${data?.id}' strategy='beforeInteractive'></Script><Script strategy='beforeInteractive'>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</Script><style jsx>{\`.staticshield-div { display: none }\`}</style><noscript><meta httpEquiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`}
                   link='/docs/with/nextjs-11'
                   caption="Do not forget to import Script from 'next/script'"
                 />
                 <CodeSnippet
                   title='Nextjs(<v11)'
-                  code={`<script src='https://staticshield.vercel.app/script.js' data-cap='${data?.cap}' data-site-id='${data?.id}' strategy='beforeInteractive' /><script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script><style jsx>{\`.staticshield-div { display: none }\`}</style><noscript><meta httpEquiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`}
+                  code={`<script src='${SCRIPT_URL}' data-cap='${data?.cap}' data-site-id='${data?.id}' strategy='beforeInteractive' /><script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script><style jsx>{\`.staticshield-div { display: none }\`}</style><noscript><meta httpEquiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`}
                   link='/docs/with/nextjs'
                   caption='Do not forget to inject the script in Next.js <Head> tag.'
                 />
                 <CodeSnippet
                   title='Svelte'
-                  code={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='https://staticshield.vercel.app/script.js'></script><script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style> <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript> </svelte:head>`}
+                  code={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='${SCRIPT_URL}'></script><script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style> <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript> </svelte:head>`}
                   link='#'
                   caption='Add this to any svelte page to password protect it.'
                 />
                 <CodeSnippet
                   title='SvelteKit'
-                  code={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='https://staticshield.vercel.app/script.js'></script><script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style> <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript> </svelte:head>`}
+                  code={`<svelte:head> <script data-site-id='${data?.id}' data-cap='${data?.cap}' src='${SCRIPT_URL}'></script><script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style> <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript> </svelte:head>`}
                   link='/docs/with/nextjs-11'
                   caption='Add the snippet in any page to password protect it.'
                 />
                 <CodeSnippet
                   title='VueJS'
-                  code={`<script src='https://staticshield.vercel.app/script.js' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <style>.staticshield-div { display: none }</style> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`}
+                  code={`<script src='${SCRIPT_URL}' data-site-id='${data?.id}' data-cap='${data?.cap}'></script> <style>.staticshield-div { display: none }</style> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`}
                   link='/docs/with/nextjs-11'
                   caption='Add the snippet in any page to password protect it.'
                 />
@@ -206,7 +208,7 @@ export default {
       script: [
         {
           hid: 'staticshield',
-          src: 'https://staticshield.vercel.app/script.js',
+          src: '${SCRIPT_URL}',
           'data-site-id': 'fbe1e7da-d79b-4265-8209-a14f099d838e',
           'data-cap': 'The password is 123test123',
         },
@@ -225,7 +227,7 @@ export default {
 ngOnInit(): void {
   const script = document.createElement("script")
   script.type = 'text/javascript';
-  script.src = 'https://staticshield.vercel.app/script.js';
+  script.src = '${SCRIPT_URL}';
   script.dataset.siteId = '${data?.id}';
   script.dataset.cap = "${data?.cap}";
 
