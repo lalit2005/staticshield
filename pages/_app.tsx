@@ -9,7 +9,6 @@ import Script from 'next/script';
 import ProgressBar from 'nextjs-progressbar';
 import PwaImages from '@/components/PwaImages';
 import { NextSeo } from 'next-seo';
-import BASE_URL from '@/lib/baseUrl';
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -33,19 +32,22 @@ function MyApp({ Component, pageProps, router }) {
         <link rel='preconnect' href='https://vitals.vercel-insights.com/' />
         <link rel='manifest' href='/manifest.json' />
         <meta name='theme-color' content='#000' />
-	<meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION_ID} />
+        <meta
+          name='google-site-verification'
+          content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION_ID}
+        />
       </Head>
       <NextSeo
         title='StaticShield'
         description='StaticShield is the easiest way to password protect websites'
         openGraph={{
-          url: BASE_URL,
+          url: 'https://staticshield.vercel.app',
           title: 'StaticShield',
           description:
             'StaticShield is the easiest way to password protect websites',
           images: [
             {
-              url: `${BASE_URL}/ogimage.png`,
+              url: 'https://staticshield.vercel.app/ogimage.png',
             },
           ],
           site_name: 'SiteName',
