@@ -19,6 +19,7 @@
 /build
 
 # misc
+.parcel-cache
 .DS_Store
 *.pem
 

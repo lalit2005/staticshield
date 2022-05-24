@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "yarn minify && next build",
     "start": "next start",
-    "minify": "npx uglify-js packages/script.js -m -c -o public/script.js",
+    "minify": "npx parcel build packages/script.js --dist-dir public --no-source-maps",
     "format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,json,css,md,html}\"",
     "lint": "next lint",
     "generate-pwa-assets": "cd ./public/icons/ && npx pwa-asset-generator ../staticshield-rounded.png -m ../manifest.json -d -q 100 -u -f -o false"
@@ -56,8 +56,8 @@
     "@types/react": "^17.0.24",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.2",
+    "parcel": "^2.5.0",
     "pwa-asset-generator": "^4.3.6",
-    "typescript": "^4.4.3",
-    "uglify-js": "^3.14.1"
+    "typescript": "^4.4.3"
   }
 }

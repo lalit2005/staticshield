@@ -1,7 +1,7 @@
+import BASE_URL from '../lib/baseUrl';
+
 (async function () {
   const params = new URLSearchParams(window.location.search);
-  // const BASE_URL = 'http://localhost:3000';
-  const BASE_URL = 'https://staticshield.vercel.app';
   const tokenFromUrl = params.get('token');
   if (tokenFromUrl) {
     window.localStorage.setItem('staticshield-token', tokenFromUrl);
@@ -21,9 +21,7 @@
 
   if (token) {
     const res = await fetch(
-      `https://staticshield.glitch.me/verify-token/?token=` +
-        decodeURIComponent(token)
-      // 'http://localhost:3000/api/verify-token/?token=' + token
+      `${BASE_URL}/api/verify-token/?token=` + decodeURIComponent(token)
     );
     const data = await res.json();
     console.log(data);
