@@ -42,7 +42,7 @@
     "react-loading-skeleton": "^2.2.0",
     "react-rotating-text": "^1.4.1",
     "swr": "^1.0.1",
-    "tailwindcss": "^2.2.7",
+    "tailwindcss": "^3.0.24",
     "use-web3forms": "^1.2.1",
     "zod": "^3.7.1"
   },
