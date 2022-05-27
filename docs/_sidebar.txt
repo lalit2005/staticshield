@@ -12,6 +12,3 @@ with-vue.md
 with-nuxtjs.md
 with-html.md
 with-angular.md
-
-- SELF HOSTING
-self-hosting-on-vercel.md
