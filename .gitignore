@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # script
-/public/script.js
+public/script.js
+public/script.js.map
 
 # dependencies
 /node_modules
@@ -19,6 +20,7 @@
 /build
 
 # misc
+.parcel-cache
 .DS_Store
 *.pem
 

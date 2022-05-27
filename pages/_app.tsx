@@ -32,7 +32,10 @@ function MyApp({ Component, pageProps, router }) {
         <link rel='preconnect' href='https://vitals.vercel-insights.com/' />
         <link rel='manifest' href='/manifest.json' />
         <meta name='theme-color' content='#000' />
-	<meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION_ID} />
+        <meta
+          name='google-site-verification'
+          content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION_ID}
+        />
       </Head>
       <NextSeo
         title='StaticShield'

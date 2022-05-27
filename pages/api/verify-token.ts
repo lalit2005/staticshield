@@ -6,8 +6,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ invalidtoken: boolean; expired: boolean }>
 ) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
   const { token } = req.query;
   console.log(token);
   try {

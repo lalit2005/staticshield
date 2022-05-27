@@ -81,7 +81,7 @@ export default function Site({ id, title, caption, isLoginBlocked, logoUrl }) {
       <div className='w-screen h-screen max-w-md mx-auto'>
         <div className='text-center pt-[30vh]'>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoUrl} className='h-28 -mt-12 mb-8 mx-auto' alt='' />
+          <img src={logoUrl} className='mx-auto mb-8 -mt-12 h-28' alt='' />
           <h1 className='mb-5 text-xl font-medium sm:text-2xl'>
             {title || 'This page is password protected'}
           </h1>
@@ -144,10 +144,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       id: siteId,
-      title: data.title,
+      title: data.title || '',
       isLoginBlocked: data.is_login_blocked,
       caption: data.cap,
-      logoUrl: data.logo_url,
+      logoUrl: data.logo_url || '',
     },
   };
 };
