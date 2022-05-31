@@ -1,14 +1,15 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
+  "name": "staticshield",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn minify && next build",
+    "build": "yarn prepare-db && yarn minify && next build",
     "start": "next start",
     "minify": "npx parcel build packages/script.js --dist-dir public",
     "format": "npx prettier --write \"**/*.{js,ts,jsx,tsx,json,css,md,html}\"",
     "lint": "next lint",
+    "prepare-db": "node scripts/prepare-db",
     "generate-pwa-assets": "cd ./public/icons/ && npx pwa-asset-generator ../staticshield-rounded.png -m ../manifest.json -d -q 100 -u -f -o false"
   },
   "dependencies": {
