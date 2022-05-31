@@ -17,28 +17,49 @@ const runOperation = (body) =>
       Authorization: `Basic ${HARPERDB_KEY}`,
     },
     body: JSON.stringify(body),
-  });
+  }).then((res) => res.json());
+
+const hasAttribute = (table, attributeName) =>
+  table.attributes &&
+  table.attributes.some(({ attribute }) => attribute === attributeName);
 
 // The minimum amount of operations needed
 async function prepareDatabase() {
-  await runOperation({
-    operation: 'create_schema',
+  const existingSchema = await runOperation({
+    operation: 'describe_schema',
     schema: SITE_SCHEMA,
   });
 
-  await runOperation({
-    operation: 'create_table',
+  if (existingSchema.error) {
+    await runOperation({
+      operation: 'create_schema',
+      schema: SITE_SCHEMA,
+    });
+  }
+
+  const existingTable = await runOperation({
+    operation: 'describe_table',
     schema: SITE_SCHEMA,
     table: SITES_TABLE,
-    hash_attribute: 'id',
   });
 
-  await runOperation({
-    operation: 'create_attribute',
-    schema: SITE_SCHEMA,
-    table: SITES_TABLE,
-    attribute: 'user_id',
-  });
+  if (existingTable.error) {
+    await runOperation({
+      operation: 'create_table',
+      schema: SITE_SCHEMA,
+      table: SITES_TABLE,
+      hash_attribute: 'id',
+    });
+  }
+
+  if (existingTable && !hasAttribute(existingTable, 'user_id')) {
+    await runOperation({
+      operation: 'create_attribute',
+      schema: SITE_SCHEMA,
+      table: SITES_TABLE,
+      attribute: 'user_id',
+    });
+  }
 
   console.log('Database prepared');
 }
