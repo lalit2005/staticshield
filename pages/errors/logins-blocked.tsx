@@ -1,5 +1,5 @@
 import Navbar from '@/components/Navbar';
-import { Text, Link } from '@geist-ui/react';
+import { Text } from '@geist-ui/react';
 import Footer from '@/components/Footer';
 
 export default function NoScriptError() {

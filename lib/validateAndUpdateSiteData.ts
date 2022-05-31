@@ -1,7 +1,4 @@
-import {
-  GeneralSiteSettingsFormValues,
-  HarperDBRecord,
-} from '../types/interfaces';
+import { GeneralSiteSettingsFormValues } from '../types/interfaces';
 import * as z from 'zod';
 import axios from 'axios';
 import { mutate } from 'swr';
@@ -35,7 +32,7 @@ export default async function validateAndUpdateSiteData(
   console.log(data);
   if (field === 'site_name') {
     try {
-      const response = axios.post('/api/site/update-name', {
+      await axios.post('/api/site/update-name', {
         siteName: data.site_name,
         siteId: siteId,
       });
@@ -56,7 +53,7 @@ export default async function validateAndUpdateSiteData(
   // -------------------------------------------------------------
   else if (field === 'site_desc') {
     try {
-      const response = axios.post('/api/site/update-site-desc', {
+      await axios.post('/api/site/update-site-desc', {
         siteDesc: data.site_desc,
         siteId: siteId,
       });
@@ -77,7 +74,7 @@ export default async function validateAndUpdateSiteData(
   // -------------------------------------------------------------
   else if (field === 'expiration_days') {
     try {
-      const response = axios.post('/api/site/update-max-login-duration', {
+      await axios.post('/api/site/update-max-login-duration', {
         max_login_duration: data.expiration_days,
         siteId: siteId,
       });
@@ -104,7 +101,7 @@ export default async function validateAndUpdateSiteData(
     }
 
     try {
-      const response = axios.post('/api/site/update-site-password', {
+      await axios.post('/api/site/update-site-password', {
         password: data.password,
         siteId: siteId,
       });
@@ -125,7 +122,7 @@ export default async function validateAndUpdateSiteData(
   // -------------------------------------------------------------
   else if (field === 'logo_url') {
     try {
-      const response = axios.post('/api/site/update-logo-url', {
+      await axios.post('/api/site/update-logo-url', {
         logoUrl: data.logo_url,
         siteId: siteId,
       });
@@ -146,7 +143,7 @@ export default async function validateAndUpdateSiteData(
   // -------------------------------------------------------------
   else if (field === 'cap') {
     try {
-      const response = axios.post('/api/site/update-caption', {
+      await axios.post('/api/site/update-caption', {
         cap: data.cap,
         siteId: siteId,
       });
@@ -165,7 +162,7 @@ export default async function validateAndUpdateSiteData(
     };
   } else if (field === 'title') {
     try {
-      const response = axios.post('/api/site/update-title', {
+      await axios.post('/api/site/update-title', {
         title: data.title,
         siteId: siteId,
       });

@@ -41,9 +41,8 @@ export default withPageAuthRequired(function New({ user }) {
     setDescription(router.query?.desc?.toString() || '');
   }, [router]);
 
-  const { visible, setVisible, bindings } = useModal();
-
-  const [toasts, setToast] = useToasts();
+  const { setVisible, bindings } = useModal();
+  const [_, setToast] = useToasts();
 
   const {
     register,

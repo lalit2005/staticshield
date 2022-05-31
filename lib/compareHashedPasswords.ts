@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { SHA256 } from 'crypto-js';
 
-const hashPassword = (plainTextPassword: string, hash: string) => {
+const comparedHashedPasswords = (plainTextPassword: string, hash: string) => {
   const SHAHash = SHA256(
     plainTextPassword + process.env.HASH_SECRET
   ).toString();
@@ -9,4 +9,4 @@ const hashPassword = (plainTextPassword: string, hash: string) => {
   return bcrypt.compareSync(reversedSHAHash, hash);
 };
 
-export default hashPassword;
+export default comparedHashedPasswords;

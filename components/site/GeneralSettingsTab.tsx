@@ -26,7 +26,7 @@ export default function GeneralSettingsTab({ data }) {
       </p>
     );
   };
-  const [toasts, setToast] = useToasts();
+  const [_, setToast] = useToasts();
 
   type Fields =
     | 'site_name'

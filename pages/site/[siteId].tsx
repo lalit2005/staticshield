@@ -14,7 +14,7 @@ import {
   Dot,
 } from '@geist-ui/react';
 import NextLink from 'next/link';
-import { Code, ExternalLink, Settings, Tool } from '@geist-ui/react-icons';
+import { Code, ExternalLink, Settings } from '@geist-ui/react-icons';
 import GeneralSettingsTab from '@/components/site/GeneralSettingsTab';
 import AdvancedSettingsTab from '@/components/site/AdvancedSettingsTab';
 import { formatDistanceToNow, getUnixTime } from 'date-fns';
@@ -37,7 +37,7 @@ export default withPageAuthRequired(function Site({ user }) {
 
   const { siteId } = router.query;
 
-  const { response: data, error } = useSites<HarperDBRecord>(siteId.toString());
+  const { response: data } = useSites<HarperDBRecord>(siteId.toString());
 
   if (JSON.stringify(data) === '[]') {
     router.replace('/dashboard');

@@ -19,11 +19,11 @@ import deleteSite from '@/lib/deleteSite';
 const AdvancedSettingsTab: React.FC<{ siteData: HarperDBRecord }> = ({
   siteData,
 }) => {
-  const { visible, setVisible, bindings } = useModal();
+  const { setVisible, bindings } = useModal();
   const [disableDeleteButton, setDisableDeleteButton] = useState(true);
   const [siteNameDeletingInput, setSiteNameDeletingInput] = useState('');
   const [isBlocked, setIsBlocked] = useState(siteData.is_login_blocked);
-  const [toasts, setToast] = useToasts();
+  const [_, setToast] = useToasts();
   const router = useRouter();
 
   useEffect(() => {
@@ -70,11 +70,7 @@ const AdvancedSettingsTab: React.FC<{ siteData: HarperDBRecord }> = ({
                 auto
                 onClick={async () => {
                   console.log(isBlocked);
-                  const res = await blockLogins(
-                    isBlocked,
-                    siteData?.id,
-                    siteData
-                  );
+                  const res = await blockLogins(isBlocked, siteData?.id);
                   if (isBlocked && res.success) {
                     setToast({
                       text: 'Logins blocked successfully',
@@ -160,7 +156,7 @@ const AdvancedSettingsTab: React.FC<{ siteData: HarperDBRecord }> = ({
                   type: 'success',
                 });
               })
-              .catch((e) =>
+              .catch(() =>
                 setToast({ text: 'An unexpected error occured', type: 'error' })
               );
           }}

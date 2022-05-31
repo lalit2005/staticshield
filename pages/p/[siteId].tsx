@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Logo from '../../public/logo.svg';
 import { useState } from 'react';
 import axios from 'axios';
-import { Loading, Row, useToasts, Text } from '@geist-ui/react';
+import { Loading, Row, useToasts } from '@geist-ui/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { HarperDBRecord } from 'types/interfaces';
 
@@ -13,7 +13,7 @@ export default function Site({ id, title, caption, isLoginBlocked, logoUrl }) {
   const router = useRouter();
   const [password, setPassword] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [toasts, setToast] = useToasts();
+  const [_, setToast] = useToasts();
   const [shownError, setShownError] = useState<boolean>(false);
 
   if (isLoginBlocked) {

@@ -17,7 +17,7 @@ import Footer from '@/components/Footer';
 export default withPageAuthRequired(function Support({ user }) {
   const [sub, setSub] = useState<string>('');
   const [desc, setDesc] = useState<string>('');
-  const [toasts, setToast] = useToasts();
+  const [_, setToast] = useToasts();
   const router = useRouter();
 
   const handleSubmit = () => {

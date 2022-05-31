@@ -1,4 +1,3 @@
-import hashPassword from '@/lib/hashPassword';
 import {
   getSession,
   withApiAuthRequired,
