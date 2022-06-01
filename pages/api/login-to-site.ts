@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 import updateLoginCount from '@/utils/updateLoginCount';
 import updateUnsuccessfulLoginCount from '@/utils/updateUnsuccessfulLoginsCount';
 import rateLimit from '@/lib/rate-limit';
-import { AES } from 'crypto-js';
 
 const limiter = rateLimit({
   interval: 60 * 1000, // 60 seconds

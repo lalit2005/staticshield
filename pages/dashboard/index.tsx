@@ -20,7 +20,7 @@ import Head from 'next/head';
 import Footer from '@/components/Footer';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
-  const { data, error } = useSWR('/api/fetch-sites', fetcher);
+  const { data } = useSWR('/api/fetch-sites', fetcher);
   console.log(data);
   const sortedData = data ? sortSiteCardsByUpdatedDate(data) : data;
   const router = useRouter();

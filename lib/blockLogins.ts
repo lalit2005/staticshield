@@ -1,11 +1,8 @@
 import axios from 'axios';
-import { mutate } from 'swr';
-import { HarperDBRecord } from '../types/interfaces';
 
 export default async function blockLogins(
   isLoginBlocked: boolean,
-  siteId: string,
-  previousData: HarperDBRecord
+  siteId: string
 ): Promise<{ success: boolean; response?: any; error?: any }> {
   try {
     const response = axios.post('/api/site/block-logins', {

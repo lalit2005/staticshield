@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import jwt, { JwtPayload } from 'jsonwebtoken';
-import { AES, enc } from 'crypto-js';
+import jwt from 'jsonwebtoken';
 
 export default function handler(
   req: NextApiRequest,
