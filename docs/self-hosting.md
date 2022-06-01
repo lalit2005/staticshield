@@ -1,4 +1,4 @@
-# StaticShield can be self hosted
+StaticShield can be self hosted
 
 If you're interested in having your own instance of StaticShield, follow the steps below.
 
@@ -11,11 +11,11 @@ Sign up to Auth0 and follow the [Getting Started steps](https://github.com/auth0
 </Callout>
 
 <Accordion title='Environment variables from this step'>
-AUTH0_SECRET= # Execute the [generate-secret](#generate-secret) command for suitable and secure strings
-AUTH0_BASE_URL=
-AUTH0_ISSUER_BASE_URL=
-AUTH0_CLIENT_ID=
-AUTH0_CLIENT_SECRET=
+`AUTH0_SECRET`= Execute the [generate-secret](#generate-secret) command for suitable and secure strings  
+`AUTH0_BASE_URL`=  
+`AUTH0_ISSUER_BASE_URL`=  
+`AUTH0_CLIENT_ID`=  
+`AUTH0_CLIENT_SECRET`=  
 </Accordion>
 
 ## Database
@@ -33,8 +33,8 @@ Sign up to HarperDB and create an instance on [their Studio](https://studio.harp
 </Callout>
 
 <Accordion title='Environment variables from this step'>
-HARPERDB_URL=
-HARPERDB_KEY=
+`HARPERDB_URL`=  
+`HARPERDB_KEY`=
 </Accordion>
 
 ## JWT Tokens
@@ -42,9 +42,9 @@ HARPERDB_KEY=
 StaticShield uses [JSON Web Tokens (JWT)](https://jwt.io/) and requires some environment variables to work with them. You can use the same [generate-secret](#generate-secret) command for suitable and secure strings.
 
 <Accordion title='Environment variables from this step'>
-HASH_SECRET=
-JWT_TOKEN=
-TOKEN_SECRET=
+`HASH_SECRET`=  
+`JWT_TOKEN`=  
+`TOKEN_SECRET`=  
 </Accordion>
 
 ## Base URL
