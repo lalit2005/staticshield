@@ -59,7 +59,7 @@ To generate the script and all the URLs correctly, pointing to your instance, ad
 
 Confirm that you have all these environment variables configured on your preferred provider and that you run the `build` script during deployment.
 
-```.env
+```
 AUTH0_SECRET=
 AUTH0_BASE_URL=
 AUTH0_ISSUER_BASE_URL=
