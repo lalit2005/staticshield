@@ -80,5 +80,5 @@ We can recommend hosting on [Vercel](https://vercel.com/) or [Netlify](https://w
 ### Generate secret
 
 ```sh
-node -e "console.log(crypto.randomBytes(32).toString('hex'))"`
+node -e "console.log(crypto.randomBytes(32).toString('hex'))"
 ```
