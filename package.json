@@ -13,7 +13,7 @@
     "generate-pwa-assets": "cd ./public/icons/ && npx pwa-asset-generator ../staticshield-rounded.png -m ../manifest.json -d -q 100 -u -f -o false"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.5.0",
+    "@auth0/nextjs-auth0": "^1.9.1",
     "@fontsource/ibm-plex-mono": "^4.5.0",
     "@fontsource/inter": "^4.4.5",
     "@geist-ui/react": "^2.1.5",
