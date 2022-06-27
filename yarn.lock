@@ -1127,10 +1127,10 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
-"@hookform/resolvers@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.8.0.tgz#32e82b072ff71c71e62fb2901b129642a0c5897e"
-  integrity sha512-ALlr0Bg6zDHdRsdqkwfWGPMnIxP4hqMRPvFDHp7lWXQeA7rKykto3cWqQQh1s0PzX043RHwMB6OHVPMwFJqwxg==
+"@hookform/resolvers@^2.9.3":
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.9.3.tgz#13f6934cfe705e24fac094da377e0621adcfc424"
+  integrity sha512-Eqc/qgjq0VX/TU0a5D2O+yR/kAKflnjaVlYFC1wI2qBm/sgjKTXxv27ijLwHUoHPIF+MUkB/VuQqHJ5DcmbCww==
 
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
