@@ -168,7 +168,7 @@ export default withPageAuthRequired(function Site({ user }) {
                   caption='Add this snippet to any page in the head tag to password protect it.'
                 />
                 <CodeSnippet
-                  title='Nextjs 11'
+                  title='Nextjs 11 or greater'
                   code={`<Script src='${SCRIPT_URL}' data-cap='${data?.cap}' data-site-id='${data?.id}' strategy='beforeInteractive'></Script><Script strategy='beforeInteractive'>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</Script><style jsx>{\`.staticshield-div { display: none }\`}</style><noscript><meta httpEquiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>`}
                   link='/docs/with/nextjs-11'
                   caption="Do not forget to import Script from 'next/script'"
