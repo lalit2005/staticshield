@@ -18,7 +18,7 @@
     "@fontsource/inter": "^4.4.5",
     "@geist-ui/react": "^2.1.5",
     "@geist-ui/react-icons": "^1.0.1",
-    "@hookform/resolvers": "^2.8.0",
+    "@hookform/resolvers": "^2.9.7",
     "@types/cors": "^2.8.12",
     "@types/react-hamburger-menu": "^0.0.4",
     "autoprefixer": "^10.3.6",
