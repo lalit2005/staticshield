@@ -131,7 +131,7 @@ export default withPageAuthRequired(function New({ user }) {
               {...register('site_url', {
                 required: true,
                 pattern:
-                  /[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/,
+                  /^(?:https?:\/\/)?(?:www\.)?[\w-]+\.(?:[a-zA-Z]{2,}|[a-zA-Z]{2,}\.[a-zA-Z]{2,})$/,
               })}>
               URL of site
             </Input>
